@@ -34,7 +34,7 @@ export default {
       dialogVisible: false,
       // 查看大图
       dialogImageUrl: "",
-      // 组件渲染图片的数组字段，有特殊格式要求
+      // 组件渲染Picture的数组字段，有特殊格式要求
       fileList: [],
       fileUrlList: [],
       myHeaders:{}
@@ -82,7 +82,7 @@ export default {
     handleBeforeUpload(file) {
 	
     },
-    // 上传文件成功后执行
+    // 上传文件 Success后执行
     handleUploadSuccess(res, file, fileList) {
       if (res && res.code === 0) {
         fileList[fileList.length - 1]["url"] = "upload/" + file.response.file;
@@ -92,11 +92,11 @@ export default {
         this.$message.error(res.msg);
       }
     },
-    // 图片上传失败
+    // Picture上传 Failure
     handleUploadErr(err, file, fileList) {
-      this.$message.error("文件上传失败");
+      this.$message.error("文件上传 Failure");
     },
-    // 移除图片
+    // 移除Picture
     handleRemove(file, fileList) {
       this.setFileList(fileList);
       this.$emit("change", this.fileUrlList.join(","));
@@ -106,15 +106,15 @@ export default {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
     },
-    // 限制图片数量
+    // 限制PictureAmount
     handleExceed(files, fileList) {
-      this.$message.warning(`最多上传${this.limit}张图片`);
+      this.$message.warning(`最多上传${this.limit}张Picture`);
     },
-    // 重新对fileList进行赋值
+    // 重新对fileList进行赋Picture
     setFileList(fileList) {
       var fileArray = [];
       var fileUrlArray = [];
-      // 有些图片不是公开的，所以需要携带token信息做权限校验
+      // 有些Picture不yes公开的，所以需要携带token信息做权限校验
       var token = storage.get("token");
       let _this = this;
       fileList.forEach(function(item, index) {

@@ -2,12 +2,12 @@
 	<div class="main-containers">
 		<div class="top-container" :style='{"boxShadow":"0 0px 0px rgba(64, 158, 255, .3)","padding":"0 20px","margin":" auto","overflow":"hidden","alignItems":"center","background":"#ffffff","display":"flex","width":"1200px","position":"relative","justifyContent":"space-between","height":"64px","zIndex":"1002"}'>
 			<img v-if='false' :style='{"width":"44px","objectFit":"cover","borderRadius":"100%","display":"block","height":"44px"}' src='http://codegen.caihongy.cn/20201114/7856ba26477849ea828f481fa2773a95.jpg'>
-			<div v-if="true" :style='{"color":"#000","fontSize":"28px"}'>网上商城</div>
+			<div v-if="true" :style='{"color":"#000","fontSize":"28px"}'>Taomao Online Mall</div>
 			<div>
 				<div v-if="true" :style='{"color":"#666","fontSize":"14px","display":"inline-block"}'></div>
 				<div v-if="Token" :style='{"color":"#666","fontSize":"14px","display":"inline-block"}'>{{username}}</div>
-				<el-button v-if="!Token" @click="toLogin()" :style='{"padding":"0 12px","margin":"0 0 0 10px","color":"#f4f4f5","borderRadius":"2px","background":"#52b646","display":"inline-block","fontSize":"14px","lineHeight":"32px","height":"32px"}'>登录/注册</el-button>
-                <el-button v-if="Token" @click="logout" :style='{"padding":"0 12px","margin":"0 0 0 10px","color":"#666","borderRadius":"2px","background":"#f4f4f5","display":"inline-block","fontSize":"14px","lineHeight":"32px","height":"32px"}'>退出</el-button>
+				<el-button v-if="!Token" @click="toLogin()" :style='{"padding":"0 12px","margin":"0 0 0 10px","color":"#f4f4f5","borderRadius":"2px","background":"#52b646","display":"inline-block","fontSize":"14px","lineHeight":"32px","height":"32px"}'> login/Register</el-button>
+                <el-button v-if="Token" @click="logout" :style='{"padding":"0 12px","margin":"0 0 0 10px","color":"#666","borderRadius":"2px","background":"#f4f4f5","display":"inline-block","fontSize":"14px","lineHeight":"32px","height":"32px"}'>logout</el-button>
 			</div>
 		</div>
 		
@@ -22,11 +22,11 @@
 					</el-menu-item>
 					<el-menu-item :index="menuList.length + 1 + ''" @click="goMenu('/index/cart')">
 						<i v-if="true" :style='{"padding":"0 10px","margin":"0","color":"inherit","width":"14px","lineHeight":"60px","fontSize":"14px","height":"60px"}' class="el-icon-shopping-cart-2"></i>
-						<span :style='{"padding":"0 10px","lineHeight":"60px","fontSize":"14px","color":"inherit","height":"60px"}'>购物车</span>
+						<span :style='{"padding":"0 10px","lineHeight":"60px","fontSize":"14px","color":"inherit","height":"60px"}'>Shopping cart</span>
 					</el-menu-item>
 					<el-menu-item :index="menuList.length + 2 + ''" v-if="Token && notAdmin" @click="goMenu('/index/center')">
 						<i v-if="true" :style='{"padding":"0 10px","margin":"0","color":"inherit","width":"14px","lineHeight":"60px","fontSize":"14px","height":"60px"}' class="el-icon-user"></i>
-						<span :style='{"padding":"0 10px","lineHeight":"60px","fontSize":"14px","color":"inherit","height":"60px"}'>个人中心</span>
+						<span :style='{"padding":"0 10px","lineHeight":"60px","fontSize":"14px","color":"inherit","height":"60px"}'>Personal Center</span>
 					</el-menu-item>
 				</el-menu>
 			</div>
@@ -58,7 +58,7 @@ export default {
     data() {
 		return {
             activeIndex: '0',
-			roleMenus: [{"backMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["新增","查看","修改","删除"],"menu":"用户","menuJump":"列表","tableName":"yonghu"}],"menu":"用户管理"},{"child":[{"appFrontIcon":"cuIcon-send","buttons":["新增","查看","修改","删除"],"menu":"商品分类","menuJump":"列表","tableName":"shangpinfenlei"}],"menu":"商品分类管理"},{"child":[{"appFrontIcon":"cuIcon-present","buttons":["新增","查看","修改","删除","查看评论"],"menu":"商品信息","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息管理"},{"child":[{"appFrontIcon":"cuIcon-pay","buttons":["新增","查看","修改","删除"],"menu":"轮播图管理","tableName":"config"},{"appFrontIcon":"cuIcon-vipcard","buttons":["新增","查看","修改","删除"],"menu":"新闻资讯","tableName":"news"}],"menu":"系统管理"},{"child":[{"appFrontIcon":"cuIcon-time","buttons":["查看","删除","物流"],"menu":"已发货订单","tableName":"orders/已发货"},{"appFrontIcon":"cuIcon-camera","buttons":["查看","删除","发货"],"menu":"已支付订单","tableName":"orders/已支付"},{"appFrontIcon":"cuIcon-rank","buttons":["查看","删除","品销量","日销额","月销额","年销额"],"menu":"已完成订单","tableName":"orders/已完成"},{"appFrontIcon":"cuIcon-copy","buttons":["查看","删除"],"menu":"已退款订单","tableName":"orders/已退款"}],"menu":"订单管理"}],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"商品信息列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息模块"}],"hasBackLogin":"是","hasBackRegister":"否","hasFrontLogin":"否","hasFrontRegister":"否","roleName":"管理员","tableName":"users"},{"backMenu":[],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"商品信息列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息模块"}],"hasBackLogin":"否","hasBackRegister":"否","hasFrontLogin":"是","hasFrontRegister":"是","roleName":"用户","tableName":"yonghu"}],
+			roleMenus: [{"backMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["add","查看","modification ","delete"],"menu":"user","menuJump":"列表","tableName":"yonghu"}],"menu":"User Management"},{"child":[{"appFrontIcon":"cuIcon-send","buttons":["add","查看","modification ","delete"],"menu":"Commodity classification","menuJump":"列表","tableName":"shangpinfenlei"}],"menu":"Commodity classification management"},{"child":[{"appFrontIcon":"cuIcon-present","buttons":["add","查看","modification ","delete","View comments"],"menu":"Commodity information","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity Information Management"},{"child":[{"appFrontIcon":"cuIcon-pay","buttons":["add","查看","modification ","delete"],"menu":"Carousel image Management","tableName":"config"},{"appFrontIcon":"cuIcon-vipcard","buttons":["add","查看","modification ","delete"],"menu":"News","tableName":"news"}],"menu":"System Management"},{"child":[{"appFrontIcon":"cuIcon-time","buttons":["查看","delete","物流"],"menu":"DispatchedOrder","tableName":"orders/Dispatched"},{"appFrontIcon":"cuIcon-camera","buttons":["查看","delete","发货"],"menu":"PaidOrder","tableName":"orders/Paid"},{"appFrontIcon":"cuIcon-rank","buttons":["查看","delete","品销量","日销额","月销额","年销额"],"menu":"CompletedOrder","tableName":"orders/Completed"},{"appFrontIcon":"cuIcon-copy","buttons":["查看","delete"],"menu":"RefundedOrder","tableName":"orders/Refunded"}],"menu":"OrderManagement"}],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"Commodity information列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity information模块"}],"hasBackLogin":"yes","hasBackRegister":"no","hasFrontLogin":"no","hasFrontRegister":"no","roleName":"管理员","tableName":"users"},{"backMenu":[],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"Commodity information列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity information模块"}],"hasBackLogin":"no","hasBackRegister":"no","hasFrontLogin":"yes","hasFrontRegister":"yes","roleName":"user","tableName":"yonghu"}],
 			baseUrl: '',
 			carouselList: [],
 			menuList: [],
@@ -142,7 +142,7 @@ export default {
             this.Token = ''
             this.$forceUpdate()
             this.$message({
-                message: '登出成功',
+                message: '登出 Success',
                 type: 'success',
                 duration: 1000,
             });

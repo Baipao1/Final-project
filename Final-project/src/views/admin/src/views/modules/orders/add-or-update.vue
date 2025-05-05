@@ -9,21 +9,21 @@
 			label-width="120px"
 		>
 			<template v-show="logistics">
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'" label="订单编号" prop="orderid">
-					<el-input v-model="ruleForm.orderid" placeholder="订单编号" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'" label="Order ID" prop="orderid">
+					<el-input v-model="ruleForm.orderid" placeholder="Order ID" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-else-if="ruleForm.orderid" label="订单编号" prop="orderid">
-					<el-input v-model="ruleForm.orderid" placeholder="订单编号" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-else-if="ruleForm.orderid" label="Order ID" prop="orderid">
+					<el-input v-model="ruleForm.orderid" placeholder="Order ID" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="商品名称" prop="goodname">
-					<el-input v-model="ruleForm.goodname" placeholder="商品名称" clearable  :readonly="ro.goodname"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Product name" prop="goodname">
+					<el-input v-model="ruleForm.goodname" placeholder="Product name" clearable  :readonly="ro.goodname"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="商品名称" prop="goodname">
-					<el-input v-model="ruleForm.goodname" placeholder="商品名称" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Product name" prop="goodname">
+					<el-input v-model="ruleForm.goodname" placeholder="Product name" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.picture" label="商品图片" prop="picture">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.picture" label="Commodity Picture" prop="picture">
 					<file-upload
-						tip="点击上传商品图片"
+						tip="Click to upload Commodity Picture"
 						action="file/upload"
 						:limit="3"
 						:multiple="true"
@@ -31,42 +31,42 @@
 						@change="pictureUploadChange"
 					></file-upload>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.picture" label="商品图片" prop="picture">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.picture" label="Commodity Picture" prop="picture">
 					<img v-if="ruleForm.picture.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.picture.split(',')[0]" width="100" height="100">
 					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.picture.split(',')" :src="$base.url+item" width="100" height="100">
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="购买数量" prop="buynumber">
-					<el-input v-model="ruleForm.buynumber" placeholder="购买数量" clearable  :readonly="ro.buynumber"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="BuyAmount" prop="buynumber">
+					<el-input v-model="ruleForm.buynumber" placeholder="BuyAmount" clearable  :readonly="ro.buynumber"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="购买数量" prop="buynumber">
-					<el-input v-model="ruleForm.buynumber" placeholder="购买数量" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="BuyAmount" prop="buynumber">
+					<el-input v-model="ruleForm.buynumber" placeholder="BuyAmount" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="价格" prop="price">
-					<el-input v-model="ruleForm.price" placeholder="价格" clearable  :readonly="ro.price"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Price" prop="price">
+					<el-input v-model="ruleForm.price" placeholder="Price" clearable  :readonly="ro.price"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="价格" prop="price">
-					<el-input v-model="ruleForm.price" placeholder="价格" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Price" prop="price">
+					<el-input v-model="ruleForm.price" placeholder="Price" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="折扣价格" prop="discountprice">
-					<el-input v-model="ruleForm.discountprice" placeholder="折扣价格" clearable  :readonly="ro.discountprice"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Discount Price" prop="discountprice">
+					<el-input v-model="ruleForm.discountprice" placeholder="Discount Price" clearable  :readonly="ro.discountprice"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="折扣价格" prop="discountprice">
-					<el-input v-model="ruleForm.discountprice" placeholder="折扣价格" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Discount Price" prop="discountprice">
+					<el-input v-model="ruleForm.discountprice" placeholder="Discount Price" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="总价格" prop="total">
-					<el-input v-model="ruleForm.total" placeholder="总价格" clearable  :readonly="ro.total"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Total Price" prop="total">
+					<el-input v-model="ruleForm.total" placeholder="Total Price" clearable  :readonly="ro.total"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="总价格" prop="total">
-					<el-input v-model="ruleForm.total" placeholder="总价格" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Total Price" prop="total">
+					<el-input v-model="ruleForm.total" placeholder="Total Price" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="折扣总价格" prop="discounttotal">
-					<el-input v-model="ruleForm.discounttotal" placeholder="折扣总价格" clearable  :readonly="ro.discounttotal"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Total discount Price" prop="discounttotal">
+					<el-input v-model="ruleForm.discounttotal" placeholder="Total discount Price" clearable  :readonly="ro.discounttotal"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="折扣总价格" prop="discounttotal">
-					<el-input v-model="ruleForm.discounttotal" placeholder="折扣总价格" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Total discount Price" prop="discounttotal">
+					<el-input v-model="ruleForm.discounttotal" placeholder="Total discount Price" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="支付类型" prop="type">
-					<el-select :disabled="ro.type" v-model="ruleForm.type" placeholder="请选择支付类型" >
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Payment type" prop="type">
+					<el-select :disabled="ro.type" v-model="ruleForm.type" placeholder="PleaseChoosePayment type" >
 						<el-option
 							v-for="(item,index) in typeOptions"
 							v-bind:key="index"
@@ -75,12 +75,12 @@
 						</el-option>
 					</el-select>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="支付类型" prop="type">
-					<el-input v-model="ruleForm.type-0==1?'现金':'积分'"
-						placeholder="支付类型" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Payment type" prop="type">
+					<el-input v-model="ruleForm.type-0==1?'Cash':'积分'"
+						placeholder="Payment type" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="状态" prop="status">
-					<el-select :disabled="ro.status" v-model="ruleForm.status" placeholder="请选择状态" >
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Status" prop="status">
+					<el-select :disabled="ro.status" v-model="ruleForm.status" placeholder="PleaseChooseStatus" >
 						<el-option
 							v-for="(item,index) in statusOptions"
 							v-bind:key="index"
@@ -89,42 +89,42 @@
 						</el-option>
 					</el-select>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="状态" prop="status">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Status" prop="status">
 					<el-input v-model="ruleForm.status"
-						placeholder="状态" readonly></el-input>
+						placeholder="Status" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="地址" prop="address">
-					<el-input v-model="ruleForm.address" placeholder="地址" clearable  :readonly="ro.address"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="address" prop="address">
+					<el-input v-model="ruleForm.address" placeholder="address" clearable  :readonly="ro.address"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="地址" prop="address">
-					<el-input v-model="ruleForm.address" placeholder="地址" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="address" prop="address">
+					<el-input v-model="ruleForm.address" placeholder="address" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="电话" prop="tel">
-					<el-input v-model="ruleForm.tel" placeholder="电话" clearable  :readonly="ro.tel"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Phone Number" prop="tel">
+					<el-input v-model="ruleForm.tel" placeholder="Phone Number" clearable  :readonly="ro.tel"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="电话" prop="tel">
-					<el-input v-model="ruleForm.tel" placeholder="电话" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Phone Number" prop="tel">
+					<el-input v-model="ruleForm.tel" placeholder="Phone Number" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="收货人" prop="consignee">
-					<el-input v-model="ruleForm.consignee" placeholder="收货人" clearable  :readonly="ro.consignee"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Consignee" prop="consignee">
+					<el-input v-model="ruleForm.consignee" placeholder="Consignee" clearable  :readonly="ro.consignee"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="收货人" prop="consignee">
-					<el-input v-model="ruleForm.consignee" placeholder="收货人" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Consignee" prop="consignee">
+					<el-input v-model="ruleForm.consignee" placeholder="Consignee" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="备注" prop="remark">
-					<el-input v-model="ruleForm.remark" placeholder="备注" clearable  :readonly="ro.remark"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Remarks" prop="remark">
+					<el-input v-model="ruleForm.remark" placeholder="Remarks" clearable  :readonly="ro.remark"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="备注" prop="remark">
-					<el-input v-model="ruleForm.remark" placeholder="备注" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Remarks" prop="remark">
+					<el-input v-model="ruleForm.remark" placeholder="Remarks" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="商品类型" prop="goodtype">
-					<el-input v-model="ruleForm.goodtype" placeholder="商品类型" clearable  :readonly="ro.goodtype"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Commodity类型" prop="goodtype">
+					<el-input v-model="ruleForm.goodtype" placeholder="Commodity类型" clearable  :readonly="ro.goodtype"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="商品类型" prop="goodtype">
-					<el-input v-model="ruleForm.goodtype" placeholder="商品类型" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Commodity类型" prop="goodtype">
+					<el-input v-model="ruleForm.goodtype" placeholder="Commodity类型" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="type=='info'" class="input" label="下单时间" prop="addtime">
-					<el-input v-model="ruleForm.addtime" placeholder="下单时间" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="type=='info'" class="input" label="Order placement time" prop="addtime">
+					<el-input v-model="ruleForm.addtime" placeholder="Order placement time" readonly></el-input>
 				</el-form-item>
 			</template>
 				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="type!='info'"  label="物流" prop="logistics">
@@ -139,9 +139,9 @@
                     <span :style='{"fontSize":"14px","lineHeight":"40px","color":"#000","fontWeight":"500","display":"inline-block"}' v-html="ruleForm.logistics"></span>
                 </el-form-item>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
-				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">提交</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">取消</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">返回</el-button>
+				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">Submit</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">Cancel</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">Back</el-button>
 			</el-form-item>
 		</el-form>
     
@@ -158,7 +158,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!checkIdCard(value)) {
-				callback(new Error("请输入正确的身份证号码"));
+				callback(new Error("Please enter 正确的身份证号码"));
 			} else {
 				callback();
 			}
@@ -167,7 +167,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isURL(value)) {
-				callback(new Error("请输入正确的URL地址"));
+				callback(new Error("Please enter 正确的URLaddress"));
 			} else {
 				callback();
 			}
@@ -176,7 +176,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isMobile(value)) {
-				callback(new Error("请输入正确的手机号码"));
+				callback(new Error("Please enter 正确的Mobile phone number"));
 			} else {
 				callback();
 			}
@@ -185,7 +185,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isPhone(value)) {
-				callback(new Error("请输入正确的电话号码"));
+				callback(new Error("Please enter 正确的Phone Number号码"));
 			} else {
 				callback();
 			}
@@ -194,7 +194,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isEmail(value)) {
-				callback(new Error("请输入正确的邮箱地址"));
+				callback(new Error("Please enter 正确的邮箱address"));
 			} else {
 				callback();
 			}
@@ -203,7 +203,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isNumber(value)) {
-				callback(new Error("请输入数字"));
+				callback(new Error("Please enter 数字"));
 			} else {
 				callback();
 			}
@@ -212,7 +212,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isIntNumer(value)) {
-				callback(new Error("请输入整数"));
+				callback(new Error("Please enter 整数"));
 			} else {
 				callback();
 			}
@@ -267,33 +267,33 @@ export default {
 			
 			rules: {
 				orderid: [
-					{ required: true, message: '订单编号不能为空', trigger: 'blur' },
+					{ required: true, message: 'Order ID cannot be empty.', trigger: 'blur' },
 				],
 				tablename: [
 				],
 				userid: [
-					{ required: true, message: '用户id不能为空', trigger: 'blur' },
+					{ required: true, message: 'userid cannot be empty.', trigger: 'blur' },
 				],
 				goodid: [
-					{ required: true, message: '商品id不能为空', trigger: 'blur' },
+					{ required: true, message: 'Commodityid cannot be empty.', trigger: 'blur' },
 				],
 				goodname: [
 				],
 				picture: [
 				],
 				buynumber: [
-					{ required: true, message: '购买数量不能为空', trigger: 'blur' },
+					{ required: true, message: 'BuyAmount cannot be empty.', trigger: 'blur' },
 					{ validator: validateIntNumber, trigger: 'blur' },
 				],
 				price: [
-					{ required: true, message: '价格不能为空', trigger: 'blur' },
+					{ required: true, message: 'Price cannot be empty.', trigger: 'blur' },
 					{ validator: validateNumber, trigger: 'blur' },
 				],
 				discountprice: [
 					{ validator: validateNumber, trigger: 'blur' },
 				],
 				total: [
-					{ required: true, message: '总价格不能为空', trigger: 'blur' },
+					{ required: true, message: 'Total Price cannot be empty.', trigger: 'blur' },
 					{ validator: validateNumber, trigger: 'blur' },
 				],
 				discounttotal: [
@@ -469,8 +469,8 @@ export default {
 			
 			
 			
-            this.typeOptions = "现金,积分".split(',')
-            this.statusOptions = "未支付,已支付,已完成,已取消,已退款,已发货".split(',')
+            this.typeOptions = "Cash,积分".split(',')
+            this.statusOptions = "Unpaid,Paid,Completed,Cancelled,Refunded,Dispatched".split(',')
 			
 		},
     // 多级联动参数
@@ -482,8 +482,8 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
         this.ruleForm = data.data;
-        //解决前台上传图片后台不显示的问题
-        let reg=new RegExp('../../../upload','g')//g代表全部
+        //解决前台上传Picture后台不显示的问题
+        let reg=new RegExp('../../../upload','g')//g代表All
         this.ruleForm.logistics = this.ruleForm.logistics.replace(reg,'../../../Final-project/upload');
         } else {
           this.$message.error(data.msg);
@@ -492,7 +492,7 @@ export default {
     },
 
 
-    // 提交
+    // Submit
     onSubmit() {
 
 
@@ -597,7 +597,7 @@ var objcross = this.$storage.getObj('crossObj');
 					 }).then(({ data }) => {
 					   if (data && data.code === 0) {
 					     this.$message({
-					       message: "操作成功",
+					       message: "Operation Success",
 					       type: "success",
 					       duration: 1500,
 					       onClose: () => {
@@ -625,7 +625,7 @@ var objcross = this.$storage.getObj('crossObj');
 			 }).then(({ data }) => {
 			   if (data && data.code === 0) {
 			     this.$message({
-			       message: "操作成功",
+			       message: "Operation Success",
 			       type: "success",
 			       duration: 1500,
 			       onClose: () => {
@@ -648,7 +648,7 @@ var objcross = this.$storage.getObj('crossObj');
     getUUID () {
       return new Date().getTime();
     },
-    // 返回
+    // Back
     back() {
       this.parent.showFlag = true;
       this.parent.addOrUpdateFlag = false;

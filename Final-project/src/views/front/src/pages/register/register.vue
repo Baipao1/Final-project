@@ -4,27 +4,27 @@
 	<div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://codegen.caihongy.cn/20221115/d968ab69ddc8495282963cb2dab971cb.jpg) no-repeat center top","display":"flex","width":"100%","backgroundSize":"cover","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'>
 		<el-form class='rgs-form' v-if="pageFlag=='register'" :style='{"padding":"20px","boxShadow":"0 1px 6px rgba(0, 0, 0, .1)","margin":"0","borderRadius":"16px","flexWrap":"wrap","background":"url(http://codegen.caihongy.cn/20221115/2f997573ef7545c39f9e0eff917cbd30.png) no-repeat left top,url(http://codegen.caihongy.cn/20221115/30139400df864d7eaddf9c3da399146c.png) no-repeat right bottom,#fff","display":"flex","width":"800px","justifyContent":"center","height":"auto"}' ref="registerForm" :model="registerForm" :rules="rules">
 			<div v-if="true" :style='{"margin":"0 0 10px 0","color":"#52b646","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"20px","textShadow":"4px 4px 2px rgba(82, 182, 70, .3)"}'>USER / REGISTER</div>
-			<div v-if="true" :style='{"margin":"0 auto 20px auto","borderColor":"#52b646","color":"#52b646","textAlign":"center","borderWidth":"3px","width":"50%","letterSpacing":"2px","lineHeight":"44px","fontSize":"24px","borderStyle":"dotted dashed solid double","fontWeight":"600"}'>网上商城注册</p></div>
+			<div v-if="true" :style='{"margin":"0 auto 20px auto","borderColor":"#52b646","color":"#52b646","textAlign":"center","borderWidth":"3px","width":"50%","letterSpacing":"2px","lineHeight":"44px","fontSize":"24px","borderStyle":"dotted dashed solid double","fontWeight":"600"}'>Taomao Online Mall Register</p></div>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="yonghuzhanghao">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>用户账号：</div>
-				<el-input v-model="registerForm.yonghuzhanghao"  placeholder="请输入用户账号" />
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>userAccount：</div>
+				<el-input v-model="registerForm.yonghuzhanghao"  placeholder="Please enter userAccount" />
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="mima">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>密码：</div>
-				<el-input v-model="registerForm.mima" type="password" placeholder="请输入密码" />
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>Password：</div>
+				<el-input v-model="registerForm.mima" type="password" placeholder="Please enter Password" />
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="mima">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>确认密码：</div>
-				<el-input v-model="registerForm.mima2" type="password" placeholder="请再次输入密码" />
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>Make sure Password：</div>
+				<el-input v-model="registerForm.mima2" type="password" placeholder="Please再次输入Password" />
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="yonghuxingming">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>用户姓名：</div>
-				<el-input v-model="registerForm.yonghuxingming"  placeholder="请输入用户姓名" />
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>userName：</div>
+				<el-input v-model="registerForm.yonghuxingming"  placeholder="Please enter userName" />
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="touxiang">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>头像：</div>
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>Profile picture：</div>
                 <file-upload
-					tip="点击上传头像"
+					tip="Click to upload Profile picture"
 					action="file/upload"
 					:limit="1"
 					:multiple="true"
@@ -33,8 +33,8 @@
 				></file-upload>
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="xingbie">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>性别：</div>
-                <el-select v-model="registerForm.xingbie" placeholder="请选择性别" >
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>Gender：</div>
+                <el-select v-model="registerForm.xingbie" placeholder="PleaseChooseGender" >
                   <el-option
                       v-for="(item,index) in yonghuxingbieOptions"
                       :key="index"
@@ -44,12 +44,12 @@
                 </el-select>
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","padding":"0","margin":"0 auto 24px","height":"auto"}' v-if="tableName=='yonghu'" prop="shoujihaoma">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>手机号码：</div>
-				<el-input v-model="registerForm.shoujihaoma"  placeholder="请输入手机号码" />
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}'>Mobile phone number：</div>
+				<el-input v-model="registerForm.shoujihaoma"  placeholder="Please enter Mobile phone number" />
 			</el-form-item>
-			<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","boxShadow":"0 2px 4px rgba(82, 182, 70, .2)","margin":"16px auto 5px","color":"#fff","display":"block","outline":"none","borderRadius":"8px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"30%","fontSize":"16px","height":"40px"}' type="primary" @click="submitForm('registerForm')">注册</el-button>
-			<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0 10px","boxShadow":"0 2px 4px rgba(82, 182, 70, .2)","margin":"16px auto 5px","color":"#52b646","display":"block","outline":"none","borderRadius":"8px","background":"#ecfaea","width":"30%","fontSize":"16px","height":"40px"}' @click="resetForm('registerForm')">重置</el-button>
-			<router-link :style='{"cursor":"pointer","padding":"0 10%","margin":"8px 0 0","color":"rgba(159, 159, 159, 1)","textAlign":"left","display":"inline-block","width":"100%","lineHeight":"1","fontSize":"12px","textDecoration":"none"}' to="/login">已有账户登录</router-link>
+			<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","boxShadow":"0 2px 4px rgba(82, 182, 70, .2)","margin":"16px auto 5px","color":"#fff","display":"block","outline":"none","borderRadius":"8px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"30%","fontSize":"16px","height":"40px"}' type="primary" @click="submitForm('registerForm')">Register</el-button>
+			<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0 10px","boxShadow":"0 2px 4px rgba(82, 182, 70, .2)","margin":"16px auto 5px","color":"#52b646","display":"block","outline":"none","borderRadius":"8px","background":"#ecfaea","width":"30%","fontSize":"16px","height":"40px"}' @click="resetForm('registerForm')">reset</el-button>
+			<router-link :style='{"cursor":"pointer","padding":"0 10%","margin":"8px 0 0","color":"rgba(159, 159, 159, 1)","textAlign":"left","display":"inline-block","width":"100%","lineHeight":"1","fontSize":"12px","textDecoration":"none"}' to="/login">已有账户 login</router-link>
 		</el-form>
     </div>
   </div>
@@ -77,12 +77,12 @@ export default {
       this.pageFlag = this.$route.query.pageFlag;
       this.tableName = this.$route.query.role;
       if ('yonghu' == this.tableName) {
-        this.rules.yonghuzhanghao = [{ required: true, message: '请输入用户账号', trigger: 'blur' }];
+        this.rules.yonghuzhanghao = [{ required: true, message: 'Please enter userAccount', trigger: 'blur' }];
       }
       if ('yonghu' == this.tableName) {
-        this.rules.mima = [{ required: true, message: '请输入密码', trigger: 'blur' }];
+        this.rules.mima = [{ required: true, message: 'Please enter Password', trigger: 'blur' }];
       }
-        this.yonghuxingbieOptions = "男,女".split(',');
+        this.yonghuxingbieOptions = "Male,Female".split(',');
       if ('yonghu' == this.tableName) {
         this.rules.shoujihaoma = [{ required: true, validator: this.$validate.isMobile, trigger: 'blur' }];
       }
@@ -109,13 +109,13 @@ export default {
           if (valid) {
             var url=this.tableName+"/register";
                if(`yonghu` == this.tableName && this.registerForm.mima!=this.registerForm.mima2) {
-                this.$message.error(`两次密码输入不一致`);
+                this.$message.error(`两次Password输入不一致`);
                 return
                }
             this.$http.post(url, this.registerForm).then(res => {
               if (res.data.code === 0) {
                 this.$message({
-                  message: '注册成功',
+                  message: 'Register Success',
                   type: 'success',
                   duration: 1500,
                   onClose: () => {

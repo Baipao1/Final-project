@@ -39,7 +39,7 @@ export default {
     /*height: 500px;*/
   }
   .ql-snow .ql-tooltip[data-mode="link"]::before {
-    content: "请输入链接地址:";
+    content: "Please enter 链接address:";
   }
   .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
     border-right: 0px;
@@ -47,7 +47,7 @@ export default {
     padding-right: 0px;
   }
   .ql-snow .ql-tooltip[data-mode="video"]::before {
-    content: "请输入视频地址:";
+    content: "Please enter 视频address:";
   }
   .ql-snow .ql-picker.ql-size .ql-picker-label::before,
   .ql-snow .ql-picker.ql-size .ql-picker-item::before {
@@ -71,27 +71,27 @@ export default {
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
-    content: "标题1";
+    content: "Title1";
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
-    content: "标题2";
+    content: "Title2";
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
-    content: "标题3";
+    content: "Title3";
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
-    content: "标题4";
+    content: "Title4";
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
-    content: "标题5";
+    content: "Title5";
   }
   .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
   .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
-    content: "标题6";
+    content: "Title6";
   }
   .ql-snow .ql-picker.ql-font .ql-picker-label::before,
   .ql-snow .ql-picker.ql-font .ql-picker-item::before {

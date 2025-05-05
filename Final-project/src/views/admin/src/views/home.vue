@@ -1,6 +1,6 @@
 <template>
 <div class="content" :style='{"padding":"30px"}'>
-	<div class="text" :style='{"margin":"50px auto","fontSize":"24px","color":"rgb(51, 51, 51)","textAlign":"center","fontWeight":"bold"}'>欢迎使用 {{this.$project.projectName}}</div>
+	<div class="text" :style='{"margin":"50px auto","fontSize":"24px","color":"rgb(51, 51, 51)","textAlign":"center","fontWeight":"bold"}'>Welcome to use {{this.$project.projectName}}</div>
 </div>
 </template>
 <script>

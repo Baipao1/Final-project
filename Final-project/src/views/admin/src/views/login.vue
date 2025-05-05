@@ -3,20 +3,20 @@
     <div class="container" :style='{"minHeight":"100vh","backgroundAttachment":"fixed","alignItems":"center","background":"url(http://codegen.caihongy.cn/20220717/1047718a3b794563805ec82864319bd9.png)","display":"flex","width":"100%","backgroundSize":"cover","backgroundPosition":"center center","backgroundRepeat":"repeat","justifyContent":"center"}'>
 
       <el-form :style='{"padding":"40px 20px 20px","boxShadow":"0 0px 0px rgba(64, 158, 255, .8)","margin":"0 0 0 660px","borderRadius":"0","background":"transparent","width":"calc(100vw - 660px)","height":"auto"}'>
-        <div v-if="true" :style='{"margin":"0 0 10px 0","color":"#000","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"24px","textShadow":"4px 4px 2px rgba(0, 0, 0, .2)"}' class="title-container">网上商城登录</div>
+        <div v-if="true" :style='{"margin":"0 0 10px 0","color":"#000","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"24px","textShadow":"4px 4px 2px rgba(0, 0, 0, .2)"}' class="title-container">Taomao Online Mall login</div>
         <div v-if="loginType==1" class="list-item" :style='{"width":"30%","margin":"0 auto 10px","position":"relative","alignItems":"center","display":"flex"}'>
-          <div v-if="true" class="lable" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","letterSpacing":"2px","lineHeight":"44px","fontSize":"14px","position":"absolute"}'>用户名：</div>
-          <input :style='{"border":"1px solid #67D4B2","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","color":"#000","borderRadius":"0","width":"100%","fontSize":"14px","height":"44px"}' placeholder="请输入用户名" name="username" type="text" v-model="rulesForm.username">
+          <div v-if="true" class="lable" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","letterSpacing":"2px","lineHeight":"44px","fontSize":"14px","position":"absolute"}'>User：</div>
+          <input :style='{"border":"1px solid #67D4B2","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","color":"#000","borderRadius":"0","width":"100%","fontSize":"14px","height":"44px"}' placeholder="Please enter User" name="username" type="text" v-model="rulesForm.username">
         </div>
         <div v-if="loginType==1" class="list-item" :style='{"width":"30%","margin":"0 auto 10px","position":"relative","alignItems":"center","display":"flex"}'>
-          <div v-if="true" class="lable" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","letterSpacing":"2px","lineHeight":"44px","fontSize":"14px","position":"absolute"}'>密码：</div>
-          <input :style='{"border":"1px solid #67D4B2","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","color":"#000","borderRadius":"0","width":"100%","fontSize":"14px","height":"44px"}' placeholder="请输入密码" name="password" type="password" v-model="rulesForm.password">
+          <div v-if="true" class="lable" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","letterSpacing":"2px","lineHeight":"44px","fontSize":"14px","position":"absolute"}'>Password：</div>
+          <input :style='{"border":"1px solid #67D4B2","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","color":"#000","borderRadius":"0","width":"100%","fontSize":"14px","height":"44px"}' placeholder="Please enter Password" name="password" type="password" v-model="rulesForm.password">
         </div>
         <div :style='{"width":"30%","margin":"20px auto"}' v-if="roles.length>1" prop="loginInRole" class="list-type">
           <el-radio v-for="item in roles" v-bind:key="item.roleName" v-model="rulesForm.role" :label="item.roleName">{{item.roleName}}</el-radio>
         </div>
         <div :style='{"width":"30%","margin":"20px auto","alignItems":"center","flexWrap":"wrap","justifyContent":"center","display":"flex"}'>
-          <el-button v-if="loginType==1" :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 10px 10px","outline":"none","color":"#fff","borderRadius":"5px","background":"#67D4B2","width":"60%","fontSize":"18px","height":"44px"}' type="primary" @click="login()" class="loginInBt">登录</el-button>
+          <el-button v-if="loginType==1" :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 10px 10px","outline":"none","color":"#fff","borderRadius":"5px","background":"#67D4B2","width":"60%","fontSize":"18px","height":"44px"}' type="primary" @click="login()" class="loginInBt"> login</el-button>
         </div>
       </el-form>
 
@@ -68,7 +68,7 @@ export default {
     this.menus = menus;
 
     for (let i = 0; i < this.menus.length; i++) {
-      if (this.menus[i].hasBackLogin=='是') {
+      if (this.menus[i].hasBackLogin=='yes') {
         this.roles.push(this.menus[i])
       }
     }
@@ -83,7 +83,7 @@ export default {
   },
   methods: {
 
-    //注册
+    //Register
     register(tableName){
 		this.$storage.set("loginTable", tableName);
         this.$storage.set("pageFlag", "register");
@@ -93,16 +93,16 @@ export default {
     login() {
 
 		if (!this.rulesForm.username) {
-			this.$message.error("请输入用户名");
+			this.$message.error("Please enter User");
 			return;
 		}
 		if (!this.rulesForm.password) {
-			this.$message.error("请输入密码");
+			this.$message.error("Please enter Password");
 			return;
 		}
 		if(this.roles.length>1) {
 			if (!this.rulesForm.role) {
-				this.$message.error("请选择角色");
+				this.$message.error("PleaseChoose角色");
 				return;
 			}
 

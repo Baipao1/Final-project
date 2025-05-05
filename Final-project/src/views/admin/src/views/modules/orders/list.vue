@@ -5,22 +5,22 @@
 			<el-form class="center-form-pv" :style='{"border":"1px solid #6F6F97","width":"140px","padding":"5px","margin":"0 0 20px 10px","background":"rgba(255,255,255,.8)"}' :inline="true" :model="searchForm">
 				<el-row :style='{"flexDirection":"column","display":"flex"}' >
 					<div :style='{"margin":"0","flexDirection":"column","display":"flex"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">订单编号</label>
-						<el-input v-model="searchForm.orderid" placeholder="订单编号" clearable></el-input>
+						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">Order ID</label>
+						<el-input v-model="searchForm.orderid" placeholder="Order ID" clearable></el-input>
 					</div>
 					<div :style='{"margin":"0","flexDirection":"column","display":"flex"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">商品名称</label>
-						<el-input v-model="searchForm.goodname" placeholder="商品名称" clearable></el-input>
+						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">Product name</label>
+						<el-input v-model="searchForm.goodname" placeholder="Product name" clearable></el-input>
 					</div>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","outline":"none","margin":"6px 0 0","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' type="success" @click="search()">查询</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","outline":"none","margin":"6px 0 0","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' type="success" @click="search()">Search</el-button>
 				</el-row>
 
 				<el-row :style='{"margin":"20px 0","flexDirection":"column","display":"flex"}'>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'新增')" type="success" @click="addOrUpdateHandler()">新增</el-button>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'删除')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">删除</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'add')" type="success" @click="addOrUpdateHandler()">add</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'delete')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">delete</el-button>
 
 
-					<download-excel v-if="isAuth('orders'+'/'+orderStatus,'导出')" class="export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "订单.xls">
+					<download-excel v-if="isAuth('orders'+'/'+orderStatus,'导出')" class="export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "Order.xls">
 						<!-- 导出excel -->
 						<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' type="danger">导出</el-button>
 					</download-excel>
@@ -32,7 +32,7 @@
             
 					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'年销量')" type="warning" @click="yearNumberChartDialog()">年销量</el-button>
             
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}'	v-if="isAuth('orders'+'/'+orderStatus,'品销量')"	type="warning"	@click="goodnameNumberChartDialog()">商品销量</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}'	v-if="isAuth('orders'+'/'+orderStatus,'品销量')"	type="warning"	@click="goodnameNumberChartDialog()">Commodity销量</el-button>
             
 					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'类销量')" type="warning" @click="goodtypeNumberChartDialog()">类型销量</el-button>
             
@@ -42,7 +42,7 @@
             
 					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'年销额')" type="warning" @click="yearAmountChartDialog()">年销额</el-button>
             
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'品销额')" type="warning" @click="goodnameAmountChartDialog()">商品销额</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'品销额')" type="warning" @click="goodnameAmountChartDialog()">Commodity销额</el-button>
             
 					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('orders'+'/'+orderStatus,'类销额')" type="warning" @click="goodtypeAmountChartDialog()">类型销额</el-button>
 				</el-row>
@@ -57,61 +57,61 @@
 					v-loading="dataListLoading"
 				@selection-change="selectionChangeHandler">
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
-					<el-table-column :resizable='true' :sortable='false' label="索引" type="index" width="50" />
+					<el-table-column :resizable='true' :sortable='false' label="List" type="index" width="50" />
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="orderid"
-					label="订单编号">
+					label="Order ID">
 						<template slot-scope="scope">
 							{{scope.row.orderid}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="goodname"
-					label="商品名称">
+					label="Product name">
 						<template slot-scope="scope">
 							{{scope.row.goodname}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='false' prop="picture" width="200" label="商品图片">
+					<el-table-column :resizable='true' :sortable='false' prop="picture" width="200" label="Commodity Picture">
 						<template slot-scope="scope">
 							<div v-if="scope.row.picture">
 								<img v-if="scope.row.picture.substring(0,4)=='http'" :src="scope.row.picture.split(',')[0]" width="100" height="100">
 								<img v-else :src="$base.url+scope.row.picture.split(',')[0]" width="100" height="100">
 							</div>
-							<div v-else>无图片</div>
+							<div v-else>No picture</div>
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="buynumber"
-					label="购买数量">
+					label="BuyAmount">
 						<template slot-scope="scope">
 							{{scope.row.buynumber}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="price"
-					label="价格">
+					label="Price">
 						<template slot-scope="scope">
 							{{scope.row.price}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="discountprice"
-					label="折扣价格">
+					label="Discount Price">
 						<template slot-scope="scope">
 							{{scope.row.discountprice}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="total"
-					label="总价格">
+					label="Total Price">
 						<template slot-scope="scope">
 							{{scope.row.total}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="discounttotal"
-					label="折扣总价格">
+					label="Total discount Price">
 						<template slot-scope="scope">
 							{{scope.row.discounttotal}}
 						</template>
@@ -119,59 +119,59 @@
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="type"
 						:formatter="orderStatusFormatter"
-					label="支付类型">
+					label="Payment type">
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="status"
-					label="状态">
+					label="Status">
 						<template slot-scope="scope">
 							{{scope.row.status}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="address"
-					label="地址">
+					label="address">
 						<template slot-scope="scope">
 							{{scope.row.address}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="tel"
-					label="电话">
+					label="Phone Number">
 						<template slot-scope="scope">
 							{{scope.row.tel}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="consignee"
-					label="收货人">
+					label="Consignee">
 						<template slot-scope="scope">
 							{{scope.row.consignee}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="remark"
-					label="备注">
+					label="Remarks">
 						<template slot-scope="scope">
 							{{scope.row.remark}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="goodtype"
-					label="商品类型">
+					label="Commodity类型">
 						<template slot-scope="scope">
 							{{scope.row.goodtype}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='false' prop="tel" label="下单时间">
+					<el-table-column :resizable='true' :sortable='false' prop="tel" label="Order placement time">
 						<template slot-scope="scope">
 							{{scope.row.addtime}}
 						</template>
 					</el-table-column>
-					<el-table-column width="300" label="操作">
+					<el-table-column width="300" label="Operation">
 						<template slot-scope="scope">
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('orders'+'/'+orderStatus,'查看')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">详情</el-button>
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('orders'+'/'+orderStatus,'修改')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('orders'+'/'+orderStatus,'查看')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">more</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('orders'+'/'+orderStatus,'modification ')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">modification </el-button>
 
 							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('orders'+'/'+orderStatus,'物流')" type="primary" size="mini" @click="logisticsUpdate(scope.row.id)">物流</el-button>
                 
@@ -182,7 +182,7 @@
 
 
 
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('orders'+'/'+orderStatus,'删除') " type="danger" size="mini" @click="deleteHandler(scope.row.id)">删除</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('orders'+'/'+orderStatus,'delete') " type="danger" size="mini" @click="deleteHandler(scope.row.id)">delete</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -203,7 +203,7 @@
 			<!-- </div> -->
 		</template>
 		
-		<!-- 添加/修改页面  将父组件的search方法传递给子组件-->
+		<!-- Add/modification 页面  将父组件的search方法传递给子组件-->
 		<add-or-update v-if="addOrUpdateFlag" :parent="this" ref="addOrUpdate"></add-or-update>
 
 
@@ -216,7 +216,7 @@
 		  width="800">
 			<div id="dayNumberChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="dayNumberChartDialog">返回</el-button>
+			<el-button @click="dayNumberChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 
@@ -226,7 +226,7 @@
 		  width="800">
 			<div id="monthNumberChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="monthNumberChartDialog">返回</el-button>
+			<el-button @click="monthNumberChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 		
@@ -236,17 +236,17 @@
 		  width="800">
 			<div id="yearNumberChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="yearNumberChartDialog">返回</el-button>
+			<el-button @click="yearNumberChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
     
 		<el-dialog
-		  title="商品销量"
+		  title="Commodity销量"
 		  :visible.sync="goodnameNumberChartVisiable"
 		  width="800">
 			<div id="goodnameNumberChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="goodnameNumberChartDialog">返回</el-button>
+			<el-button @click="goodnameNumberChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 		
@@ -256,7 +256,7 @@
 		  width="800">
 			<div id="goodtypeNumberChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="goodtypeNumberChartDialog">返回</el-button>
+			<el-button @click="goodtypeNumberChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
     
@@ -266,7 +266,7 @@
 		  width="800">
 			<div id="dayAmountChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="dayAmountChartDialog">返回</el-button>
+			<el-button @click="dayAmountChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 		
@@ -276,7 +276,7 @@
 		  width="800">
 			<div id="monthAmountChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="monthAmountChartDialog">返回</el-button>
+			<el-button @click="monthAmountChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
     
@@ -286,17 +286,17 @@
 		  width="800">
 			<div id="yearAmountChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="yearAmountChartDialog">返回</el-button>
+			<el-button @click="yearAmountChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 		
 		<el-dialog
-		  title="商品销额"
+		  title="Commodity销额"
 		  :visible.sync="goodnameAmountChartVisiable"
 		  width="800">
 			<div id="goodnameAmountChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="goodnameAmountChartDialog">返回</el-button>
+			<el-button @click="goodnameAmountChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 		
@@ -306,7 +306,7 @@
 		  width="800">
 			<div id="goodtypeAmountChart" style="width:100%;height:600px;"></div>
 		  <span slot="footer" class="dialog-footer">
-			<el-button @click="goodtypeAmountChartDialog">返回</el-button>
+			<el-button @click="goodtypeAmountChartDialog">Back</el-button>
 		  </span>
 		</el-dialog>
 	</div>
@@ -353,25 +353,25 @@ export default {
       orderStatus: this.$route.params.status,
 //导出excel
       json_fields: {
-      "订单编号": "orderid",    //常规字段
-      "商品表名": "tablename",    //常规字段
-      "用户id": "userid",    //常规字段
-      "商品id": "goodid",    //常规字段
-      "商品名称": "goodname",    //常规字段
-      "商品图片": "picture",    //常规字段
-      "购买数量": "buynumber",    //常规字段
-      "价格": "price",    //常规字段
-      "折扣价格": "discountprice",    //常规字段
-      "总价格": "total",    //常规字段
-      "折扣总价格": "discounttotal",    //常规字段
-      "支付类型": "type",    //常规字段
-      "状态": "status",    //常规字段
-      "地址": "address",    //常规字段
-      "电话": "tel",    //常规字段
-      "收货人": "consignee",    //常规字段
-      "备注": "remark",    //常规字段
+      "Order ID": "orderid",    //常规字段
+      "Commodity表名": "tablename",    //常规字段
+      "userid": "userid",    //常规字段
+      "Commodityid": "goodid",    //常规字段
+      "Product name": "goodname",    //常规字段
+      "Commodity Picture": "picture",    //常规字段
+      "BuyAmount": "buynumber",    //常规字段
+      "Price": "price",    //常规字段
+      "Discount Price": "discountprice",    //常规字段
+      "Total Price": "total",    //常规字段
+      "Total discount Price": "discounttotal",    //常规字段
+      "Payment type": "type",    //常规字段
+      "Status": "status",    //常规字段
+      "address": "address",    //常规字段
+      "Phone Number": "tel",    //常规字段
+      "Consignee": "consignee",    //常规字段
+      "Remarks": "remark",    //常规字段
       "物流": "logistics",    //常规字段
-      "商品类型": "goodtype",    //常规字段
+      "Commodity类型": "goodtype",    //常规字段
       },
       json_meta: [
         [
@@ -391,10 +391,10 @@ export default {
   },
   mounted() {
   },
-//监听订单表参数是否变化，从而调取接口
+//监听Order表参数yesno变化，从而调取接口
   watch: {
-  '$route' (to, from) { //监听路由是否变化
-    if(this.$route.params.status){//判断状态是否有值
+  '$route' (to, from) { //监听路由yesno变化
+    if(this.$route.params.status){//判断Statusyesno有Picture
       //调数据
         this.orderStatus=this.$route.params.status;
         this.getDataList();
@@ -417,7 +417,7 @@ export default {
       // 处理逻辑 保存接口 数据，进行匹配 name
       switch (row.type-0) {
         case 1:
-          temp = '现金'
+          temp = 'Cash'
           break
         case 2:
           temp = '积分'
@@ -429,12 +429,12 @@ export default {
       return temp
     },
     updateHandler(row) {
-      this.$confirm(`确定进行发货操作?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`Sure进行发货Operation?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
-        row.status = "已发货";
+        row.status = "Dispatched";
         this.$http({
           url: `orders/update`,
           method: "post",
@@ -442,7 +442,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "操作成功",
+              message: "Operation Success",
               type: "success",
               duration: 1500,
               onClose: () => {
@@ -456,12 +456,12 @@ export default {
       });
     },
     updateHandler2(row) {
-      this.$confirm(`确定已收货?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`Sure已收货?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
-        row.status = "已完成";
+        row.status = "Completed";
         this.$http({
           url: `orders/update`,
           method: "post",
@@ -469,7 +469,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "操作成功",
+              message: "Operation Success",
               type: "success",
               duration: 1500,
               onClose: () => {
@@ -702,7 +702,7 @@ export default {
                           formatter: '{b} : {c}'
                         },
                         title: {
-                            text: '商品销量',
+                            text: 'Commodity销量',
                             left: 'center'
                         },
                         xAxis: {
@@ -972,7 +972,7 @@ export default {
                           formatter: '{b} : {c}'
                         },
                         title: {
-                            text: '商品销额',
+                            text: 'Commodity销额',
                             left: 'center'
                         },
                         xAxis: {
@@ -1112,7 +1112,7 @@ export default {
     selectionChangeHandler(val) {
       this.dataListSelections = val;
     },
-    // 添加/修改
+    // Add/modification 
     addOrUpdateHandler(id,type) {
       this.showFlag = false;
       this.addOrUpdateFlag = true;
@@ -1128,16 +1128,16 @@ export default {
     download(file){
       window.open(`${file}`)
     },
-    // 删除
+    // delete
     deleteHandler(id) {
       var ids = id
         ? [Number(id)]
         : this.dataListSelections.map(item => {
             return Number(item.id);
           });
-      this.$confirm(`确定进行[${id ? "删除" : "批量删除"}]操作?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`Sure进行[${id ? "delete" : "批量delete"}]Operation?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
         this.$http({
@@ -1147,7 +1147,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "操作成功",
+              message: "Operation Success",
               type: "success",
               duration: 1500,
               onClose: () => {

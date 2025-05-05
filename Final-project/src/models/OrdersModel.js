@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 订单
+// Order
 const OrdersModel = sequelize.define('OrdersModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,103 +15,103 @@ const OrdersModel = sequelize.define('OrdersModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '订单编号'
+		comment: 'Order ID'
 	},
 	tablename: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品表名'
+		comment: 'Commodity表名'
 	},
 	userid: {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '用户id'
+		comment: 'userid'
 	},
 	goodid: {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '商品id'
+		comment: 'Commodityid'
 	},
 	goodname: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品名称'
+		comment: 'Product name'
 	},
 	picture: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品图片'
+		comment: 'Commodity Picture'
 	},
 	buynumber: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '购买数量'
+		comment: 'BuyAmount'
 	},
 	price: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '价格'
+		comment: 'Price'
 	},
 	discountprice: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '折扣价格'
+		comment: 'Discount Price'
 	},
 	total: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '总价格'
+		comment: 'Total Price'
 	},
 	discounttotal: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '折扣总价格'
+		comment: 'Total discount Price'
 	},
 	type: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '支付类型'
+		comment: 'Payment type'
 	},
 	status: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '状态'
+		comment: 'Status'
 	},
 	address: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '地址'
+		comment: 'address'
 	},
 	tel: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '电话'
+		comment: 'Phone Number'
 	},
 	consignee: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '收货人'
+		comment: 'Consignee'
 	},
 	remark: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '备注'
+		comment: 'Remarks'
 	},
 	logistics: {
 		type: DataTypes.TEXT,
@@ -123,7 +123,7 @@ const OrdersModel = sequelize.define('OrdersModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品类型'
+		comment: 'Commodity类型'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -132,7 +132,7 @@ const OrdersModel = sequelize.define('OrdersModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

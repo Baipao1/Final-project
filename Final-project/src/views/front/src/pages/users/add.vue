@@ -7,13 +7,13 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="用户名" prop="username">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="User" prop="username">
             <el-input v-model="ruleForm.username" 
-                placeholder="用户名" clearable ></el-input>
+                placeholder="User" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="密码" prop="password">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Password" prop="password">
             <el-input v-model="ruleForm.password" 
-                placeholder="密码" clearable ></el-input>
+                placeholder="Password" clearable ></el-input>
           </el-form-item>
           <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="角色" prop="role">
             <el-input v-model="ruleForm.role" 
@@ -21,8 +21,8 @@
           </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -48,10 +48,10 @@
         },
         rules: {
           username: [
-            { required: true, message: '用户名不能为空', trigger: 'blur' },
+            { required: true, message: 'User cannot be empty.', trigger: 'blur' },
           ],
           password: [
-            { required: true, message: '密码不能为空', trigger: 'blur' },
+            { required: true, message: 'Password cannot be empty.', trigger: 'blur' },
           ],
           role: [
           ],
@@ -111,7 +111,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -167,7 +167,7 @@
                           this.$http.post('users/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -190,7 +190,7 @@
                   this.$http.post('users/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -213,7 +213,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },

@@ -9,15 +9,15 @@
 			label-width="120px"
 		>
 			<template >
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="名称" prop="name">
-					<el-input v-model="ruleForm.name" placeholder="名称" clearable  :readonly="ro.name"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Name" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Name" clearable  :readonly="ro.name"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="名称" prop="name">
-					<el-input v-model="ruleForm.name" placeholder="名称" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Name" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Name" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.picture" label="图片" prop="picture">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.picture" label="Picture" prop="picture">
 					<file-upload
-						tip="点击上传图片"
+						tip="Click to upload Picture"
 						action="file/upload"
 						:limit="3"
 						:multiple="true"
@@ -25,27 +25,27 @@
 						@change="pictureUploadChange"
 					></file-upload>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.picture" label="图片" prop="picture">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.picture" label="Picture" prop="picture">
 					<img v-if="ruleForm.picture.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.picture.split(',')[0]" width="100" height="100">
 					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.picture.split(',')" :src="$base.url+item" width="100" height="100">
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="推荐类型" prop="inteltype">
-					<el-input v-model="ruleForm.inteltype" placeholder="推荐类型" clearable  :readonly="ro.inteltype"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label=" Recommend类型" prop="inteltype">
+					<el-input v-model="ruleForm.inteltype" placeholder=" Recommend类型" clearable  :readonly="ro.inteltype"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="推荐类型" prop="inteltype">
-					<el-input v-model="ruleForm.inteltype" placeholder="推荐类型" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label=" Recommend类型" prop="inteltype">
+					<el-input v-model="ruleForm.inteltype" placeholder=" Recommend类型" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="备注" prop="remark">
-					<el-input v-model="ruleForm.remark" placeholder="备注" clearable  :readonly="ro.remark"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Remarks" prop="remark">
+					<el-input v-model="ruleForm.remark" placeholder="Remarks" clearable  :readonly="ro.remark"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="备注" prop="remark">
-					<el-input v-model="ruleForm.remark" placeholder="备注" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Remarks" prop="remark">
+					<el-input v-model="ruleForm.remark" placeholder="Remarks" readonly></el-input>
 				</el-form-item>
 			</template>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
-				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">提交</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">取消</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">返回</el-button>
+				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">Submit</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">Cancel</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">Back</el-button>
 			</el-form-item>
 		</el-form>
     
@@ -62,7 +62,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!checkIdCard(value)) {
-				callback(new Error("请输入正确的身份证号码"));
+				callback(new Error("Please enter 正确的身份证号码"));
 			} else {
 				callback();
 			}
@@ -71,7 +71,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isURL(value)) {
-				callback(new Error("请输入正确的URL地址"));
+				callback(new Error("Please enter 正确的URLaddress"));
 			} else {
 				callback();
 			}
@@ -80,7 +80,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isMobile(value)) {
-				callback(new Error("请输入正确的手机号码"));
+				callback(new Error("Please enter 正确的Mobile phone number"));
 			} else {
 				callback();
 			}
@@ -89,7 +89,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isPhone(value)) {
-				callback(new Error("请输入正确的电话号码"));
+				callback(new Error("Please enter 正确的Phone Number号码"));
 			} else {
 				callback();
 			}
@@ -98,7 +98,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isEmail(value)) {
-				callback(new Error("请输入正确的邮箱地址"));
+				callback(new Error("Please enter 正确的邮箱address"));
 			} else {
 				callback();
 			}
@@ -107,7 +107,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isNumber(value)) {
-				callback(new Error("请输入数字"));
+				callback(new Error("Please enter 数字"));
 			} else {
 				callback();
 			}
@@ -116,7 +116,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isIntNumer(value)) {
-				callback(new Error("请输入整数"));
+				callback(new Error("Please enter 整数"));
 			} else {
 				callback();
 			}
@@ -151,17 +151,17 @@ export default {
 			
 			rules: {
 				userid: [
-					{ required: true, message: '用户id不能为空', trigger: 'blur' },
+					{ required: true, message: 'userid cannot be empty.', trigger: 'blur' },
 				],
 				refid: [
 				],
 				tablename: [
 				],
 				name: [
-					{ required: true, message: '名称不能为空', trigger: 'blur' },
+					{ required: true, message: 'Name cannot be empty.', trigger: 'blur' },
 				],
 				picture: [
-					{ required: true, message: '图片不能为空', trigger: 'blur' },
+					{ required: true, message: 'Picture cannot be empty.', trigger: 'blur' },
 				],
 				type: [
 				],
@@ -267,8 +267,8 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
         this.ruleForm = data.data;
-        //解决前台上传图片后台不显示的问题
-        let reg=new RegExp('../../../upload','g')//g代表全部
+        //解决前台上传Picture后台不显示的问题
+        let reg=new RegExp('../../../upload','g')//g代表All
         } else {
           this.$message.error(data.msg);
         }
@@ -276,7 +276,7 @@ export default {
     },
 
 
-    // 提交
+    // Submit
     onSubmit() {
 
 
@@ -359,7 +359,7 @@ var objcross = this.$storage.getObj('crossObj');
 					 }).then(({ data }) => {
 					   if (data && data.code === 0) {
 					     this.$message({
-					       message: "操作成功",
+					       message: "Operation Success",
 					       type: "success",
 					       duration: 1500,
 					       onClose: () => {
@@ -387,7 +387,7 @@ var objcross = this.$storage.getObj('crossObj');
 			 }).then(({ data }) => {
 			   if (data && data.code === 0) {
 			     this.$message({
-			       message: "操作成功",
+			       message: "Operation Success",
 			       type: "success",
 			       duration: 1500,
 			       onClose: () => {
@@ -410,7 +410,7 @@ var objcross = this.$storage.getObj('crossObj');
     getUUID () {
       return new Date().getTime();
     },
-    // 返回
+    // Back
     back() {
       this.parent.showFlag = true;
       this.parent.addOrUpdateFlag = false;

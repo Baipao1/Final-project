@@ -1,42 +1,42 @@
 <template>
 <div :style='{"padding":"20px 20px 40px","margin":"10px auto 0","borderColor":"#52b646","borderRadius":"12px","background":"#fff","borderWidth":"3px","width":"1200px","position":"relative","borderStyle":"solid dashed double double"}'>
-    <el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="warning" size="mini" @click="backClick" class="el-icon-back">返回</el-button>
-    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>我的地址</div>
-    <el-button type="primary" icon="el-icon-plus" @click="toAddAddr">添加新地址</el-button>
+    <el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="warning" size="mini" @click="backClick" class="el-icon-back">Back</el-button>
+    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>My address</div>
+    <el-button type="primary" icon="el-icon-plus" @click="toAddAddr">Add new address</el-button>
     <el-table
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        label="联系人"
+        label="Contact person"
         prop="name"
         width="100">
       </el-table-column>
       <el-table-column
-        label="手机号"
+        label="Phone number"
         prop="phone"
         width="120">
       </el-table-column>
       <el-table-column
-        label="地址"
+        label="address"
         prop="address">
       </el-table-column>
       <el-table-column
-        label="默认"
+        label="Default"
         prop="isdefault"
         width="80">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.isdefault === '是' ? 'primary' : 'success'" size="medium">{{ scope.row.isdefault }}</el-tag>
+          <el-tag :type="scope.row.isdefault === 'yes' ? 'primary' : 'success'" size="medium">{{ scope.row.isdefault }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="Operation">
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            @click="handleEdit(scope.$index, scope.row)">Editor</el-button>
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            @click="handleDelete(scope.$index, scope.row)">delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -103,9 +103,9 @@
         this.$router.push({path: '/index/shop-address/addOrUpdate', query: {id: row.id, editObj: JSON.stringify(row)}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否确认删除?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('yesno确认delete?', '提示', {
+          confirmButtonText: 'Sure',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let delIds = new Array();
@@ -114,7 +114,7 @@
             if (res.data.code == 0) {
               this.$message({
                 type: 'success',
-                message: '删除成功!',
+                message: 'delete Success!',
                 duration: 1500,
                 onClose: () => {
                   this.getAddr(1);

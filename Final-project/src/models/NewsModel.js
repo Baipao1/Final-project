@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 新闻资讯
+// News
 const NewsModel = sequelize.define('NewsModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,25 +15,25 @@ const NewsModel = sequelize.define('NewsModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '标题'
+		comment: 'Title'
 	},
 	introduction: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '简介'
+		comment: 'Brief Introduction'
 	},
 	picture: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '图片'
+		comment: 'Picture'
 	},
 	content: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '内容'
+		comment: 'Content'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -42,7 +42,7 @@ const NewsModel = sequelize.define('NewsModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

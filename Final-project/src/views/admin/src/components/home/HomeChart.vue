@@ -16,7 +16,7 @@ export default {
           trigger: "axis"
         },
         legend: {
-          data: ["访问量", "用户量", "收入"]
+          data: ["访问量", "user量", "收入"]
         },
         grid: {
           left: "3%",
@@ -67,7 +67,7 @@ export default {
             ]
           },
           {
-            name: "用户量",
+            name: "user量",
             type: "line",
             stack: "总量",
             data: [

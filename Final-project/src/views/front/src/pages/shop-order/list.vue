@@ -1,18 +1,18 @@
 <template>
 <div :style='{"padding":"20px 20px 40px","margin":"10px auto 0","borderColor":"#52b646","borderRadius":"12px","background":"#fff","borderWidth":"3px","width":"1200px","position":"relative","borderStyle":"solid dashed double double"}'>
-    <el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="warning" size="mini" @click="backClick" class="el-icon-back">返回</el-button>
-    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>我的订单</div>
+    <el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="warning" size="mini" @click="backClick" class="el-icon-back">Back</el-button>
+    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>My order</div>
     <el-tabs v-model="activeName" @tab-click="handleClick"">
-      <el-tab-pane label="未支付" name="未支付"></el-tab-pane>
-      <el-tab-pane label="已支付" name="已支付"></el-tab-pane>
-      <el-tab-pane label="已发货" name="已发货"></el-tab-pane>
-      <el-tab-pane label="已完成" name="已完成"></el-tab-pane>
-      <el-tab-pane label="已退款" name="已退款"></el-tab-pane>
-      <el-tab-pane label="已取消" name="已取消"></el-tab-pane>
+      <el-tab-pane label="Unpaid" name="Unpaid"></el-tab-pane>
+      <el-tab-pane label="Paid" name="Paid"></el-tab-pane>
+      <el-tab-pane label="Dispatched" name="Dispatched"></el-tab-pane>
+      <el-tab-pane label="Completed" name="Completed"></el-tab-pane>
+      <el-tab-pane label="Refunded" name="Refunded"></el-tab-pane>
+      <el-tab-pane label="Cancelled" name="Cancelled"></el-tab-pane>
     </el-tabs>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column label="订单编号" prop="orderid"></el-table-column>
-      <el-table-column label="商品" align="center" width="200px">
+      <el-table-column label="Order ID" prop="orderid"></el-table-column>
+      <el-table-column label="Commodity" align="center" width="200px">
         <template slot-scope="scope">
           <div class="shangpin">
             <el-image style="width: 100px; height: 100px" :src="baseUrl + scope.row.picture" fit="fill"></el-image>
@@ -20,33 +20,33 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="价格">
+      <el-table-column label="Price">
         <template slot-scope="scope">
           <span v-if="scope.row.type == 1 || scope.row.type == 3"><span :style='{"fontSize":"12px"}'>￥</span>{{ scope.row.price }}</span>
           <span v-if="scope.row.type == 2">{{ scope.row.price }}积分</span>
         </template>
       </el-table-column>
-      <el-table-column label="数量" prop="buynumber"></el-table-column>
-      <el-table-column label="总价">
+      <el-table-column label="Amount" prop="buynumber"></el-table-column>
+      <el-table-column label="Total Prices">
         <template slot-scope="scope">
           <span v-if="scope.row.type == 1 || scope.row.type == 3"><span :style='{"fontSize":"12px"}'>￥</span>{{ scope.row.total }}</span>
           <span v-if="scope.row.type == 2">{{ scope.row.total }}积分</span>
         </template>
       </el-table-column>
-      <el-table-column label="地址" prop="address"></el-table-column>
-      <el-table-column label="电话" prop="tel"></el-table-column>
-      <el-table-column label="收货人" prop="consignee"></el-table-column>
-      <el-table-column label="下单时间" prop="addtime"></el-table-column>
-      <el-table-column label="备注" prop="remark"></el-table-column>
-      <el-table-column label="操作" width="150">
+      <el-table-column label="address" prop="address"></el-table-column>
+      <el-table-column label="Phone Number" prop="tel"></el-table-column>
+      <el-table-column label="Consignee" prop="consignee"></el-table-column>
+      <el-table-column label="Order placement time" prop="addtime"></el-table-column>
+      <el-table-column label="Remarks" prop="remark"></el-table-column>
+      <el-table-column label="Operation" width="150">
         <template slot-scope="scope">
-          <el-button v-show="activeName == '未支付'" type="success" :style='{"margin":"2px auto",}' size="mini" @click="pay(scope.row)">支付</el-button>
-          <el-button v-show="activeName == '未支付'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="cancel(scope.row)">取消</el-button>
-          <el-button v-show="activeName == '已支付'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="refund(scope.row)">退款</el-button>
+          <el-button v-show="activeName == 'Unpaid'" type="success" :style='{"margin":"2px auto",}' size="mini" @click="pay(scope.row)">Pay</el-button>
+          <el-button v-show="activeName == 'Unpaid'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="cancel(scope.row)">Cancel</el-button>
+          <el-button v-show="activeName == 'Paid'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="refund(scope.row)">Refund</el-button>
           <el-button v-if="scope.row.logistics" type="warning" :style='{"margin":"2px auto",}' size="mini" @click="logistics(scope.row)">物流</el-button>
-          <el-button v-show="activeName == '已完成'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="returnGood(scope.row)">退货</el-button>
-          <el-button v-show="activeName == '已完成'" type="primary" :style='{"margin":"2px auto",}' size="mini" @click="toDetail(scope.row)">评价</el-button>
-          <el-button v-show="activeName == '已发货'" type="success" :style='{"margin":"2px auto",}' size="mini" @click="confirm(scope.row)">确认收货</el-button>
+          <el-button v-show="activeName == 'Completed'" type="danger" :style='{"margin":"2px auto",}' size="mini" @click="returnGood(scope.row)">退货</el-button>
+          <el-button v-show="activeName == 'Completed'" type="primary" :style='{"margin":"2px auto",}' size="mini" @click="toDetail(scope.row)">评价</el-button>
+          <el-button v-show="activeName == 'Dispatched'" type="success" :style='{"margin":"2px auto",}' size="mini" @click="confirm(scope.row)">确认收货</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -82,7 +82,7 @@
       return {
 		layouts: '',
         baseUrl: config.baseUrl,
-        activeName: '未支付',
+        activeName: 'Unpaid',
         tableData: [],
         total: 1,
         pageSize: 10,pageSizes: [10,20,30,50],
@@ -116,23 +116,23 @@
           this.$router.push({path: '/index/'+row.tablename+'Detail', query: {discussObj: JSON.stringify(row)}});
       },
       handleAction(index, row) {
-        if (index == '已支付' && this.session.money < row.total) {
-          this.$message.error('余额不足，请先充值');
+        if (index == 'Paid' && this.session.money < row.total) {
+          this.$message.error('The balance is insufficient. Please recharge first');
           return;
         }
 
         row.status = index;
         this.$http.post('orders/update', row).then(res => {
           if (res.data.code == 0) {
-            if (index == '已支付') this.session.money -= row.total;
-            if (index == '已退款' && row.type == 1) this.session.money += row.total;
-            if (index == '已退款' && row.type == 2) this.session.jifen += row.total;
-            if (index == '已支付' || index == '已退款') {
+            if (index == 'Paid') this.session.money -= row.total;
+            if (index == 'Refunded' && row.type == 1) this.session.money += row.total;
+            if (index == 'Refunded' && row.type == 2) this.session.jifen += row.total;
+            if (index == 'Paid' || index == 'Refunded') {
               this.session.money = this.session.money.toFixed(2);
               this.$http.post(this.userTableName+'/update', this.session).then(res => {});
             }
             this.$message({
-              message: '操作成功',
+              message: 'Operation Success',
               type: 'success',
               duration: 1500,
               onClose: () => {
@@ -142,33 +142,33 @@
           }
         });
       },
-        // 退款
+        // Refund
         refund(item) {
-            this.$confirm(`确定退款吗？退款金额将返回账户中。`, "提示", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
+            this.$confirm(`SureRefund吗？Refund金额将Back账户中。`, "提示", {
+                confirmButtonText: "Sure",
+                cancelButtonText: "Cancel",
                 type: "warning"
             }).then(() => {
-                // 获取商品详情信息
+                // 获取Commoditymore information
                 this.$http.get(item.tablename+'/info/'+item.goodid, {}).then(res => {
-                    // 商品信息
+                    // Commodity information
                     let good = res.data.data;
-                    // 用户当前用户信息
+                    // user当前user信息
                     let table = localStorage.getItem("UserTableName");
                     this.$http.get(table+'/session', {}).then(res => {
                         this.user = res.data.data;
                         if(item.type==1||item.type==3) {
-                            // 如果该商品存在积分
+                            // 如果该Commodity存在积分
                             if (good.jf) {
                                 this.user.jf = Number(this.user.jf) - Number(item.price * item.buynumber);
                             }
                             this.user.money = Number(this.user.money) + Number(item.total);
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(table+'/update', this.user).then(res => {
-                                item.status = '已退款'
+                                item.status = 'Refunded'
                                 this.$http.post(`orders/update`, item).then(res => {
                                     this.$message({
-                                      message: '退款成功',
+                                      message: 'Refund Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -179,12 +179,12 @@
                             });
                         } else if(item.type==2) {
                             this.user.jf = Number(this.user.jf) + Number(item.total);
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(table+'/update', this.user).then(res => {
-                                item.status = '已退款'
+                                item.status = 'Refunded'
                                 this.$http.post(`orders/update`, item).then(res => {
                                     this.$message({
-                                      message: '退款成功',
+                                      message: 'Refund Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -206,31 +206,31 @@
         },
         //退货
         returnGood(item) {
-            this.$confirm(`确定退货吗？退款金额将返回账户中。`, "提示", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
+            this.$confirm(`Sure退货吗？Refund金额将Back账户中。`, "提示", {
+                confirmButtonText: "Sure",
+                cancelButtonText: "Cancel",
                 type: "warning"
             }).then(() => {
-                // 获取商品详情信息
+                // 获取Commoditymore information
                 this.$http.get(item.tablename+'/info/'+item.goodid, {}).then(res => {
-                    // 商品信息
+                    // Commodity information
                     let good = res.data.data;
-                    // 用户当前用户信息
+                    // user当前user信息
                     let table = localStorage.getItem("UserTableName");
                     this.$http.get(table+'/session', {}).then(res => {
                         this.user = res.data.data;
                         if(item.type==1||item.type==3) {
-                            // 如果该商品存在积分
+                            // 如果该Commodity存在积分
                             if (good.jf) {
                                 this.user.jf = Number(this.user.jf) - Number(item.price * item.buynumber);
                             }
                             this.user.money = Number(this.user.money) + Number(item.total);
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(table+'/update', this.user).then(res => {
-                                item.status = '已退款'
+                                item.status = 'Refunded'
                                 this.$http.post(`orders/update`, item).then(res => {
                                     this.$message({
-                                      message: '退货成功',
+                                      message: '退货 Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -241,12 +241,12 @@
                             });
                         } else if(item.type==2) {
                             this.user.jf = Number(this.user.jf) + Number(item.total);
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(table+'/update', this.user).then(res => {
-                                item.status = '已退款'
+                                item.status = 'Refunded'
                                 this.$http.post(`orders/update`, item).then(res => {
                                     this.$message({
-                                      message: '退货成功',
+                                      message: '退货 Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -261,36 +261,36 @@
             });
         },
 
-        // 支付
+        // Pay
         pay(item) {
-            // 获取商品详情信息
+            // 获取Commoditymore information
             this.$http.get(item.tablename+'/info/'+item.goodid, {}).then(res => {
-                // 商品信息
+                // Commodity information
                 let data = res.data.data;
-                // 用户当前用户信息
+                // user当前user信息
                 let table = localStorage.getItem("UserTableName");
                 this.$http.get(table+'/session', {}).then(res => {
                     this.user = res.data.data;
-                    // 判断余额是否充足
+                    // 判断Balanceyesno充足
                     if (Number(this.user.money) < Number(item.total)) {
                         this.$message({
-                            message: '余额不足，请先充值',
+                            message: 'The balance is insufficient. Please recharge first',
                             type: 'error',
                             duration: 1500
                         });
                         return
                     }
-                    // 如果该商品存在积分
+                    // 如果该Commodity存在积分
                     if (data.jf) {
                         this.user.jf = Number(this.user.jf) + Number(data.jf * item.buynumber);
                     }
                     this.user.money = this.user.money - item.total;
-                    // 更新用户余额
+                    // 更新userBalance
                     this.$http.post(table+'/update', this.user).then(res => {
-                        item.status = '已支付'
+                        item.status = 'Paid'
                         this.$http.post(`orders/update`, item).then(res => {
                             this.$message({
-                              message: '支付成功',
+                              message: 'Pay Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -303,15 +303,15 @@
             });
         },
       confirm(item){
-          this.$confirm(`是否确定收货？`, "提示", {
-              confirmButtonText: "确定",
-              cancelButtonText: "取消",
+          this.$confirm(`yesnoSure收货？`, "提示", {
+              confirmButtonText: "Sure",
+              cancelButtonText: "Cancel",
               type: "warning"
           }).then(() => {
-              item.status = '已完成'
+              item.status = 'Completed'
               this.$http.post(`orders/update`, item).then(res => {
                   this.$message({
-                    message: '确认收货成功',
+                    message: '确认收货 Success',
                     type: 'success',
                     duration: 1500,
                     onClose: () => {
@@ -322,15 +322,15 @@
           });
       },
       cancel(item){
-          this.$confirm(`是否取消订单？`, "提示", {
-              confirmButtonText: "确定",
-              cancelButtonText: "取消",
+          this.$confirm(`yesnoCancelOrder？`, "提示", {
+              confirmButtonText: "Sure",
+              cancelButtonText: "Cancel",
               type: "warning"
           }).then(() => {
-              item.status = '已取消'
+              item.status = 'Cancelled'
               this.$http.post(`orders/update`, item).then(res => {
                   this.$message({
-                    message: '订单取消成功',
+                    message: 'OrderCancel Success',
                     type: 'success',
                     duration: 1500,
                     onClose: () => {

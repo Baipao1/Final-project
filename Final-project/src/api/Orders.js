@@ -399,10 +399,10 @@ export default ({ config, db }) => {
 
 			if (userinfo === null) {
 
-				toRes.session(res, -1, '添加失败！')
+				toRes.session(res, -1, 'Add Failure！')
 			} else {
 
-				toRes.session(res, 0, '添加成功！')
+				toRes.session(res, 0, 'Add Success！')
 			}
 		} catch(err) {
 			
@@ -421,7 +421,7 @@ export default ({ config, db }) => {
 			})
 
 			if (jwt.decode(req.headers.token) == null) {
-				toRes.session(res, 401, '请登录后再操作', '', 401)
+				toRes.session(res, 401, 'Please login后再Operation', '', 401)
 			}
 
 			req.body.userid = req.session.userinfo === undefined ? jwt.decode(req.headers.token).id : req.session.userinfo.id
@@ -431,10 +431,10 @@ export default ({ config, db }) => {
 
 			if (userinfo === null) {
 
-				toRes.session(res, -1, '添加失败！')
+				toRes.session(res, -1, 'Add Failure！')
 			} else {
 
-				toRes.session(res, 0, '添加成功！')
+				toRes.session(res, 0, 'Add Success！')
 			}
 		} catch(err) {
 			
@@ -456,14 +456,14 @@ export default ({ config, db }) => {
 			})
 
 
-			toRes.session(res, 0, '编辑成功！')
+			toRes.session(res, 0, 'Editor Success！')
 		} catch(err) {
 			
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 删除接口
+	// delete接口
 	api.post('/delete', async (req, res) => {
 
 		try {
@@ -476,14 +476,14 @@ export default ({ config, db }) => {
 				}
 			})
 
-			toRes.session(res, 0, '删除成功！')
+			toRes.session(res, 0, 'delete Success！')
 		} catch(err) {
 
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 详情接口（后端）
+	// more接口（后端）
 	api.all('/info/:id', async (req, res) => {
 
 		try {
@@ -496,7 +496,7 @@ export default ({ config, db }) => {
 		}
 	})
 
-    // 详情接口（前端）
+    // more接口（前端）
 	api.all('/detail/:id', async (req, res) => {
 
 		try {
@@ -598,7 +598,7 @@ export default ({ config, db }) => {
 			// let tableName = "orders"
 			let where = " WHERE 1 = 1 "
 			if ("orders" == "orders") {
-				where += " AND status IN ('已支付', '已发货', '已完成') ";
+				where += " AND status IN ('Paid', 'Dispatched', 'Completed') ";
 			}
 
 			sql = "SELECT " + xColumnName + ", SUM(" + yColumnName + ") AS total FROM orders " + where + " GROUP BY " + xColumnName + " DESC LIMIT 10"
@@ -626,7 +626,7 @@ export default ({ config, db }) => {
 			let tableName = "orders"
 			let where = " WHERE 1 = 1 "
 			if ("orders" == "orders") {
-				where += " AND status IN ('已支付', '已发货', '已完成') ";
+				where += " AND status IN ('Paid', 'Dispatched', 'Completed') ";
 			}
 
             if (config.dbConnection.dbtype.toLowerCase() == "mysql") {

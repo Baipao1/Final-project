@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- 图片上传组件辅助-->
+    <!-- Picture上传组件辅助-->
     <el-upload
       class="avatar-uploader"
       :action="getActionUrl"
@@ -26,19 +26,19 @@
 <script>
 // 工具栏配置
 const toolbarOptions = [
-  ["bold", "italic", "underline", "strike"], // 加粗 斜体 下划线 删除线
+  ["bold", "italic", "underline", "strike"], // 加粗 斜体 下划线 delete线
   ["blockquote", "code-block"], // 引用  代码块
-  [{ header: 1 }, { header: 2 }], // 1、2 级标题
+  [{ header: 1 }, { header: 2 }], // 1、2 级Title
   [{ list: "ordered" }, { list: "bullet" }], // 有序、无序列表
   [{ script: "sub" }, { script: "super" }], // 上标/下标
   [{ indent: "-1" }, { indent: "+1" }], // 缩进
   [{ size: ["small", false, "large", "huge"] }], // 字体大小
-  [{ header: [1, 2, 3, 4, 5, 6, false] }], // 标题
+  [{ header: [1, 2, 3, 4, 5, 6, false] }], // Title
   [{ color: [] }, { background: [] }], // 字体颜色、字体背景颜色
   [{ font: [] }], // 字体种类
   [{ align: [] }], // 对齐方式
   ["clean"], // 清除文本格式
-  ["link", "image", "video"] // 链接、图片、视频
+  ["link", "image", "video"] // 链接、Picture、视频
 ];
 
 import config from "@/config/config";
@@ -49,14 +49,14 @@ import "quill/dist/quill.bubble.css";
 
 export default {
   props: {
-    /*编辑器的内容*/
+    /*Editor器的Content*/
     value: {
       type: String
     },
     action: {
       type: String
     },
-    /*图片大小*/
+    /*Picture大小*/
     maxSize: {
       type: Number,
       default: 4000 //kb
@@ -71,7 +71,7 @@ export default {
     return {
       baseUrl: config.baseUrl,
       content: this.value,
-      quillUpdateImg: false, // 根据图片上传状态来确定是否显示loading动画，刚开始是false,不显示
+      quillUpdateImg: false, // 根据Picture上传Status来Sureyesno显示loading动画，刚开始yesfalse,不显示
       editorOption: {
         placeholder: "",
         theme: "snow", // or 'bubble'
@@ -81,7 +81,7 @@ export default {
             handlers: {
               image: function(value) {
                 if (value) {
-                  // 触发input框选择图片文件
+                  // 触发input框ChoosePicture文件
                   document.querySelector(".avatar-uploader input").click();
                 } else {
                   this.quill.format("image", false);
@@ -93,7 +93,7 @@ export default {
       },
       header: {
        'Token': localStorage.getItem('Token')
-      } // 有的图片服务器要求请求头需要有token
+      } // 有的Picture服务器要求Please求头需要有token
     };
   },
   computed: {
@@ -111,38 +111,38 @@ export default {
     },
     onEditorChange() {
       console.log(this.value);
-      //内容改变事件
+      //Content改变事件
       this.$emit("input", this.value);
     },
-    // 富文本图片上传前
+    // 富文本Picture上传前
     beforeUpload() {
       // 显示loading动画
       this.quillUpdateImg = true;
     },
 
     uploadSuccess(res, file) {
-      // res为图片服务器返回的数据
+      // res为Picture服务器Back的数据
       // 获取富文本组件实例
       let quill = this.$refs.myQuillEditor.quill;
-      // 如果上传成功
+      // 如果上传 Success
       if (res.code === 0) {
         // 获取光标所在位置
         let length = quill.getSelection().index;
-        // 插入图片  res.url为服务器返回的图片地址
+        // 插入Picture  res.url为服务器Back的Pictureaddress
         quill.insertEmbed(length, "image", this.baseUrl+ "/upload/" +res.file);
         // 调整光标到最后
         quill.setSelection(length + 1);
       } else {
-        this.$message.error("图片插入失败");
+        this.$message.error("Picture插入 Failure");
       }
       // loading动画消失
       this.quillUpdateImg = false;
     },
-    // 富文本图片上传失败
+    // 富文本Picture上传 Failure
     uploadError() {
       // loading动画消失
       this.quillUpdateImg = false;
-      this.$message.error("图片插入失败");
+      this.$message.error("Picture插入 Failure");
     }
   }
 };
@@ -153,7 +153,7 @@ export default {
   line-height: normal !important;
 }
 .ql-snow .ql-tooltip[data-mode="link"]::before {
-  content: "请输入链接地址:";
+  content: "Please enter 链接address:";
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
   border-right: 0px;
@@ -162,7 +162,7 @@ export default {
 }
 
 .ql-snow .ql-tooltip[data-mode="video"]::before {
-  content: "请输入视频地址:";
+  content: "Please enter 视频address:";
 }
 .ql-container {
 	height: 400px;
@@ -191,27 +191,27 @@ export default {
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
-  content: "标题1";
+  content: "Title1";
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
-  content: "标题2";
+  content: "Title2";
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
-  content: "标题3";
+  content: "Title3";
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
-  content: "标题4";
+  content: "Title4";
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
-  content: "标题5";
+  content: "Title5";
 }
 .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
 .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
-  content: "标题6";
+  content: "Title6";
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-label::before,

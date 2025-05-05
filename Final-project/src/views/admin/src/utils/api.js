@@ -1,5 +1,5 @@
 const api = {
-    // 积分订单
+    // 积分Order
     orderpage: 'orders/page',
     orderdelete: 'orders/delete',
     orderinfo: 'orders/info/',

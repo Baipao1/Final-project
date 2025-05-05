@@ -7,7 +7,7 @@ export function isEmail (s) {
 }
 
 /**
- * 手机号码
+ * Mobile phone number
  * @param {*} s
  */
 export function isMobile (s) {
@@ -15,7 +15,7 @@ export function isMobile (s) {
 }
 
 /**
- * 电话号码
+ * Phone Number号码
  * @param {*} s
  */
 export function isPhone (s) {
@@ -23,7 +23,7 @@ export function isPhone (s) {
 }
 
 /**
- * URL地址
+ * URLaddress
  * @param {*} s
  */
 export function isURL (s) {
@@ -31,7 +31,7 @@ export function isURL (s) {
 }
 
 /**
- * 匹配数字，可以是小数，不可以是负数,可以为空
+ * 匹配数字，可以yes小数，不可以yes负数,可以为空
  * @param {*} s 
  */
 export function isNumber(s){

@@ -7,21 +7,21 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="用户账号" prop="yonghuzhanghao">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="userAccount" prop="yonghuzhanghao">
             <el-input v-model="ruleForm.yonghuzhanghao" 
-                placeholder="用户账号" clearable ></el-input>
+                placeholder="userAccount" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="密码" prop="mima">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Password" prop="mima">
             <el-input v-model="ruleForm.mima" 
-                placeholder="密码" clearable ></el-input>
+                placeholder="Password" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="用户姓名" prop="yonghuxingming">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="userName" prop="yonghuxingming">
             <el-input v-model="ruleForm.yonghuxingming" 
-                placeholder="用户姓名" clearable ></el-input>
+                placeholder="userName" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="头像" v-if="type!='cross' || (type=='cross' && !ro.touxiang)" prop="touxiang">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Profile picture" v-if="type!='cross' || (type=='cross' && !ro.touxiang)" prop="touxiang">
             <file-upload
-            tip="点击上传头像"
+            tip="Click to upload Profile picture"
             action="file/upload"
             :limit="3"
             :multiple="true"
@@ -29,12 +29,12 @@
             @change="touxiangUploadChange"
             ></file-upload>
           </el-form-item>
-            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="头像" prop="touxiang">
+            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="Profile picture" prop="touxiang">
                 <img v-if="ruleForm.touxiang.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.touxiang.split(',')[0]" width="100" height="100">
                 <img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.touxiang.split(',')" :src="baseUrl+item" width="100" height="100">
             </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}'  label="性别" prop="xingbie">
-            <el-select v-model="ruleForm.xingbie" placeholder="请选择性别"  >
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}'  label="Gender" prop="xingbie">
+            <el-select v-model="ruleForm.xingbie" placeholder="PleaseChooseGender"  >
               <el-option
                   v-for="(item,index) in xingbieOptions"
                   :key="index"
@@ -43,14 +43,14 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="手机号码" prop="shoujihaoma">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Mobile phone number" prop="shoujihaoma">
             <el-input v-model="ruleForm.shoujihaoma" 
-                placeholder="手机号码" clearable ></el-input>
+                placeholder="Mobile phone number" clearable ></el-input>
           </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -85,10 +85,10 @@
         xingbieOptions: [],
         rules: {
           yonghuzhanghao: [
-            { required: true, message: '用户账号不能为空', trigger: 'blur' },
+            { required: true, message: 'userAccount cannot be empty.', trigger: 'blur' },
           ],
           mima: [
-            { required: true, message: '密码不能为空', trigger: 'blur' },
+            { required: true, message: 'Password cannot be empty.', trigger: 'blur' },
           ],
           yonghuxingming: [
           ],
@@ -167,13 +167,13 @@
             }
           }
         }
-        // 获取用户信息
+        // 获取user信息
         this.$http.get(this.userTableName + '/session', {emulateJSON: true}).then(res => {
           if (res.data.code == 0) {
             var json = res.data.data;
           }
         });
-        this.xingbieOptions = "男,女".split(',')
+        this.xingbieOptions = "Male,Female".split(',')
       },
 
     // 多级联动参数
@@ -185,7 +185,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -241,7 +241,7 @@
                           this.$http.post('yonghu/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -264,7 +264,7 @@
                   this.$http.post('yonghu/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -287,7 +287,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },

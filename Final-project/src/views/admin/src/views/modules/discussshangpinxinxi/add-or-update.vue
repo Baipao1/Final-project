@@ -10,34 +10,34 @@
 		>
 			<template >
 			</template>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="textarea" v-if="type!='info'" label="评论内容" prop="content">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="textarea" v-if="type!='info'" label="CommentContent" prop="content">
 					<el-input
 					  style="min-width: 200px; max-width: 600px;"
 					  type="textarea"
 					  :rows="8"
-					  placeholder="评论内容"
+					  placeholder="CommentContent"
 					  v-model="ruleForm.content" readonly>
 					</el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else-if="ruleForm.content" label="评论内容" prop="content">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else-if="ruleForm.content" label="CommentContent" prop="content">
 					<span :style='{"fontSize":"14px","lineHeight":"40px","color":"#000","fontWeight":"500","display":"inline-block"}'>{{ruleForm.content}}</span>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="textarea" v-if="type!='info'" label="回复内容" prop="reply">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="textarea" v-if="type!='info'" label="回复Content" prop="reply">
 					<el-input
 					  style="min-width: 200px; max-width: 600px;"
 					  type="textarea"
 					  :rows="8"
-					  placeholder="回复内容"
+					  placeholder="回复Content"
 					  v-model="ruleForm.reply" >
 					</el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else-if="ruleForm.reply" label="回复内容" prop="reply">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else-if="ruleForm.reply" label="回复Content" prop="reply">
 					<span :style='{"fontSize":"14px","lineHeight":"40px","color":"#000","fontWeight":"500","display":"inline-block"}'>{{ruleForm.reply}}</span>
 				</el-form-item>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
-				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">提交</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">取消</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">返回</el-button>
+				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">Submit</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">Cancel</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">Back</el-button>
 			</el-form-item>
 		</el-form>
     
@@ -54,7 +54,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!checkIdCard(value)) {
-				callback(new Error("请输入正确的身份证号码"));
+				callback(new Error("Please enter 正确的身份证号码"));
 			} else {
 				callback();
 			}
@@ -63,7 +63,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isURL(value)) {
-				callback(new Error("请输入正确的URL地址"));
+				callback(new Error("Please enter 正确的URLaddress"));
 			} else {
 				callback();
 			}
@@ -72,7 +72,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isMobile(value)) {
-				callback(new Error("请输入正确的手机号码"));
+				callback(new Error("Please enter 正确的Mobile phone number"));
 			} else {
 				callback();
 			}
@@ -81,7 +81,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isPhone(value)) {
-				callback(new Error("请输入正确的电话号码"));
+				callback(new Error("Please enter 正确的Phone Number号码"));
 			} else {
 				callback();
 			}
@@ -90,7 +90,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isEmail(value)) {
-				callback(new Error("请输入正确的邮箱地址"));
+				callback(new Error("Please enter 正确的邮箱address"));
 			} else {
 				callback();
 			}
@@ -99,7 +99,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isNumber(value)) {
-				callback(new Error("请输入数字"));
+				callback(new Error("Please enter 数字"));
 			} else {
 				callback();
 			}
@@ -108,7 +108,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isIntNumer(value)) {
-				callback(new Error("请输入整数"));
+				callback(new Error("Please enter 整数"));
 			} else {
 				callback();
 			}
@@ -140,17 +140,17 @@ export default {
 			
 			rules: {
 				refid: [
-					{ required: true, message: '关联表id不能为空', trigger: 'blur' },
+					{ required: true, message: '关联表id cannot be empty.', trigger: 'blur' },
 				],
 				userid: [
-					{ required: true, message: '用户id不能为空', trigger: 'blur' },
+					{ required: true, message: 'userid cannot be empty.', trigger: 'blur' },
 				],
 				avatarurl: [
 				],
 				nickname: [
 				],
 				content: [
-					{ required: true, message: '评论内容不能为空', trigger: 'blur' },
+					{ required: true, message: 'CommentContent cannot be empty.', trigger: 'blur' },
 				],
 				reply: [
 				],
@@ -240,8 +240,8 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
         this.ruleForm = data.data;
-        //解决前台上传图片后台不显示的问题
-        let reg=new RegExp('../../../upload','g')//g代表全部
+        //解决前台上传Picture后台不显示的问题
+        let reg=new RegExp('../../../upload','g')//g代表All
         } else {
           this.$message.error(data.msg);
         }
@@ -249,7 +249,7 @@ export default {
     },
 
 
-    // 提交
+    // Submit
     onSubmit() {
 
 
@@ -328,7 +328,7 @@ var objcross = this.$storage.getObj('crossObj');
 					 }).then(({ data }) => {
 					   if (data && data.code === 0) {
 					     this.$message({
-					       message: "操作成功",
+					       message: "Operation Success",
 					       type: "success",
 					       duration: 1500,
 					       onClose: () => {
@@ -356,7 +356,7 @@ var objcross = this.$storage.getObj('crossObj');
 			 }).then(({ data }) => {
 			   if (data && data.code === 0) {
 			     this.$message({
-			       message: "操作成功",
+			       message: "Operation Success",
 			       type: "success",
 			       duration: 1500,
 			       onClose: () => {
@@ -379,7 +379,7 @@ var objcross = this.$storage.getObj('crossObj');
     getUUID () {
       return new Date().getTime();
     },
-    // 返回
+    // Back
     back() {
       this.parent.showFlag = true;
       this.parent.addOrUpdateFlag = false;

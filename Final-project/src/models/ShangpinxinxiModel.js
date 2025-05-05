@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 商品信息
+// Commodity information
 const ShangpinxinxiModel = sequelize.define('ShangpinxinxiModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,37 +15,37 @@ const ShangpinxinxiModel = sequelize.define('ShangpinxinxiModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品名称'
+		comment: 'Product name'
 	},
 	tupian: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '图片'
+		comment: 'Picture'
 	},
 	shangpinfenlei: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品分类'
+		comment: 'Commodity classification'
 	},
 	guige: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '规格'
+		comment: 'Specification'
 	},
 	pinpai: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '品牌'
+		comment: 'Brand'
 	},
 	shangpinxiangqing: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品详情'
+		comment: 'Commoditymore'
 	},
 	clicktime: {
 		type: DataTypes.DATE,
@@ -59,13 +59,13 @@ const ShangpinxinxiModel = sequelize.define('ShangpinxinxiModel', {
 		type: DataTypes.INTEGER,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '点击次数'
+		comment: 'Number of clicks'
 	},
 	price: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '价格'
+		comment: 'Price'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -74,7 +74,7 @@ const ShangpinxinxiModel = sequelize.define('ShangpinxinxiModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

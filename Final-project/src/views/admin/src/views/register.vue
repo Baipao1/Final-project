@@ -2,27 +2,27 @@
 	<div>
 		<div class="container" :style='{"minHeight":"100vh","backgroundAttachment":"fixed","alignItems":"center","background":"url(http://codegen.caihongy.cn/20220722/a5a9809d7bce4ca795483bb67cfd60c8.png)","display":"flex","width":"100%","backgroundSize":"cover","backgroundPosition":"center center","backgroundRepeat":"repeat","justifyContent":"center"}'>
 			<el-form v-if="pageFlag=='register'" :style='{"padding":"20px","boxShadow":"0 0px 0px rgba(64, 158, 255, .8)","margin":"0 0 0 660px","borderRadius":"0","background":"transparent","width":"calc(100vw - 660px)","height":"auto"}' ref="rgsForm" class="rgs-form" :model="rgsForm">
-				<div v-if="true" :style='{"margin":"0 0 10px 0","color":"#000","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"24px","textShadow":"4px 4px 2px rgba(0, 0, 0, .2)"}' class="title">网上商城注册</div>
+				<div v-if="true" :style='{"margin":"0 0 10px 0","color":"#000","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"24px","textShadow":"4px 4px 2px rgba(0, 0, 0, .2)"}' class="title">Taomao Online MallRegister</div>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">用户账号</div>
-					<el-input  v-model="ruleForm.yonghuzhanghao"  autocomplete="off" placeholder="用户账号"  type="text"  />
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">userAccount</div>
+					<el-input  v-model="ruleForm.yonghuzhanghao"  autocomplete="off" placeholder="userAccount"  type="text"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">密码</div>
-					<el-input  v-model="ruleForm.mima"  autocomplete="off" placeholder="密码"  type="password"  />
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">Password</div>
+					<el-input  v-model="ruleForm.mima"  autocomplete="off" placeholder="Password"  type="password"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">确认密码</div>
-					<el-input  v-model="ruleForm.mima2" autocomplete="off" placeholder="确认密码" type="password" />
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">Make sure Password</div>
+					<el-input  v-model="ruleForm.mima2" autocomplete="off" placeholder="Make sure Password" type="password" />
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">用户姓名</div>
-					<el-input  v-model="ruleForm.yonghuxingming"  autocomplete="off" placeholder="用户姓名"  type="text"  />
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">userName</div>
+					<el-input  v-model="ruleForm.yonghuxingming"  autocomplete="off" placeholder="userName"  type="text"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">头像</div>
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">Profile picture</div>
                     <file-upload
-                        tip="点击上传头像"
+                        tip="Click to upload Profile picture"
                         action="file/upload"
                         :limit="3"
                         :multiple="true"
@@ -31,8 +31,8 @@
                     ></file-upload>
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">性别</div>
-                    <el-select v-model="ruleForm.xingbie" placeholder="请选择性别" >
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">Gender</div>
+                    <el-select v-model="ruleForm.xingbie" placeholder="PleaseChooseGender" >
                         <el-option
                             v-for="(item,index) in yonghuxingbieOptions"
                             v-bind:key="index"
@@ -42,11 +42,11 @@
                     </el-select>
 				</el-form-item>
 				<el-form-item :style='{"width":"500px","padding":"0","margin":"0 auto 15px","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
-					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">手机号码</div>
-					<el-input  v-model="ruleForm.shoujihaoma"  autocomplete="off" placeholder="手机号码"  type="text"  />
+					<div v-if="true" :style='{"color":"#31ae88","left":"-160px","textAlign":"right","background":"none","width":"150px","lineHeight":"44px","fontSize":"14px","position":"absolute"}' class="lable">Mobile phone number</div>
+					<el-input  v-model="ruleForm.shoujihaoma"  autocomplete="off" placeholder="Mobile phone number"  type="text"  />
 				</el-form-item>
-				<button :style='{"border":"0","cursor":"pointer","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","margin":"20px auto 5px","color":"#fff","display":"block","outline":"none","borderRadius":"5px","background":"#67D4B2","width":"30%","fontSize":"16px","height":"44px"}' type="button" class="r-btn" @click="login()">注册</button>
-				<div :style='{"cursor":"pointer","color":"rgba(159, 159, 159, 1)","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"1","fontSize":"12px","textDecoration":"underline"}' class="r-login" @click="close()">已有账号，直接登录</div>
+				<button :style='{"border":"0","cursor":"pointer","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","margin":"20px auto 5px","color":"#fff","display":"block","outline":"none","borderRadius":"5px","background":"#67D4B2","width":"30%","fontSize":"16px","height":"44px"}' type="button" class="r-btn" @click="login()">Register</button>
+				<div :style='{"cursor":"pointer","color":"rgba(159, 159, 159, 1)","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"1","fontSize":"12px","textDecoration":"underline"}' class="r-login" @click="close()">已有Account，直接 login</div>
 			</el-form>
 			
 		</div>
@@ -72,7 +72,7 @@ export default {
         this.pageFlag = this.$storage.get("pageFlag");
 		let table = this.$storage.get("loginTable");
 		this.tableName = table;
-        this.yonghuxingbieOptions = "男,女".split(',')
+        this.yonghuxingbieOptions = "Male,Female".split(',')
 	},
 	created() {
     
@@ -94,11 +94,11 @@ export default {
         // 多级联动参数
 
 
-		// 注册
+		// Register
 		login() {
 			var url=this.tableName+"/register";
 					if((!this.ruleForm.yonghuzhanghao) && `yonghu` == this.tableName){
-						this.$message.error(`用户账号不能为空`);
+						this.$message.error(`userAccount cannot be empty.`);
 						return
 					}
 					
@@ -112,7 +112,7 @@ export default {
 					
 					
 					if((!this.ruleForm.mima) && `yonghu` == this.tableName){
-						this.$message.error(`密码不能为空`);
+						this.$message.error(`Password cannot be empty.`);
 						return
 					}
 					
@@ -126,7 +126,7 @@ export default {
 					
 					
 					if((this.ruleForm.mima!=this.ruleForm.mima2) && `yonghu` == this.tableName){
-						this.$message.error(`两次密码输入不一致`);
+						this.$message.error(`两次Password输入不一致`);
 						return
 					}
 					
@@ -169,7 +169,7 @@ export default {
 					
 					
 					if(`yonghu` == this.tableName && this.ruleForm.shoujihaoma&&(!this.$validate.isMobile(this.ruleForm.shoujihaoma))){
-						this.$message.error(`手机号码应输入手机格式`);
+						this.$message.error(`Mobile phone number应输入手机格式`);
 						return
 					}
 					
@@ -181,7 +181,7 @@ export default {
 					
 					
 					if(`yonghu` == this.tableName && this.ruleForm.money&&(!this.$validate.isNumber(this.ruleForm.money))){
-						this.$message.error(`余额应输入数字`);
+						this.$message.error(`Balance应输入数字`);
 						return
 					}
 					
@@ -199,7 +199,7 @@ export default {
 			}).then(({ data }) => {
 				if (data && data.code === 0) {
 					this.$message({
-						message: "注册成功",
+						message: "Register Success",
 						type: "success",
 						duration: 1500,
 						onClose: () => {

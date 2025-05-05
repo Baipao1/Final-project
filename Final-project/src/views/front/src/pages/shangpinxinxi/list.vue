@@ -2,36 +2,36 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
 	
 	<div class="list-preview" :style='{"width":"1200px","margin":"10px auto","position":"relative","background":"none"}'>
 		<div class="category-1" :style='{"width":"100%","padding":"10px","flexWrap":"wrap","background":"none","display":"flex","height":"auto"}'>
-			<div class="item" :class="swiperIndex == '-1' ? 'active' : ''" @click="getList(1, '全部')" :plain="isPlain">全部</div>
+			<div class="item" :class="swiperIndex == '-1' ? 'active' : ''" @click="getList(1, 'All')" :plain="isPlain">All</div>
 			<div class="item" :class="swiperIndex == index ? 'active' : ''" v-for="(item, index) in fenlei" :key="index" @click="getList(1, item, 'btn' + index)" :ref="'btn' + index" plain>{{item}}</div>
 		</div>
 		
 	
     <el-form :inline="true" :model="formSearch" class="list-form-pv" :style='{"padding":"12px 10px 20px","margin":"20px 0 0 0","borderColor":"#52b646","alignItems":"center","borderRadius":"12px","flexWrap":"wrap","background":"#eff9ee","borderWidth":"4px","display":"flex","width":"100%","borderStyle":"solid dashed dotted double","height":"auto"}'>
       <el-form-item :style='{"margin":"0 10px"}'>
-	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>商品名称</div>
-        <el-input v-model="formSearch.shangpinmingcheng" placeholder="商品名称" clearable></el-input>
+	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>Product name</div>
+        <el-input v-model="formSearch.shangpinmingcheng" placeholder="Product name" clearable></el-input>
       </el-form-item>
       <el-form-item :style='{"margin":"0 10px"}'>
-	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>品牌</div>
-        <el-input v-model="formSearch.pinpai" placeholder="品牌" clearable></el-input>
+	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>Brand</div>
+        <el-input v-model="formSearch.pinpai" placeholder="Brand" clearable></el-input>
       </el-form-item>
       <el-form-item :style='{"margin":"0 10px"}'>
-	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>价格</div>
-        <el-input v-model="formSearch.pricestart" placeholder="最小价格" clearable></el-input>
+	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>Price</div>
+        <el-input v-model="formSearch.pricestart" placeholder="Minimum Price" clearable></el-input>
       </el-form-item>
       <el-form-item :style='{"margin":"0 10px"}'>
-        <el-input v-model="formSearch.priceend" placeholder="最大价格" clearable></el-input>
+        <el-input v-model="formSearch.priceend" placeholder="Maximum Price" clearable></el-input>
       </el-form-item>
-	  <el-button v-if=" true " :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="getList(1, curFenlei)"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-search"></i>查询</el-button>
-	  <el-button v-if="isAuth('shangpinxinxi','新增')" :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(255,215,169,1) 0%, rgba(255,164,58,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="add('/index/shangpinxinxiAdd')"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-circle-plus-outline"></i>添加</el-button>
+	  <el-button v-if=" true " :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="getList(1, curFenlei)"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-search"></i>Search</el-button>
+	  <el-button v-if="isAuth('shangpinxinxi','add')" :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(255,215,169,1) 0%, rgba(255,164,58,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="add('/index/shangpinxinxiAdd')"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-circle-plus-outline"></i>Add</el-button>
     </el-form>
 
 	<div class="list" :style='{"margin":"20px 0 20px","background":"none"}'>
@@ -81,7 +81,7 @@
         baseUrl: '',
         breadcrumbItem: [
           {
-            name: '商品信息'
+            name: 'Commodity information'
           }
         ],
         formSearch: {
@@ -95,7 +95,7 @@
         pageSize: 12,
 		pageSizes: [10,20,30,50],
         totalPage: 1,
-        curFenlei: '全部',
+        curFenlei: 'All',
         isPlain: false,
         indexQueryCondition: '',
         timeRange: []
@@ -105,7 +105,7 @@
       this.indexQueryCondition = this.$route.query.indexQueryCondition ? this.$route.query.indexQueryCondition : '';
       this.baseUrl = this.$config.baseUrl;
       this.getFenlei();
-      this.getList(1, '全部');
+      this.getList(1, 'All');
     },
     //方法集合
     methods: {
@@ -120,7 +120,7 @@
         });
       },
       getList(page, fenlei, ref = '') {
-		if(fenlei == '全部') this.swiperIndex = -1;
+		if(fenlei == 'All') this.swiperIndex = -1;
 		for(let i=0;i<this.fenlei.length;i++) {
 			if(fenlei == this.fenlei[i]) {
 				this.swiperIndex = i;
@@ -128,7 +128,7 @@
 			}
 		}
         this.curFenlei = fenlei;
-        if (this.curFenlei == '全部') {
+        if (this.curFenlei == 'All') {
           this.isPlain = false;
         } else {
           this.isPlain = true;
@@ -143,7 +143,7 @@
         if(this.formSearch.priceend!='' && this.formSearch.priceend!=undefined){
           searchWhere.priceend = this.formSearch.priceend
         }
-        if (this.curFenlei != '全部') searchWhere.shangpinfenlei = this.curFenlei;
+        if (this.curFenlei != 'All') searchWhere.shangpinfenlei = this.curFenlei;
         this.$http.get('shangpinxinxi/list', {params: Object.assign(params, searchWhere)}).then(res => {
           if (res.data.code == 0) {
             this.dataList = res.data.data.list;

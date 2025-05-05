@@ -1,28 +1,28 @@
 <template>
 <div :style='{"padding":"20px 20px 40px","margin":"10px auto 0","borderColor":"#52b646","borderRadius":"12px","background":"#fff","borderWidth":"3px","width":"1200px","position":"relative","borderStyle":"solid dashed double double"}'>
     <el-form class="add-update-preview" ref="form" :model="form" :rules="rules" label-width="80px">
-      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="联系人" prop="name">
-        <el-input v-model="form.name" placeholder="联系人"></el-input>
+      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Contact person" prop="name">
+        <el-input v-model="form.name" placeholder="Contact person"></el-input>
       </el-form-item>
-      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="手机号码" prop="phone">
-        <el-input v-model="form.phone" placeholder="手机号码"></el-input>
+      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Mobile phone number" prop="phone">
+        <el-input v-model="form.phone" placeholder="Mobile phone number"></el-input>
       </el-form-item>
-      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="默认地址">
+      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Default">
         <el-radio-group v-model="form.isdefault">
-          <el-radio label="是"></el-radio>
-          <el-radio label="否"></el-radio>
+          <el-radio label="yes"></el-radio>
+          <el-radio label="no"></el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="地址" prop="address">
-        <el-input v-model="form.address" placeholder="请输入地址"></el-input>
+      <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="address" prop="address">
+        <el-input v-model="form.address" placeholder="Please enter address"></el-input>
       </el-form-item>
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="onSubmit('form')">添加</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="goBack">取消</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="onSubmit('form')">Add</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="goBack">Cancel</el-button>
       </el-form-item>
     </el-form>
 
-    <el-dialog id="myMapDialog" title="请选择收货地址" width="500px" :visible.sync="dialogVisible" top="5vh">
+    <el-dialog id="myMapDialog" title="PleaseSelect the deliveryaddress" width="500px" :visible.sync="dialogVisible" top="5vh">
       <baidu-map class="map" :center="center" :zoom="zoom" :scroll-wheel-zoom="true" @ready="onBaiduMapReady" @click="getClickInfo">
         <bm-view style="width: 100%; height: 100%;" />
         <bm-marker :position="{lng: center.lng, lat: center.lat}" :dragging="true" animation="BMAP_ANIMATION_BOUNCE" />
@@ -33,9 +33,9 @@
         ></bm-geolocation>
       </baidu-map>
       <div slot="footer">
-        <el-input v-model="address" style="margin-bottom: 15px;" placeholder="请选择或填写收货地址"></el-input>
-        <el-button type="primary" @click="getAddr">确定</el-button>
-        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-input v-model="address" style="margin-bottom: 15px;" placeholder="PleaseChoose或填写收货address"></el-input>
+        <el-button type="primary" @click="getAddr">Sure</el-button>
+        <el-button @click="dialogVisible = false">Cancel</el-button>
       </div>
     </el-dialog>
 </div>
@@ -51,19 +51,19 @@
           userid: localStorage.getItem('userid'),
           name: localStorage.getItem('username'),
           phone: '',
-          isdefault: '是',
+          isdefault: 'yes',
           address: ''
         },
         rules: {
-          name: [{ required: true, message: '请输入联系人', trigger: 'blur' }],
+          name: [{ required: true, message: 'Please enter Contact person', trigger: 'blur' }],
           phone: [
-            { required: true, message: '请输入手机号码', trigger: 'blur' },
+            { required: true, message: 'Please enter Mobile phone number', trigger: 'blur' },
             { required: true, validator: this.$validate.isMobile, trigger: 'blur' }
           ],
-          address: [{ required: true, message: '请选择收货地址', trigger: 'blur' }]
+          address: [{ required: true, message: 'PleaseSelect the deliveryaddress', trigger: 'blur' }]
         },
         dialogVisible: false,
-        BMap: null, // 地图组件是否就绪
+        BMap: null, // 地图组件yesno就绪
         // center: { lat: 24.30457061, lng: 116.12640310 },
         center: { lng: 0, lat: 0 },
         address: '',
@@ -86,7 +86,7 @@
             this.$http.post(`address/${this.isEdit ? 'update' : 'add'}`, this.form).then(res => {
               if (res.data.code == 0) {
                 this.$message({
-                  message: `${this.isEdit ? '更新' : '添加'}成功`,
+                  message: `${this.isEdit ? '更新' : 'Add'} Success`,
                   type: 'success',
                   duration: 1500,
                   onClose: () => {
@@ -103,7 +103,7 @@
       getAddr() {
         if (this.address == '') {
           this.$message({
-            message: '地址不能为空',
+            message: 'address cannot be empty.',
             type: 'error',
             duration: 1500
           });

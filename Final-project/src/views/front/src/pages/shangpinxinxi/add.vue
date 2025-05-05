@@ -7,13 +7,13 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="商品名称" prop="shangpinmingcheng">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Product name" prop="shangpinmingcheng">
             <el-input v-model="ruleForm.shangpinmingcheng" 
-                placeholder="商品名称" clearable ></el-input>
+                placeholder="Product name" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="图片" v-if="type!='cross' || (type=='cross' && !ro.tupian)" prop="tupian">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Picture" v-if="type!='cross' || (type=='cross' && !ro.tupian)" prop="tupian">
             <file-upload
-            tip="点击上传图片"
+            tip="Click to upload Picture"
             action="file/upload"
             :limit="3"
             :multiple="true"
@@ -21,12 +21,12 @@
             @change="tupianUploadChange"
             ></file-upload>
           </el-form-item>
-            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="图片" prop="tupian">
+            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="Picture" prop="tupian">
                 <img v-if="ruleForm.tupian.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.tupian.split(',')[0]" width="100" height="100">
                 <img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.tupian.split(',')" :src="baseUrl+item" width="100" height="100">
             </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}'  label="商品分类" prop="shangpinfenlei">
-            <el-select v-model="ruleForm.shangpinfenlei" placeholder="请选择商品分类"  >
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}'  label="Commodity classification" prop="shangpinfenlei">
+            <el-select v-model="ruleForm.shangpinfenlei" placeholder="PleaseChooseCommodity classification"  >
               <el-option
                   v-for="(item,index) in shangpinfenleiOptions"
                   :key="index"
@@ -35,19 +35,19 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="规格" prop="guige">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Specification" prop="guige">
             <el-input v-model="ruleForm.guige" 
-                placeholder="规格" clearable ></el-input>
+                placeholder="Specification" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="品牌" prop="pinpai">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Brand" prop="pinpai">
             <el-input v-model="ruleForm.pinpai" 
-                placeholder="品牌" clearable ></el-input>
+                placeholder="Brand" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="价格" prop="price">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Price" prop="price">
             <el-input v-model="ruleForm.price" 
-                placeholder="价格" clearable ></el-input>
+                placeholder="Price" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="商品详情" prop="shangpinxiangqing">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Commoditymore" prop="shangpinxiangqing">
             <editor 
                 :style='{"padding":"0","boxShadow":"0 0 0px rgba(75,223,201,.5)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
                 v-model="ruleForm.shangpinxiangqing" 
@@ -57,8 +57,8 @@
           </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -114,7 +114,7 @@
             { validator: this.$validate.isIntNumer, trigger: 'blur' },
           ],
           price: [
-            { required: true, message: '价格不能为空', trigger: 'blur' },
+            { required: true, message: 'Price cannot be empty.', trigger: 'blur' },
             { validator: this.$validate.isNumber, trigger: 'blur' },
           ],
         },
@@ -192,7 +192,7 @@
             }
           }
         }
-        // 获取用户信息
+        // 获取user信息
         this.$http.get(this.userTableName + '/session', {emulateJSON: true}).then(res => {
           if (res.data.code == 0) {
             var json = res.data.data;
@@ -214,7 +214,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -270,7 +270,7 @@
                           this.$http.post('shangpinxinxi/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -293,7 +293,7 @@
                   this.$http.post('shangpinxinxi/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -316,7 +316,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },

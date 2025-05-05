@@ -2,7 +2,7 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -28,15 +28,15 @@
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.refid}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>用户名</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>User</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.nickname}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>评论内容</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>CommentContent</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.content}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>回复内容</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>回复Content</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.reply}}</div>
 				</div>
 				<div class="btn" :style='{"padding":"10px 0","flexWrap":"wrap","display":"flex"}'>
@@ -47,14 +47,14 @@
 		
 		
 		<el-tabs class="detail" :style='{"boxShadow":"0 1px 6px 0 rgba(0, 0, 0, .1)","borderColor":"#52b646","borderRadius":"12px","borderStyle":"solid double solid double","background":"#fff","borderWidth":"3px"}' v-model="activeName" type="border-card">
-			<el-tab-pane label="评论" name="second">
+			<el-tab-pane label="Comment" name="second">
 				<el-form class="add comment" :style='{"boxShadow":"0 0px 0px 0 rgba(0, 0, 0, .1)","padding":"15px","margin":"0 0 20px"}' :model="form" :rules="rules" ref="form">
-					<el-form-item class="item" :style='{"width":"100%","display":"flex","height":"auto"}' label="评论" prop="content">
-						<el-input type="textarea" :rows="5" v-model="form.content" placeholder="请输入内容"></el-input>
+					<el-form-item class="item" :style='{"width":"100%","display":"flex","height":"auto"}' label="Comment" prop="content">
+						<el-input type="textarea" :rows="5" v-model="form.content" placeholder="Please enter Content"></el-input>
 					</el-form-item>
 					<el-form-item class="btn" :style='{"width":"100%","padding":"0 0 0 80px","margin":"10px 0 0","height":"auto"}'>
-						<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="submitForm('form')">立即提交</el-button>
-						<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="resetForm('form')">重置</el-button>
+						<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="submitForm('form')">Submit</el-button>
+						<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="resetForm('form')">reset</el-button>
 					</el-form-item>
 				</el-form>
 				
@@ -107,7 +107,7 @@
         baseUrl: '',
         breadcrumbItem: [
           {
-            name: '详情信息'
+            name: 'more information'
           }
         ],
         title: '',
@@ -128,7 +128,7 @@
         totalPage: 1,
         rules: {
           content: [
-            { required: true, message: '请输入内容', trigger: 'blur' }
+            { required: true, message: 'Please enter Content', trigger: 'blur' }
           ]
         },
         buynumber: 1,
@@ -197,7 +197,7 @@
         for(var i=0; i<sensitiveWordsArr.length; i++){
             //全局替换
             var reg = new RegExp(sensitiveWordsArr[i],"g");
-            //判断内容中是否包括敏感词
+            //判断Content中yesno包括敏感词
             if (this.form.content.indexOf(sensitiveWordsArr[i]) > -1) {
                 // 将敏感词替换为 **
                 this.form.content = this.form.content.replace(reg,"**");
@@ -213,7 +213,7 @@
                 this.getDiscussList(1);
                 this.$message({
                   type: 'success',
-                  message: '评论成功!',
+                  message: 'Comment Success!',
                   duration: 1500,
                 });
               }

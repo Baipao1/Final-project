@@ -2,7 +2,7 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -12,11 +12,11 @@
 	
     <el-form :inline="true" :model="formSearch" class="list-form-pv" :style='{"padding":"12px 10px 20px","margin":"20px 0 0 0","borderColor":"#52b646","alignItems":"center","borderRadius":"12px","flexWrap":"wrap","background":"#eff9ee","borderWidth":"4px","display":"flex","width":"100%","borderStyle":"solid dashed dotted double","height":"auto"}'>
       <el-form-item :style='{"margin":"0 10px"}'>
-	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>名称</div>
-        <el-input v-model="formSearch.name" placeholder="名称" clearable></el-input>
+	    <div class="lable" v-if="true" :style='{"width":"auto","padding":"0 10px","lineHeight":"42px","display":"inline-block"}'>Name</div>
+        <el-input v-model="formSearch.name" placeholder="Name" clearable></el-input>
       </el-form-item>
-	  <el-button v-if=" true " :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="getList(1, curFenlei)"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-search"></i>查询</el-button>
-	  <el-button v-if="isAuth('config','新增')" :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(255,215,169,1) 0%, rgba(255,164,58,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="add('/index/configAdd')"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-circle-plus-outline"></i>添加</el-button>
+	  <el-button v-if=" true " :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="getList(1, curFenlei)"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-search"></i>Search</el-button>
+	  <el-button v-if="isAuth('config','add')" :style='{"cursor":"pointer","border":"0","padding":"0px 15px","margin":"0 10px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(255,215,169,1) 0%, rgba(255,164,58,1) 100%)","width":"auto","fontSize":"14px","lineHeight":"42px","height":"42px"}' type="primary" @click="add('/index/configAdd')"><i v-if="true" :style='{"color":"#fff","margin":"0 10px 0 0","fontSize":"14px"}' class="el-icon-circle-plus-outline"></i>Add</el-button>
     </el-form>
 
 	<div class="list" :style='{"margin":"20px 0 20px","background":"none"}'>
@@ -63,7 +63,7 @@
         baseUrl: '',
         breadcrumbItem: [
           {
-            name: '轮播图管理'
+            name: 'Carousel image Management'
           }
         ],
         formSearch: {
@@ -75,7 +75,7 @@
         pageSize: 12,
 		pageSizes: [10,20,30,50],
         totalPage: 1,
-        curFenlei: '全部',
+        curFenlei: 'All',
         isPlain: false,
         indexQueryCondition: '',
         timeRange: []
@@ -85,7 +85,7 @@
       this.indexQueryCondition = this.$route.query.indexQueryCondition ? this.$route.query.indexQueryCondition : '';
       this.baseUrl = this.$config.baseUrl;
       this.getFenlei();
-      this.getList(1, '全部');
+      this.getList(1, 'All');
     },
     //方法集合
     methods: {

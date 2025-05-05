@@ -23,63 +23,63 @@ import center from '@/views/center'
 //2.配置路由   注意：名字
 const routes = [{
     path: '/index',
-    name: '系统首页',
+    name: 'System Home',
     component: Index,
     children: [{
-      // 这里不设置值，是把main作为默认页面
+      // 这里不设置Picture，yes把main作为Default页面
       path: '/',
-      name: '系统首页',
+      name: 'System Home',
       component: Home,
       meta: {icon:'', title:'center'}
     }, {
       path: '/updatePassword',
-      name: '修改密码',
+      name: 'modification Password',
       component: UpdatePassword,
       meta: {icon:'', title:'updatePassword'}
     }, {
       path: '/pay',
-      name: '支付',
+      name: 'Pay',
       component: pay,
       meta: {icon:'', title:'pay'}
     }, {
       path: '/center',
-      name: '个人信息',
+      name: 'personal information',
       component: center,
       meta: {icon:'', title:'center'}
     }
       ,{
 	path: '/news',
-        name: '新闻资讯',
+        name: 'News',
         component: news
       }
       ,{
 	path: '/yonghu',
-        name: '用户',
+        name: 'user',
         component: yonghu
       }
       ,{
 	path: '/shangpinfenlei',
-        name: '商品分类',
+        name: 'Commodity classification',
         component: shangpinfenlei
       }
       ,{
 	path: '/discussshangpinxinxi',
-        name: '商品信息评论',
+        name: 'Commodity informationComment',
         component: discussshangpinxinxi
       }
       ,{
 	path: '/shangpinxinxi',
-        name: '商品信息',
+        name: 'Commodity information',
         component: shangpinxinxi
       }
       ,{
         path: '/orders/:status',
-        name: '订单管理',
+        name: 'OrderManagement',
         component: orders
       }
       ,{
 	path: '/config',
-        name: '轮播图管理',
+        name: 'Carousel image Management',
         component: config
       }
     ]
@@ -98,9 +98,9 @@ const routes = [{
   },
   {
     path: '/',
-    name: '系统首页',
+    name: 'System Home',
     redirect: '/index'
-  }, /*默认跳转路由*/
+  }, /*Default跳转路由*/
   {
     path: '*',
     component: NotFound
@@ -113,7 +113,7 @@ const router = new VueRouter({
   routes // （缩写）相当于 routes: routes
 })
 const originalPush = VueRouter.prototype.push
-//修改原型对象中的push方法
+//modification 原型对象中的push方法
 VueRouter.prototype.push = function push(location) {
    return originalPush.call(this, location).catch(err => err)
 }

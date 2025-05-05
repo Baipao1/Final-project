@@ -12,12 +12,12 @@ const ConfigModel = sequelize.define('ConfigModel', {
 	name: {
 		type: DataTypes.STRING,
 		allowNull: false,
-		comment: '配置参数名称'
+		comment: '配置参数Name'
 	},
 	value: {
 		type: DataTypes.STRING,
 		allowNull: true,
-		comment: '配置参数值'
+		comment: '配置参数Picture'
 	}
 }, {
 	timestamps: false,

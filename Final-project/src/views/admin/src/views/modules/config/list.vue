@@ -21,27 +21,27 @@
 					v-loading="dataListLoading"
 				@selection-change="selectionChangeHandler">
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
-					<el-table-column :resizable='true' :sortable='false' label="索引" type="index" width="50" />
+					<el-table-column :resizable='true' :sortable='false' label="List" type="index" width="50" />
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="name"
-					label="名称">
+					label="Name">
 						<template slot-scope="scope">
 							{{scope.row.name}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='false' prop="value" width="200" label="值">
+					<el-table-column :resizable='true' :sortable='false' prop="value" width="200" label="Picture">
 						<template slot-scope="scope">
 							<div v-if="scope.row.value">
 								<img v-if="scope.row.value.substring(0,4)=='http'" :src="scope.row.value.split(',')[0]" width="100" height="100">
 								<img v-else :src="$base.url+scope.row.value.split(',')[0]" width="100" height="100">
 							</div>
-							<div v-else>无图片</div>
+							<div v-else>No picture</div>
 						</template>
 					</el-table-column>
-					<el-table-column width="300" label="操作">
+					<el-table-column width="300" label="Operation">
 						<template slot-scope="scope">
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('config','查看')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">详情</el-button>
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('config','修改')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('config','查看')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">more</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('config','modification ')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">modification </el-button>
 
 
 
@@ -67,7 +67,7 @@
 			<!-- </div> -->
 		</template>
 		
-		<!-- 添加/修改页面  将父组件的search方法传递给子组件-->
+		<!-- Add/modification 页面  将父组件的search方法传递给子组件-->
 		<add-or-update v-if="addOrUpdateFlag" :parent="this" ref="addOrUpdate"></add-or-update>
 
 
@@ -197,7 +197,7 @@ export default {
     selectionChangeHandler(val) {
       this.dataListSelections = val;
     },
-    // 添加/修改
+    // Add/modification 
     addOrUpdateHandler(id,type) {
       this.showFlag = false;
       this.addOrUpdateFlag = true;
@@ -213,16 +213,16 @@ export default {
     download(file){
       window.open(`${file}`)
     },
-    // 删除
+    // delete
     deleteHandler(id) {
       var ids = id
         ? [Number(id)]
         : this.dataListSelections.map(item => {
             return Number(item.id);
           });
-      this.$confirm(`确定进行[${id ? "删除" : "批量删除"}]操作?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`Sure进行[${id ? "delete" : "批量delete"}]Operation?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
         this.$http({
@@ -232,7 +232,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "操作成功",
+              message: "Operation Success",
               type: "success",
               duration: 1500,
               onClose: () => {

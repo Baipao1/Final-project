@@ -5,19 +5,19 @@
 			<el-form class="center-form-pv" :style='{"border":"1px solid #6F6F97","width":"140px","padding":"5px","margin":"0 0 20px 10px","background":"rgba(255,255,255,.8)"}' :inline="true" :model="searchForm">
 				<el-row :style='{"flexDirection":"column","display":"flex"}' >
 					<div :style='{"margin":"0","flexDirection":"column","display":"flex"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">用户名</label>
-						<el-input v-model="searchForm.nickname" placeholder="用户名" clearable></el-input>
+						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">User</label>
+						<el-input v-model="searchForm.nickname" placeholder="User" clearable></el-input>
 					</div>
 					<div :style='{"margin":"0","flexDirection":"column","display":"flex"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">评论内容</label>
-						<el-input v-model="searchForm.content" placeholder="评论内容" clearable></el-input>
+						<label :style='{"margin":"0 10px 0 0","color":"#000","textAlign":"center","display":"inline-block","width":"100%","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">CommentContent</label>
+						<el-input v-model="searchForm.content" placeholder="CommentContent" clearable></el-input>
 					</div>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","outline":"none","margin":"6px 0 0","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' type="success" @click="search()">查询</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","outline":"none","margin":"6px 0 0","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' type="success" @click="search()">Search</el-button>
 				</el-row>
 
 				<el-row :style='{"margin":"20px 0","flexDirection":"column","display":"flex"}'>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('discussshangpinxinxi','新增')" type="success" @click="addOrUpdateHandler()">新增</el-button>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('discussshangpinxinxi','删除')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">删除</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('discussshangpinxinxi','add')" type="success" @click="addOrUpdateHandler()">add</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0","boxShadow":"0px 2px 6px 0px rgba(0,0,0,0.3020)","margin":"0 0 10px","outline":"none","color":"#fff","borderRadius":"30px","background":"#67D4B2","width":"100%","fontSize":"14px","height":"40px"}' v-if="isAuth('discussshangpinxinxi','delete')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">delete</el-button>
 
 
 
@@ -33,39 +33,39 @@
 					v-loading="dataListLoading"
 				@selection-change="selectionChangeHandler">
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
-					<el-table-column :resizable='true' :sortable='false' label="索引" type="index" width="50" />
+					<el-table-column :resizable='true' :sortable='false' label="List" type="index" width="50" />
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="nickname"
-					label="用户名">
+					label="User">
 						<template slot-scope="scope">
 							{{scope.row.nickname}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="content"
-					label="评论内容">
+					label="CommentContent">
 						<template slot-scope="scope">
 							{{scope.row.content}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='false'  
 						prop="reply"
-					label="回复内容">
+					label="回复Content">
 						<template slot-scope="scope">
 							{{scope.row.reply}}
 						</template>
 					</el-table-column>
-					<el-table-column width="300" label="操作">
+					<el-table-column width="300" label="Operation">
 						<template slot-scope="scope">
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('discussshangpinxinxi','修改')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('discussshangpinxinxi','modification ')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">modification </el-button>
 
 
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('discussshangpinxinxi','查看评论')" type="primary" size="mini" @click="disscussListHandler(scope.row.id)">查看评论</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('discussshangpinxinxi','View comments')" type="primary" size="mini" @click="disscussListHandler(scope.row.id)">View comments</el-button>
 
 
 							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">回复</el-button>
 
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="" type="danger" size="mini" @click="deleteHandler(scope.row.id)">删除</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 4px 0","outline":"none","color":"#000","borderRadius":"30px","background":"#E4E4E4","width":"auto","fontSize":"14px","height":"32px"}' v-if="" type="danger" size="mini" @click="deleteHandler(scope.row.id)">delete</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -86,7 +86,7 @@
 			<!-- </div> -->
 		</template>
 		
-		<!-- 添加/修改页面  将父组件的search方法传递给子组件-->
+		<!-- Add/modification 页面  将父组件的search方法传递给子组件-->
 		<add-or-update v-if="addOrUpdateFlag" :parent="this" ref="addOrUpdate"></add-or-update>
 
 
@@ -222,7 +222,7 @@ export default {
     selectionChangeHandler(val) {
       this.dataListSelections = val;
     },
-    // 添加/修改
+    // Add/modification 
     addOrUpdateHandler(id,type) {
       this.showFlag = false;
       this.addOrUpdateFlag = true;
@@ -234,7 +234,7 @@ export default {
         this.$refs.addOrUpdate.init(id,type);
       });
     },
-    // 查看评论
+    // View comments
     disscussListHandler(id,type) {
 	this.$router.push({path:'/discussdiscussshangpinxinxi',query:{refid:id}});
     },
@@ -242,16 +242,16 @@ export default {
     download(file){
       window.open(`${file}`)
     },
-    // 删除
+    // delete
     deleteHandler(id) {
       var ids = id
         ? [Number(id)]
         : this.dataListSelections.map(item => {
             return Number(item.id);
           });
-      this.$confirm(`确定进行[${id ? "删除" : "批量删除"}]操作?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`Sure进行[${id ? "delete" : "批量delete"}]Operation?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
         this.$http({
@@ -261,7 +261,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "操作成功",
+              message: "Operation Success",
               type: "success",
               duration: 1500,
               onClose: () => {

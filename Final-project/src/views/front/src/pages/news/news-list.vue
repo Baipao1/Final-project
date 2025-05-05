@@ -2,7 +2,7 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -10,9 +10,9 @@
         <el-form :inline="true" :model="formSearch" class="list-form-pv" style="justify-content: center;display: flex;">
             <div class="section-btn">
                 <el-form-item>
-                  <el-input v-model="title" placeholder="标题"></el-input>
+                  <el-input v-model="title" placeholder="Title"></el-input>
                 </el-form-item>
-              <el-button type="primary" @click="getNewsList(1)"><i class="el-icon-search"></i>查询</el-button>
+              <el-button type="primary" @click="getNewsList(1)"><i class="el-icon-search"></i>Search</el-button>
             </div>
         </el-form>
 	</div>
@@ -64,7 +64,7 @@
         baseUrl: this.$config.baseUrl,
         breadcrumbItem: [
           {
-            name: '新闻资讯'
+            name: 'News'
           }
         ],
         newsList: [],

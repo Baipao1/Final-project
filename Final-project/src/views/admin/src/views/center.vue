@@ -8,15 +8,15 @@
       label-width="120px"
     >  
      <el-row>
-        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="用户账号" prop="yonghuzhanghao">
-          <el-input v-model="ruleForm.yonghuzhanghao" readonly              placeholder="用户账号" clearable></el-input>
+        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="userAccount" prop="yonghuzhanghao">
+          <el-input v-model="ruleForm.yonghuzhanghao" readonly              placeholder="userAccount" clearable></el-input>
         </el-form-item>
-        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="用户姓名" prop="yonghuxingming">
-          <el-input v-model="ruleForm.yonghuxingming"               placeholder="用户姓名" clearable></el-input>
+        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="userName" prop="yonghuxingming">
+          <el-input v-model="ruleForm.yonghuxingming"               placeholder="userName" clearable></el-input>
         </el-form-item>
-        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='yonghu'" label="头像" prop="touxiang">
+        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='yonghu'" label="Profile picture" prop="touxiang">
           <file-upload
-          tip="点击上传头像"
+          tip="Click to upload Profile picture"
           action="file/upload"
           :limit="3"
           :multiple="true"
@@ -24,8 +24,8 @@
           @change="yonghutouxiangUploadChange"
           ></file-upload>
         </el-form-item>
-        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='yonghu'"  label="性别" prop="xingbie">
-          <el-select v-model="ruleForm.xingbie"  placeholder="请选择性别">
+        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='yonghu'"  label="Gender" prop="xingbie">
+          <el-select v-model="ruleForm.xingbie"  placeholder="PleaseChooseGender">
             <el-option
                 v-for="(item,index) in yonghuxingbieOptions"
                 v-bind:key="index"
@@ -34,11 +34,11 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="手机号码" prop="shoujihaoma">
-          <el-input v-model="ruleForm.shoujihaoma"               placeholder="手机号码" clearable></el-input>
+        <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}'   v-if="flag=='yonghu'"  label="Mobile phone number" prop="shoujihaoma">
+          <el-input v-model="ruleForm.shoujihaoma"               placeholder="Mobile phone number" clearable></el-input>
         </el-form-item>
-		<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='users'" label="用户名" prop="username">
-			<el-input v-model="ruleForm.username" placeholder="用户名"></el-input>
+		<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="flag=='users'" label="User" prop="username">
+			<el-input v-model="ruleForm.username" placeholder="User"></el-input>
 		</el-form-item>
 		<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}'>
 			<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="onUpdateHandler">修 改</el-button>
@@ -73,7 +73,7 @@ export default {
         this.$message.error(data.msg);
       }
     });
-    this.yonghuxingbieOptions = "男,女".split(',')
+    this.yonghuxingbieOptions = "Male,Female".split(',')
   },
   methods: {
     yonghutouxiangUploadChange(fileUrls) {
@@ -81,26 +81,26 @@ export default {
     },
     onUpdateHandler() {
       if((!this.ruleForm.yonghuzhanghao)&& 'yonghu'==this.flag){
-        this.$message.error('用户账号不能为空');
+        this.$message.error('userAccount cannot be empty.');
         return
       }
       if((!this.ruleForm.mima)&& 'yonghu'==this.flag){
-        this.$message.error('密码不能为空');
+        this.$message.error('Password cannot be empty.');
         return
       }
         if(this.ruleForm.touxiang!=null) {
                 this.ruleForm.touxiang = this.ruleForm.touxiang.replace(new RegExp(this.$base.url,"g"),"");
         }
       if( 'yonghu' ==this.flag && this.ruleForm.shoujihaoma&&(!isMobile(this.ruleForm.shoujihaoma))){
-        this.$message.error(`手机号码应输入手机格式`);
+        this.$message.error(`Mobile phone number应输入手机格式`);
         return
       }
       if( 'yonghu' ==this.flag && this.ruleForm.money&&(!isNumber(this.ruleForm.money))){
-        this.$message.error(`余额应输入数字`);
+        this.$message.error(`Balance应输入数字`);
         return
       }
       if('users'==this.flag && this.ruleForm.username.trim().length<1) {
-	this.$message.error(`用户名不能为空`);
+	this.$message.error(`User cannot be empty.`);
         return	
       }
       this.$http({
@@ -110,7 +110,7 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
           this.$message({
-            message: "修改信息成功",
+            message: "modification information Success",
             type: "success",
             duration: 1500,
             onClose: () => {

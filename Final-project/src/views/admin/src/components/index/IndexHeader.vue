@@ -6,8 +6,8 @@
 		</div>
 		<div class="right" :style='{"position":"absolute","right":"20px","top":"8px","display":"flex"}'>
 			<div :style='{"cursor":"pointer","margin":"0 5px","lineHeight":"44px","color":"#000"}' class="nickname">{{this.$storage.get('role')}} {{this.$storage.get('adminName')}}</div>
-			<div :style='{"cursor":"pointer","margin":"0 5px","lineHeight":"44px","color":"#000"}' v-if="this.$storage.get('role')!='管理员'" class="logout" @click="onIndexTap">退出到前台</div>
-			<div :style='{"cursor":"pointer","margin":"0 5px","lineHeight":"44px","color":"#000"}' class="logout" @click="onLogout">退出登录</div>
+			<div :style='{"cursor":"pointer","margin":"0 5px","lineHeight":"44px","color":"#000"}' v-if="this.$storage.get('role')!='管理员'" class="logout" @click="onIndexTap">logout到前台</div>
+			<div :style='{"cursor":"pointer","margin":"0 5px","lineHeight":"44px","color":"#000"}' class="logout" @click="onLogout">logout</div>
 		</div>
 	</div>
 </template>

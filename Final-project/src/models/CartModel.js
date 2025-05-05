@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 购物车表
+// Shopping cart表
 const CartModel = sequelize.define('CartModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,37 +15,37 @@ const CartModel = sequelize.define('CartModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品表名'
+		comment: 'Commodity表名'
 	},
 	userid: {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '用户id'
+		comment: 'userid'
 	},
 	goodid: {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '商品id'
+		comment: 'Commodityid'
 	},
 	goodname: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品名称'
+		comment: 'Product name'
 	},
 	picture: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '图片'
+		comment: 'Picture'
 	},
 	buynumber: {
 		type: DataTypes.INTEGER,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '购买数量'
+		comment: 'BuyAmount'
 	},
 	price: {
 		type: DataTypes.FLOAT,
@@ -63,7 +63,7 @@ const CartModel = sequelize.define('CartModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品类型'
+		comment: 'Commodity类型'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -72,7 +72,7 @@ const CartModel = sequelize.define('CartModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

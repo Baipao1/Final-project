@@ -8,14 +8,14 @@ import jwt from 'jsonwebtoken'
 export default ({ config, db }) => {
 	let api = Router()
 
-	// 用户登录接口
+	// user login接口
 	api.post('/login', async (req, res) => {
 
 		try {
 
 			let userinfo = await UsersModel.findOne({ where: { username: req.query.username, password: req.query.password } })
 			if (userinfo === null) {
-				toRes.session(res, -1, '用户名或密码错误！')
+				toRes.session(res, -1, 'User或Password错误！')
 				return;
 			}
 
@@ -35,24 +35,24 @@ export default ({ config, db }) => {
 			delete userinfo.dataValues.password
 			req.session.userinfo = userinfo
 
-			toRes.session(res, 0, '登录成功！', token)
+			toRes.session(res, 0, ' login Success！', token)
 		} catch(err) {
 
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 用户退出接口
+	// userlogout接口
 	api.all('/logout', (req, res) => {
 
 		if (!toRes.auth(req, res, '管理员')) return
 		
 		req.session.destroy(err => {
-			toRes.session(res, 0, '退出成功！')
+			toRes.session(res, 0, 'logout Success！')
 		})
 	})
 
-	// 注册接口
+	// Register接口
 	api.post('/register', async (req, res) => {
 
 		try {
@@ -61,10 +61,10 @@ export default ({ config, db }) => {
 
 			if (userinfo === null) {
 
-				toRes.session(res, -1, '注册失败！')
+				toRes.session(res, -1, 'Register Failure！')
 			} else {
 
-				toRes.session(res, 0, '注册成功！')
+				toRes.session(res, 0, 'Register Success！')
 			}
 		} catch(err) {
 			
@@ -135,10 +135,10 @@ export default ({ config, db }) => {
 
 			if (userinfo === null) {
 
-				toRes.session(res, -1, '添加失败！')
+				toRes.session(res, -1, 'Add Failure！')
 			} else {
 
-				toRes.session(res, 0, '添加成功！')
+				toRes.session(res, 0, 'Add Success！')
 			}
 		} catch(err) {
 			
@@ -159,14 +159,14 @@ export default ({ config, db }) => {
 				}
 			})
 
-			toRes.session(res, 0, '编辑成功！')
+			toRes.session(res, 0, 'Editor Success！')
 		} catch(err) {
 			
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 删除接口
+	// delete接口
 	api.post('/delete', async (req, res) => {
 
 		try {
@@ -181,14 +181,14 @@ export default ({ config, db }) => {
 				}
 			})
 
-			toRes.session(res, 0, '删除成功！')
+			toRes.session(res, 0, 'delete Success！')
 		} catch(err) {
 
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 详情接口
+	// more接口
 	api.get('/info/:id', async (req, res) => {
 
 		try {

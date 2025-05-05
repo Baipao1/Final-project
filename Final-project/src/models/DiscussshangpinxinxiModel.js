@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 商品信息评论表
+// Commodity informationComment表
 const DiscussshangpinxinxiModel = sequelize.define('DiscussshangpinxinxiModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -21,31 +21,31 @@ const DiscussshangpinxinxiModel = sequelize.define('DiscussshangpinxinxiModel', 
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '用户id'
+		comment: 'userid'
 	},
 	avatarurl: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '头像'
+		comment: 'Profile picture'
 	},
 	nickname: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '用户名'
+		comment: 'User'
 	},
 	content: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '评论内容'
+		comment: 'CommentContent'
 	},
 	reply: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '回复内容'
+		comment: '回复Content'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -54,7 +54,7 @@ const DiscussshangpinxinxiModel = sequelize.define('DiscussshangpinxinxiModel', 
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

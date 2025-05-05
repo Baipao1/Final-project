@@ -61,15 +61,15 @@ export default ({ config, db }) => {
 		}
 	})
 
-	// 修改某表的sfsh状态接口
+	// modification 某表的sfshStatus接口
 	api.get('/sh/:tableName', async (req, res) => {
 
 		try {
 			
-			let sfsh = req.body.sfsh === '是' ? '否' : '是'
+			let sfsh = req.body.sfsh === 'yes' ? 'no' : 'yes'
 			await sequelize.query(`UPDATE ${req.params.tableName} SET sfsh = ${sfsh} WHERE id = ${req.body.id}`)
 
-			toRes.session(res, 0, '编辑成功！')
+			toRes.session(res, 0, 'Editor Success！')
 		} catch(err) {
 
 			toRes.session(res, 500, '服务器错误！', '', 500)
@@ -144,7 +144,7 @@ export default ({ config, db }) => {
 		}
 	})
 
-	// 按值统计接口
+	// 按Picture统计接口
 	api.get('/value/:tableName/:xColumnName/:yColumnName', async (req, res) => {
 
 		try {

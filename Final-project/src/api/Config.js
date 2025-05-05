@@ -89,14 +89,14 @@ export default ({ config, db }) => {
 				}
 			})
 
-			toRes.session(res, 0, '编辑成功！')
+			toRes.session(res, 0, 'Editor Success！')
 		} catch(err) {
 			
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
-	// 详情接口
+	// more接口
 	api.get('/info/:id', async (req, res) => {
 
 		try {

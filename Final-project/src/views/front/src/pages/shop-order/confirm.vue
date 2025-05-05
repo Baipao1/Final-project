@@ -1,12 +1,12 @@
 <template>
   <div :style='{"padding":"20px 20px 40px","margin":"10px auto 0","borderColor":"#52b646","borderRadius":"12px","background":"#fff","borderWidth":"3px","width":"1200px","position":"relative","borderStyle":"solid dashed double double"}'>
-    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>确认下单</div>
-    <el-descriptions v-if="seat!=1" title="选择收货地址"></el-descriptions>
+    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>Confirm the order</div>
+    <el-descriptions v-if="seat!=1" title="Select the deliveryaddress"></el-descriptions>
     <el-table v-if="seat!=1"
       :data="addressList"
       style="width: 100%;padding: 0 10px;">
       <el-table-column
-        label="选择"
+        label="Choose"
         width="55">
         <template slot-scope="scope">
           <el-radio
@@ -17,24 +17,24 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="收件人"
+        label="Recipient"
         prop="name">
       </el-table-column>
       <el-table-column
-        label="联系方式"
+        label="Phone Number"
         prop="phone">
       </el-table-column>
       <el-table-column
-        label="地址"
+        label="address"
         prop="address">
       </el-table-column>
     </el-table>
-    <el-descriptions title="清单列表"></el-descriptions>
+    <el-descriptions title="List"></el-descriptions>
     <el-table
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        label="商品名称">
+        label="Product name">
         <template slot-scope="scope">
           <div class="shangpin">
             <el-image
@@ -46,7 +46,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="价格">
+        label="Price">
         <template slot-scope="scope">
           <span v-if="type == 2">{{ scope.row.price }} 积分</span>
           <span v-else><span :style='{"fontSize":"12px"}'>￥</span>{{ scope.row.price }}</span>
@@ -59,13 +59,13 @@
         </template>
       </el-table-column>
       <el-table-column v-if="seat!=1"
-        label="数量">
+        label="Amount">
         <template slot-scope="scope">
           <span>{{ scope.row.buynumber }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="总价">
+        label="Total Prices">
         <template slot-scope="scope">
           <span v-if="type == 2">{{ scope.row.price * scope.row.buynumber }} 积分</span>
           <span v-else-if="seat==1"><span :style='{"fontSize":"12px"}'>￥</span>{{scope.row.total}}</span>
@@ -74,26 +74,26 @@
       </el-table-column>
     </el-table>
     <div style="width: 100%;padding: 12px;box-sizing: border-box;display: flex;align-items: center;">
-        <span style="width: 80px; font-size: 14px;">备注：</span><el-input type="textarea" v-model="remark" placeholder="备注" style="width: calc(100% - 80px);"></el-input>
+        <span style="width: 80px; font-size: 14px;">Remarks：</span><el-input type="textarea" v-model="remark" placeholder="Remarks" style="width: calc(100% - 80px);"></el-input>
     </div>
     <div class="buy" v-if="seat!=1 && tableData.length > 0">
       <template v-if="type == 2">
-        <span style="color: red;margin-right: 10px;font-weight: 700;">总价：{{totalPrice}} 积分</span>
+        <span style="color: red;margin-right: 10px;font-weight: 700;">Total Prices：{{totalPrice}} 积分</span>
         <el-button type="warning" @click="jfClick">兑换</el-button>
       </template>
       <template v-else>
-        <span style="color: red;margin-right: 10px;font-weight: 700;">总价：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
-        <el-button type="success" @click="payClick">支付</el-button>
+        <span style="color: red;margin-right: 10px;font-weight: 700;">Total Prices：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
+        <el-button type="success" @click="payClick">Pay</el-button>
       </template>
     </div>
     <div class="buy" v-if="seat==1 && tableData.length > 0">
       <template v-if="type == 2">
-        <span style="color: red;margin-right: 10px;font-weight: 700;">总价：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
+        <span style="color: red;margin-right: 10px;font-weight: 700;">Total Prices：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
         <el-button type="success" @click="xzJfClick">兑换</el-button>
       </template>
       <template v-else>
-        <span style="color: red;margin-right: 10px;font-weight: 700;">总价：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
-        <el-button type="success" @click="xzPayClick">支付</el-button>
+        <span style="color: red;margin-right: 10px;font-weight: 700;">Total Prices：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
+        <el-button type="success" @click="xzPayClick">Pay</el-button>
       </template>
     </div>
   </div>
@@ -121,7 +121,7 @@
           orderid: "",
           picture: "",
           price: 0,
-          status: "未支付",
+          status: "Unpaid",
           tablename: "",
           tel: "",
           total: 0,
@@ -148,9 +148,9 @@
 
       this.getSession();
       this.getAddrList();
-      // 获取商品购买的清单列表
+      // 获取CommodityBuy的List
       var orderGoods = localStorage.getItem('orderGoods')
-      // 转换成json类型，localstorage保存的是string数据
+      // 转换成json类型，localstorage保存的yesstring数据
       this.tableData = JSON.parse(orderGoods);
       this.type = this.$route.query.type;
     },
@@ -170,7 +170,7 @@
           if (res.data.code == 0) {
             this.addressList = res.data.data.list;
             this.addressList.forEach((item, index) => {
-              if (item.isdefault == '是') {
+              if (item.isdefault == 'yes') {
                 this.radio = index;
               }
             });
@@ -217,32 +217,32 @@
         this.$http.get(`${this.order.tablename}/detail/${goodid}`).then(res => {
           if (res.data.code == 0 && value > res.data.data.onelimittimes) {
             this.tableData[index].buynumber = --value;
-            this.$message.error(`每人单次只能购买${res.data.data.onelimittimes}件`);
+            this.$message.error(`每人单次只能Buy${res.data.data.onelimittimes}件`);
           }
         });
       },
-        // 正常下单，生成订单，减少余额，添加积分，减少库存，修改状态已支付
+        // 正常下单，生成Order，减少Balance，Add积分，减少库存，modification StatusPaid
         payClick() {
             if (this.radio == -1) {
               this.$message({
-                message: '请选择收货地址',
+                message: 'PleaseSelect the deliveryaddress',
                 type: 'error',
                 duration: 1500
               });
               return;
             }
 
-            // 生成订单
+            // 生成Order
             this.tableData.forEach(item => {
-                // 获取商品详情信息
+                // 获取Commoditymore information
                 this.$http.get(`${item.tablename}/info/${item.goodid}`).then(res => {
-                    // 订单编号
+                    // Order ID
                     var orderId = this.createOrder();
                     let data = res.data.data;
                     data.alllimittimes = data.alllimittimes - item.buynumber;
                     // 更新库存信息
                     this.$http.post(`${item.tablename}/update`, data).then(res => {
-                        // 添加订单信息
+                        // AddOrder信息
                         let order = {
                             orderid: orderId,
                             tablename: item.tablename,
@@ -262,27 +262,27 @@
                             tel: this.addressList[this.radio].phone,
                             consignee: this.addressList[this.radio].name,
                             remark: this.remark,
-                            status: '未支付'
+                            status: 'Unpaid'
                         }
                         this.$http.post('orders/add', order).then(res => {
-                            // 减少余额，更新订单状态
-                            // 判断余额是否充足
+                            // 减少Balance，更新OrderStatus
+                            // 判断Balanceyesno充足
                             if (Number(this.user.money) < Number(item.price * item.buynumber)) {
                                 this.$message({
-                                    message: '余额不足，请先充值',
+                                    message: 'The balance is insufficient. Please recharge first',
                                     type: 'error',
                                     duration: 1500
                                 });
                                 return
                             }
-                            // 如果该商品存在积分
+                            // 如果该Commodity存在积分
                             if (data.jf) {
                                 this.user.jf = Number(this.user.jf) + Number(item.price * item.buynumber);
                             }
                             this.user.money = this.user.money - item.price * item.buynumber;
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(`${this.userTableName}/update`, this.user).then(res => {
-                                order.status = '已支付'
+                                order.status = 'Paid'
                                 var params = {
                                     orderid: orderId,
                                     page: 1,
@@ -291,12 +291,12 @@
                                 this.$http.get('orders/list', {params: params}).then(res => {
                                     order.id = res.data.data.list[0].id;
                                     this.$http.post(`orders/update`, order).then(res => {
-                                        // 删除购物车数据(如果是购物车下单)
+                                        // deleteShopping cart数据(如果yesShopping cart下单)
                                         if (item.id) {
                                             this.$http.post('cart/delete', [item.id]).then(res => {});
                                         }
                                         this.$message({
-                                              message: '购买成功',
+                                              message: 'Buy Success',
                                               type: 'success',
                                               duration: 1500,
                                               onClose: () => {
@@ -312,20 +312,20 @@
             });
         },
 
-        // 积分兑换，生成订单，减少用户积分，减少库存
+        // 积分兑换，生成Order，减少user积分，减少库存
         jfClick() {
             if (this.radio == -1) {
               this.$message({
-                message: '请选择收货地址',
+                message: 'PleaseSelect the deliveryaddress',
                 type: 'error',
                 duration: 1500
               });
               return;
             }
 
-            // 生成订单
+            // 生成Order
             this.tableData.forEach(item => {
-                // 订单编号
+                // Order ID
                 var orderId = this.createOrder();
                 this.$http.get(`${item.tablename}/info/${item.goodid}`).then(res => {
                     let data = res.data.data;
@@ -333,16 +333,16 @@
                     data.alllimittimes = data.alllimittimes - item.buynumber;
                     // 更新库存信息
                     this.$http.post(`${item.tablename}/update`, data).then(res => {
-                        // 判断积分是否充足
+                        // 判断积分yesno充足
                         if (this.user.jf < this.totalPrice) {
                             this.$message({
-                                message: '积分不足，兑换失败',
+                                message: '积分不足，兑换 Failure',
                                 type: 'error',
                                 duration: 1500
                             });
                             return
                         }
-                        // 添加订单信息
+                        // AddOrder信息
                         let order = {
                             orderid: orderId,
                             tablename: item.tablename,
@@ -361,14 +361,14 @@
                             address: this.addressList[this.radio].address,
                             tel: this.addressList[this.radio].phone,
                             consignee: this.addressList[this.radio].name,
-                            status: '已支付'
+                            status: 'Paid'
                         }
                         this.$http.post('orders/add', order).then(res => {
                             this.user.jf = this.user.jf - item.price * item.buynumber;
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(`${this.userTableName}/update`, this.user).then(res => {
                                 this.$message({
-                                      message: '兑换成功',
+                                      message: '兑换 Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -381,28 +381,28 @@
                 });
             });
         },
-        // 选座下单,生成订单，减少余额，添加积分，减少库存，修改状态为已支付
+        // 选座下单,生成Order，减少Balance，Add积分，减少库存，modification Status为Paid
         xzPayClick() {
-            // 生成订单
+            // 生成Order
             this.tableData.forEach(item => {
-                // 订单编号
+                // Order ID
                 var orderId = this.createOrder();
-                // 获取商品详情信息
+                // 获取Commoditymore information
                 this.$http.get(`${item.tablename}/info/${item.goodid}`).then(res => {
                     let data = res.data.data;
                     // 减少库存
                     data.alllimittimes = data.alllimittimes - item.buynumber;
                     // 获取已经被预定的座位号
                     let selectArray = data.selected?data.selected.split(','):[];
-                    // 获取用户预定的座位号
+                    // 获取user预定的座位号
                     let activeArray = item.address.split(',');
                     // 新的预定座位号
                     let newSelectArray = selectArray.concat(activeArray);
-                    // 赋值给参数
+                    // 赋Picture给参数
                     data.selected = newSelectArray.join(',');
                     // 更新库存,座位信息
                     this.$http.post(`${item.tablename}/update`, data).then(res => {
-                        // 添加订单信息
+                        // AddOrder信息
                         let order = {
                             orderid: orderId,
                             tablename: item.tablename,
@@ -419,27 +419,27 @@
                             type: 1,
                             address: item.address,
                             remark: this.remark,
-                            status: '未支付'
+                            status: 'Unpaid'
                         }
                         this.$http.post('orders/add', order).then(res => {
-                            // 减少余额，更新订单状态
-                            // 判断余额是否充足
+                            // 减少Balance，更新OrderStatus
+                            // 判断Balanceyesno充足
                             if (Number(this.user.money) < Number(item.price * item.buynumber)) {
                                 this.$message({
-                                    message: '余额不足，请先充值',
+                                    message: 'The balance is insufficient. Please recharge first',
                                     type: 'error',
                                     duration: 1500
                                 });
                                 return
                             }
-                            // 如果该商品存在积分
+                            // 如果该Commodity存在积分
                             if (data.jf) {
                                 this.user.jf = Number(this.user.jf) + Number(data.jf * item.buynumber);
                             }
                             this.user.money = this.user.money - item.price * item.buynumber;
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(`${this.userTableName}/update`, this.user).then(res => {
-                                order.status = '已支付'
+                                order.status = 'Paid'
                                 var params = {
                                     orderid: orderId,
                                     page: 1,
@@ -449,7 +449,7 @@
                                     order.id = res.data.data.list[0].id;
                                     this.$http.post(`orders/update`, order).then(res => {
                                         this.$message({
-                                              message: '购买成功',
+                                              message: 'Buy Success',
                                               type: 'success',
                                               duration: 1500,
                                               onClose: () => {
@@ -464,28 +464,28 @@
                 });
             });
         },
-        // 选座下单,生成订单，减少余额，添加积分，减少库存，修改状态为已支付
+        // 选座下单,生成Order，减少Balance，Add积分，减少库存，modification Status为Paid
         xzJfClick() {
-            // 生成订单
+            // 生成Order
             this.tableData.forEach(item => {
-                // 订单编号
+                // Order ID
                 var orderId = this.createOrder();
-                // 获取商品详情信息
+                // 获取Commoditymore information
                 this.$http.get(`${item.tablename}/info/${item.goodid}`).then(res => {
                     let data = res.data.data;
                     // 减少库存
                     data.alllimittimes = data.alllimittimes - item.buynumber;
                     // 获取已经被预定的座位号
                     let selectArray = data.selected?data.selected.split(','):[];
-                    // 获取用户预定的座位号
+                    // 获取user预定的座位号
                     let activeArray = item.address.split(',');
                     // 新的预定座位号
                     let newSelectArray = selectArray.concat(activeArray);
-                    // 赋值给参数
+                    // 赋Picture给参数
                     data.selected = newSelectArray.join(',');
                     // 更新库存,座位信息
                     this.$http.post(`${item.tablename}/update`, data).then(res => {
-                        // 添加订单信息
+                        // AddOrder信息
                         let order = {
                             orderid: orderId,
                             tablename: item.tablename,
@@ -502,12 +502,12 @@
                             type: 2,
                             address: item.address,
                             remark: this.remark,
-                            status: '未支付'
+                            status: 'Unpaid'
 
                         }
                         this.$http.post('orders/add', order).then(res => {
-                            // 减少余额，更新订单状态
-                            // 判断余额是否充足
+                            // 减少Balance，更新OrderStatus
+                            // 判断Balanceyesno充足
                             if (Number(this.user.jf) < Number(item.jf * item.buynumber)) {
                                 this.$message({
                                     message: '积分不足',
@@ -517,9 +517,9 @@
                                 return
                             }
                             this.user.jf = this.user.jf - item.price * item.buynumber;
-                            // 更新用户余额
+                            // 更新userBalance
                             this.$http.post(`${this.userTableName}/update`, this.user).then(res => {
-                                order.status = '已支付'
+                                order.status = 'Paid'
                                 var params = {
                                     orderid: orderId,
                                     page: 1,
@@ -529,7 +529,7 @@
                                     order.id = res.data.data.list[0].id;
                                     this.$http.post(`orders/update`, order).then(res => {
                                         this.$message({
-                                              message: '购买成功',
+                                              message: 'Buy Success',
                                               type: 'success',
                                               duration: 1500,
                                               onClose: () => {

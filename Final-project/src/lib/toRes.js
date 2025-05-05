@@ -1,7 +1,7 @@
 
 export default {
 
-	session (res, code=0, msg='操作成功！', token='', status=200) {
+	session (res, code=0, msg='Operation Success！', token='', status=200) {
 
 		let result = {
 			code,
@@ -12,7 +12,7 @@ export default {
 
 		res.status(status).json(result)
 	},
-	file (res, code=0, file='', msg='上传成功！', status=200) {
+	file (res, code=0, file='', msg='上传 Success！', status=200) {
 
 		res.status(status).json({
 			code,
@@ -20,7 +20,7 @@ export default {
 			msg
 		})
 	},
-	count (res, code=0, count='', msg='请求成功！', status=200) {
+	count (res, code=0, count='', msg='Please求 Success！', status=200) {
 
 		res.status(status).json({
 			code,
@@ -28,7 +28,7 @@ export default {
 			msg
 		})
 	},
-	record (res, code=0, data={}, msg='请求成功！', status=200) {
+	record (res, code=0, data={}, msg='Please求 Success！', status=200) {
 
 		res.status(status).json({
 			code,
@@ -36,7 +36,7 @@ export default {
 			data
 		})
 	},
-	page (res, code=0, result={}, msg='请求成功！', status=200) {
+	page (res, code=0, result={}, msg='Please求 Success！', status=200) {
 
 		res.status(status).json({
 			code,

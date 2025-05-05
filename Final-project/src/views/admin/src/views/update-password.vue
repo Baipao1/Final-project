@@ -8,13 +8,13 @@
       :model="ruleForm"
       label-width="120px"
     >
-      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="原密码" prop="password">
+      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="Old Password" prop="password">
         <el-input v-model="ruleForm.password" show-password></el-input>
       </el-form-item>
-      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="新密码" prop="newpassword">
+      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="New Password" prop="newpassword">
         <el-input v-model="ruleForm.newpassword" show-password></el-input>
       </el-form-item>
-      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="确认密码" prop="repassword">
+      <el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' label="Make sure Password" prop="repassword">
         <el-input v-model="ruleForm.repassword" show-password></el-input>
       </el-form-item>
       <el-form-item :style='{"width":"100%","padding":"0","margin":"0"}'>
@@ -34,21 +34,21 @@ export default {
         password: [
           {
             required: true,
-            message: "密码不能为空",
+            message: "Password cannot be empty.",
             trigger: "blur"
           }
         ],
         newpassword: [
           {
             required: true,
-            message: "新密码不能为空",
+            message: "New Password cannot be empty.",
             trigger: "blur"
           }
         ],
         repassword: [
           {
             required: true,
-            message: "确认密码不能为空",
+            message: "Make sure Password cannot be empty.",
             trigger: "blur"
           }
         ]
@@ -72,7 +72,7 @@ export default {
       this.$storage.remove("Token");
       this.$router.replace({ name: "login" });
     },
-    // 修改密码
+    // modification Password
     onUpdateHandler() {
       this.$refs["ruleForm"].validate(valid => {
         if (valid) {
@@ -92,17 +92,17 @@ export default {
           }
 	if(md5Flag) {
 		if(this.$md5(this.ruleForm.password) != password) {
-			this.$message.error("原密码错误");
+			this.$message.error("Old Password错误");
 			return;
 		}
 	  } else {
 		if(this.ruleForm.password != password) {
-			this.$message.error("原密码错误");
+			this.$message.error("Old Password错误");
 			return;
 		}
 	}
           if (this.ruleForm.newpassword != this.ruleForm.repassword) {
-            this.$message.error("两次密码输入不一致");
+            this.$message.error("两次Password输入不一致");
             return;
           }
           this.user.password = this.ruleForm.newpassword;
@@ -114,7 +114,7 @@ export default {
           }).then(({ data }) => {
             if (data && data.code === 0) {
               this.$message({
-                message: "修改密码成功,下次登录系统生效",
+                message: "modification Password Success,下次 loginSystem 生效",
                 type: "success",
                 duration: 1500,
                 onClose: () => {

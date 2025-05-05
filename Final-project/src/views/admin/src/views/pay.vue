@@ -1,11 +1,11 @@
 <template>
   <div class="container"  :style='{"margin":"0 200px 20px"}'>
-    <el-alert title="确认支付前请先核对订单信息" type="success" :closable="false"></el-alert>
+    <el-alert title="确认Pay前Please先核对Order信息" type="success" :closable="false"></el-alert>
     <!-- <div class="top-content">
       <span>收款人</span>
       <el-input style="width:300px" v-model="name" placeholder="收款人"></el-input>
-      <span style="margin-left:20px">收款账号</span>
-      <el-input style="width:300px" v-model="account" placeholder="收款账号"></el-input>
+      <span style="margin-left:20px">收款Account</span>
+      <el-input style="width:300px" v-model="account" placeholder="收款Account"></el-input>
     </div> -->
     <!-- <div class="price-content">
       <span>金额</span>
@@ -13,14 +13,14 @@
     </div> -->
     <div class="pay-type-content">
       <div class="pay-type-item">
-        <el-radio v-model="type" label="微信支付"></el-radio>
+        <el-radio v-model="type" label="Wechat Pay"></el-radio>
         <img src="@/assets/img/test/weixin.png" alt>
-        <!-- <span>微信支付</span> -->
+        <!-- <span>Wechat Pay</span> -->
       </div>
       <div class="pay-type-item">
-        <el-radio v-model="type" label="支付宝支付"></el-radio>
+        <el-radio v-model="type" label="Alipay"></el-radio>
         <img src="@/assets/img/test/zhifubao.png" alt>
-        <!-- <span>支付宝支付</span> -->
+        <!-- <span>Alipay</span> -->
       </div>
       <div class="pay-type-item">
         <el-radio v-model="type" label="建设银行"></el-radio>
@@ -44,8 +44,8 @@
       </div>
     </div>
     <div class="buton-content">
-      <el-button @click="submitTap" type="primary">确认支付</el-button>
-      <el-button @click="back()">返回</el-button>
+      <el-button @click="submitTap" type="primary">确认Pay</el-button>
+      <el-button @click="back()">Back</el-button>
     </div>
   </div>
 </template>
@@ -70,23 +70,23 @@ export default {
   methods: {
     submitTap() {
       // if (!this.name) {
-      //   this.$message.error("请输入收款人姓名");
+      //   this.$message.error("Please enter 收款人Name");
       //   return;
       // }
       // if (!this.account) {
-      //   this.$message.error("请输入收款人账号");
+      //   this.$message.error("Please enter 收款人Account");
       //   return;
       // }
       if (!this.type) {
-        this.$message.error("请选择支付方式");
+        this.$message.error("PleaseChoosePay方式");
         return;
       }
-      this.$confirm(`确定支付?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm(`SurePay?`, "提示", {
+        confirmButtonText: "Sure",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
-        this.obj.ispay = "已支付";
+        this.obj.ispay = "Paid";
         this.$http({
           url: `${this.table}/update`,
           method: "post",
@@ -94,7 +94,7 @@ export default {
         }).then(({ data }) => {
           if (data && data.code === 0) {
             this.$message({
-              message: "支付成功",
+              message: "Pay Success",
               type: "success",
               duration: 1500,
               onClose: () => {

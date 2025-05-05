@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 收藏表
+//  collect 表
 const StoreupModel = sequelize.define('StoreupModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,13 +15,13 @@ const StoreupModel = sequelize.define('StoreupModel', {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '用户id'
+		comment: 'userid'
 	},
 	refid: {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '商品id'
+		comment: 'Commodityid'
 	},
 	tablename: {
 		type: DataTypes.STRING,
@@ -33,31 +33,31 @@ const StoreupModel = sequelize.define('StoreupModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '名称'
+		comment: 'Name'
 	},
 	picture: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '图片'
+		comment: 'Picture'
 	},
 	type: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '类型(1:收藏,21:赞,22:踩,31:竞拍参与,41:关注)'
+		comment: '类型(1: collect ,21:赞,22:踩,31:竞拍参与,41:关注)'
 	},
 	inteltype: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '推荐类型'
+		comment: ' Recommend类型'
 	},
 	remark: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '备注'
+		comment: 'Remarks'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -66,7 +66,7 @@ const StoreupModel = sequelize.define('StoreupModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

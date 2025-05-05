@@ -7,14 +7,14 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="商品分类" prop="shangpinfenlei">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Commodity classification" prop="shangpinfenlei">
             <el-input v-model="ruleForm.shangpinfenlei" 
-                placeholder="商品分类" clearable ></el-input>
+                placeholder="Commodity classification" clearable ></el-input>
           </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -72,7 +72,7 @@
             }
           }
         }
-        // 获取用户信息
+        // 获取user信息
         this.$http.get(this.userTableName + '/session', {emulateJSON: true}).then(res => {
           if (res.data.code == 0) {
             var json = res.data.data;
@@ -89,7 +89,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -145,7 +145,7 @@
                           this.$http.post('shangpinfenlei/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -168,7 +168,7 @@
                   this.$http.post('shangpinfenlei/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -191,7 +191,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },

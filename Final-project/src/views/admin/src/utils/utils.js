@@ -1,7 +1,7 @@
 import storage from './storage';
 import menu from './menu';
 /**
- * 是否有权限
+ * yesno有权限
  * @param {*} key
  */
 export function isAuth(tableName,key) {

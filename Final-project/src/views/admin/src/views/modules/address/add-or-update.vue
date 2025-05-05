@@ -9,35 +9,35 @@
 			label-width="120px"
 		>
 			<template >
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="地址" prop="address">
-					<el-input v-model="ruleForm.address" placeholder="地址" clearable  :readonly="ro.address"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="address" prop="address">
+					<el-input v-model="ruleForm.address" placeholder="address" clearable  :readonly="ro.address"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="地址" prop="address">
-					<el-input v-model="ruleForm.address" placeholder="地址" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="address" prop="address">
+					<el-input v-model="ruleForm.address" placeholder="address" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="收货人" prop="name">
-					<el-input v-model="ruleForm.name" placeholder="收货人" clearable  :readonly="ro.name"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Consignee" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Consignee" clearable  :readonly="ro.name"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="收货人" prop="name">
-					<el-input v-model="ruleForm.name" placeholder="收货人" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Consignee" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Consignee" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="电话" prop="phone">
-					<el-input v-model="ruleForm.phone" placeholder="电话" clearable  :readonly="ro.phone"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Phone Number" prop="phone">
+					<el-input v-model="ruleForm.phone" placeholder="Phone Number" clearable  :readonly="ro.phone"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="电话" prop="phone">
-					<el-input v-model="ruleForm.phone" placeholder="电话" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Phone Number" prop="phone">
+					<el-input v-model="ruleForm.phone" placeholder="Phone Number" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="是否默认地址[是/否]" prop="isdefault">
-					<el-input v-model="ruleForm.isdefault" placeholder="是否默认地址[是/否]" clearable  :readonly="ro.isdefault"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="yesnoDefault[yes/no]" prop="isdefault">
+					<el-input v-model="ruleForm.isdefault" placeholder="yesnoDefault[yes/no]" clearable  :readonly="ro.isdefault"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="是否默认地址[是/否]" prop="isdefault">
-					<el-input v-model="ruleForm.isdefault" placeholder="是否默认地址[是/否]" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="yesnoDefault[yes/no]" prop="isdefault">
+					<el-input v-model="ruleForm.isdefault" placeholder="yesnoDefault[yes/no]" readonly></el-input>
 				</el-form-item>
 			</template>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
-				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">提交</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">取消</el-button>
-				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">返回</el-button>
+				<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  v-if="type!='info'" type="primary" class="btn-success" @click="onSubmit">Submit</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type!='info'" class="btn-close" @click="back()">Cancel</el-button>
+				<el-button :style='{"border":"0px solid rgba(64, 158, 255, 1)","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#fff","borderRadius":"0","background":"#67D4B2","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' v-if="type=='info'" class="btn-close" @click="back()">Back</el-button>
 			</el-form-item>
 		</el-form>
     
@@ -54,7 +54,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!checkIdCard(value)) {
-				callback(new Error("请输入正确的身份证号码"));
+				callback(new Error("Please enter 正确的身份证号码"));
 			} else {
 				callback();
 			}
@@ -63,7 +63,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isURL(value)) {
-				callback(new Error("请输入正确的URL地址"));
+				callback(new Error("Please enter 正确的URLaddress"));
 			} else {
 				callback();
 			}
@@ -72,7 +72,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isMobile(value)) {
-				callback(new Error("请输入正确的手机号码"));
+				callback(new Error("Please enter 正确的Mobile phone number"));
 			} else {
 				callback();
 			}
@@ -81,7 +81,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isPhone(value)) {
-				callback(new Error("请输入正确的电话号码"));
+				callback(new Error("Please enter 正确的Phone Number号码"));
 			} else {
 				callback();
 			}
@@ -90,7 +90,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isEmail(value)) {
-				callback(new Error("请输入正确的邮箱地址"));
+				callback(new Error("Please enter 正确的邮箱address"));
 			} else {
 				callback();
 			}
@@ -99,7 +99,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isNumber(value)) {
-				callback(new Error("请输入数字"));
+				callback(new Error("Please enter 数字"));
 			} else {
 				callback();
 			}
@@ -108,7 +108,7 @@ export default {
 			if(!value){
 				callback();
 			} else if (!isIntNumer(value)) {
-				callback(new Error("请输入整数"));
+				callback(new Error("Please enter 整数"));
 			} else {
 				callback();
 			}
@@ -138,19 +138,19 @@ export default {
 			
 			rules: {
 				userid: [
-					{ required: true, message: '用户id不能为空', trigger: 'blur' },
+					{ required: true, message: 'userid cannot be empty.', trigger: 'blur' },
 				],
 				address: [
-					{ required: true, message: '地址不能为空', trigger: 'blur' },
+					{ required: true, message: 'address cannot be empty.', trigger: 'blur' },
 				],
 				name: [
-					{ required: true, message: '收货人不能为空', trigger: 'blur' },
+					{ required: true, message: 'Consignee cannot be empty.', trigger: 'blur' },
 				],
 				phone: [
-					{ required: true, message: '电话不能为空', trigger: 'blur' },
+					{ required: true, message: 'Phone Number cannot be empty.', trigger: 'blur' },
 				],
 				isdefault: [
-					{ required: true, message: '是否默认地址[是/否]不能为空', trigger: 'blur' },
+					{ required: true, message: 'yesnoDefault[yes/no] cannot be empty.', trigger: 'blur' },
 				],
 			}
 		};
@@ -232,8 +232,8 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
         this.ruleForm = data.data;
-        //解决前台上传图片后台不显示的问题
-        let reg=new RegExp('../../../upload','g')//g代表全部
+        //解决前台上传Picture后台不显示的问题
+        let reg=new RegExp('../../../upload','g')//g代表All
         } else {
           this.$message.error(data.msg);
         }
@@ -241,7 +241,7 @@ export default {
     },
 
 
-    // 提交
+    // Submit
     onSubmit() {
 
 
@@ -315,7 +315,7 @@ var objcross = this.$storage.getObj('crossObj');
 					 }).then(({ data }) => {
 					   if (data && data.code === 0) {
 					     this.$message({
-					       message: "操作成功",
+					       message: "Operation Success",
 					       type: "success",
 					       duration: 1500,
 					       onClose: () => {
@@ -343,7 +343,7 @@ var objcross = this.$storage.getObj('crossObj');
 			 }).then(({ data }) => {
 			   if (data && data.code === 0) {
 			     this.$message({
-			       message: "操作成功",
+			       message: "Operation Success",
 			       type: "success",
 			       duration: 1500,
 			       onClose: () => {
@@ -366,7 +366,7 @@ var objcross = this.$storage.getObj('crossObj');
     getUUID () {
       return new Date().getTime();
     },
-    // 返回
+    // Back
     back() {
       this.parent.showFlag = true;
       this.parent.addOrUpdateFlag = false;

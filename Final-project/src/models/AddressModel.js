@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 地址
+// address
 const AddressModel = sequelize.define('AddressModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,31 +15,31 @@ const AddressModel = sequelize.define('AddressModel', {
 		type: DataTypes.BIGINT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '用户id'
+		comment: 'userid'
 	},
 	address: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '地址'
+		comment: 'address'
 	},
 	name: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '收货人'
+		comment: 'Consignee'
 	},
 	phone: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '电话'
+		comment: 'Phone Number'
 	},
 	isdefault: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '是否默认地址[是/否]'
+		comment: 'yesnoDefault[yes/no]'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -48,7 +48,7 @@ const AddressModel = sequelize.define('AddressModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

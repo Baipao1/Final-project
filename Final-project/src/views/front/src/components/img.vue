@@ -8,7 +8,7 @@
 			<el-upload :action="getActionUrl" :on-success="uploadSuccess" :show-file-list="false"
 				accept=".jpg,.png,.jpge" style="margin-right:10px">
 				<el-button icon="el-icon-upload2" size="small">
-					上传图片
+					上传Picture
 				</el-button>
 			</el-upload>
 
@@ -22,7 +22,7 @@
 				关闭摄像头
 			</el-button>
 			<el-button @click="resetCanvas" icon="el-icon-refresh" size="small">
-				重置
+				reset
 			</el-button>
 			<el-button @click="onCancel" icon="el-icon-circle-close" size="small">
 				完成
@@ -60,11 +60,11 @@
 				akworkerList: [],
 				//工种类别数据字典
 				workerTypeOptions: [],
-				// 弹出层标题
+				// 弹出层Title
 				title: "",
-				// 是否显示弹出层
+				// yesno显示弹出层
 				open: false,
-				// 查询参数
+				// Search参数
 				queryParams: {
 					pageNum: 1,
 					pageSize: 10,
@@ -169,7 +169,7 @@
 
 					// 使用getUserMedia，因为它会覆盖现有的属性。
 
-					// 这里，如果缺少getUserMedia属性，就添加它。
+					// 这里，如果缺少getUserMedia属性，就Add它。
 
 					if (navigator.mediaDevices.getUserMedia === undefined) {
 
@@ -181,7 +181,7 @@
 								navigator
 								.getUserMedia;
 
-							// 有些浏览器不支持，会返回错误信息
+							// 有些浏览器不支持，会Back错误信息
 
 							// 保持接口一致
 
@@ -192,7 +192,7 @@
 
 							}
 
-							// 否则，使用Promise将调用包装到旧的navigator.getUserMedia
+							// no则，使用Promise将调用包装到旧的navigator.getUserMedia
 
 							return new Promise(function(resolve, reject) {
 
@@ -256,7 +256,7 @@
 
 			},
 
-			//绘制图片
+			//绘制Picture
 
 			drawImage() {
 
@@ -264,7 +264,7 @@
 
 				this.thisContext.drawImage(this.thisVideo, 0, 0, this.videoWidth, this.videoHeight);
 
-				// 获取图片base64链接
+				// 获取Picturebase64链接
 
 				this.imgSrc = this.thisCancas.toDataURL('image/png');
 
@@ -284,7 +284,7 @@
 
 			},
 
-			//重置画布
+			//reset画布
 
 			resetCanvas() {
 

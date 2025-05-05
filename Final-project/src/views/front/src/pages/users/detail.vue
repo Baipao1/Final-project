@@ -2,7 +2,7 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -24,7 +24,7 @@
 				</div>
 
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>用户名</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>User</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.username}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
@@ -54,7 +54,7 @@
         baseUrl: '',
         breadcrumbItem: [
           {
-            name: '详情信息'
+            name: 'more information'
           }
         ],
         title: '',
@@ -68,7 +68,7 @@
         totalPage: 1,
         rules: {
           content: [
-            { required: true, message: '请输入内容', trigger: 'blur' }
+            { required: true, message: 'Please enter Content', trigger: 'blur' }
           ]
         },
         buynumber: 1,

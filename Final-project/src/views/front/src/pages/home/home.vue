@@ -18,7 +18,7 @@
 	</div>
 	
     <div class="title" :style='{"width":"350px","padding":"0 0 20px","margin":"40px auto","lineHeight":"50px","textAlign":"center","background":"url(http://codegen.caihongy.cn/20221114/c321adf910ad4562a7836324481949fa.png) no-repeat center bottom"}'>
-		<span :style='{"color":"#5ebd47","fontSize":"32px","fontWeight":"bold"}'>商品信息推荐</span>
+		<span :style='{"color":"#5ebd47","fontSize":"32px","fontWeight":"bold"}'>Commodity information Recommend</span>
 	</div>
 	
 	
@@ -42,7 +42,7 @@
 	
 	
 	<div @click="moreBtn('shangpinxinxi')" :style='{"border":"0","cursor":"pointer","boxShadow":"0 4px 6px rgba(0,0,0,.2)","margin":"20px auto","textAlign":"center","background":"url(http://codegen.caihongy.cn/20221114/e50f2911f0354a40b3c2c3d22faa088e.png) no-repeat","display":"block","width":"161px","lineHeight":"40px"}'>
-		<span :style='{"color":"#f5f5f5","fontSize":"16px"}'>查看更多</span>
+		<span :style='{"color":"#f5f5f5","fontSize":"16px"}'>View more</span>
 		<i v-if="true" :style='{"color":"#f5f5f5","fontSize":"16px"}' class="el-icon-d-arrow-right"></i>
 	</div>
 	
@@ -64,7 +64,7 @@
 	</div>
 	
 	<div class="title" :style='{"width":"350px","padding":"0 0 20px","margin":"20px auto 50px","lineHeight":"50px","textAlign":"center","background":"url(http://codegen.caihongy.cn/20221114/c321adf910ad4562a7836324481949fa.png) no-repeat center bottom"}'>
-		<span :style='{"color":"#b3efa5","fontSize":"32px","fontWeight":"bold"}'>新闻资讯</span>
+		<span :style='{"color":"#b3efa5","fontSize":"32px","fontWeight":"bold"}'>News</span>
 	</div>
 	
 	
@@ -114,7 +114,7 @@
 	
 	
 	<div @click="moreBtn('news')" :style='{"border":"0","margin":"50px auto 0","textAlign":"center","background":"url(http://codegen.caihongy.cn/20221114/e50f2911f0354a40b3c2c3d22faa088e.png) no-repeat","display":"block","width":"161px","lineHeight":"40px"}'>
-		<span :style='{"color":"#f5f5f5","fontSize":"12px"}'>查看更多</span>
+		<span :style='{"color":"#f5f5f5","fontSize":"12px"}'>View more</span>
 		<i v-if="true" :style='{"color":"#f5f5f5","fontSize":"12px"}' class="el-icon-d-arrow-right"></i>
 	</div>
 	
@@ -173,7 +173,7 @@
 					this.shangpinxinxiRecommend = res.data.data.list;
 					
 					
-					// 商品列表样式五
+					// Commodity列表样式五
 					
 				}
 			});

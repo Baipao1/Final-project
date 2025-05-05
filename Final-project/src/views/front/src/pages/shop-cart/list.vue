@@ -1,13 +1,13 @@
 <template>
 <div :style='{"padding":"20px 20px 40px","margin":"10px auto 0","borderColor":"#52b646","borderRadius":"12px","background":"#fff","borderWidth":"3px","width":"1200px","position":"relative","borderStyle":"solid dashed double double"}'>
-    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>购物车</div>
+    <div class="section-title" :style='{"padding":"16px 0","margin":"20px 0","borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#eff9ee","borderWidth":"4px","fontSize":"24px","lineHeight":"1.5","borderStyle":"dashed dotted solid double"}'>Shopping cart</div>
     <el-table
       @selection-change="handleSelectionChange"
       :data="tableData"
       style="width: 100%">
       <el-table-column type="selection" width="50" align="center" />
       <el-table-column
-        label="商品名称">
+        label="Product name">
         <template slot-scope="scope">
           <div class="shangpin">
             <el-image
@@ -19,37 +19,37 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="价格">
+        label="Price">
         <template slot-scope="scope">
           <span :style='{"fontSize":"12px"}'>￥</span>{{ scope.row.price }}
         </template>
       </el-table-column>
       <el-table-column
-        label="数量">
+        label="Amount">
         <template slot-scope="scope">
           <el-input-number :min="1" v-model="scope.row.buynumber" @change="(value) => handleChange(value, scope.$index, scope.row)" size="small"></el-input-number>
         </template>
       </el-table-column>
       <el-table-column
-        label="总价">
+        label="Total Prices">
         <template slot-scope="scope">
           <span :style='{"fontSize":"12px"}'>￥</span>{{ (scope.row.price * scope.row.buynumber).toFixed(2) }}
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="150">
+      <el-table-column label="Operation" width="150">
         <template slot-scope="scope">
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            @click="handleDelete(scope.$index, scope.row)">delete</el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="buy" v-if="tableData.length > 0">
-      <span style="color: red;margin-right: 10px;font-weight: 700;">总价：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
+      <span style="color: red;margin-right: 10px;font-weight: 700;">Total Prices：<span :style='{"fontSize":"12px"}'>￥</span>{{totalPrice}}</span>
       <el-button
         type="warning"
-        @click="buyClick">点击购买</el-button>
+        @click="buyClick">Pay</el-button>
     </div>
 </div>
 </template>
@@ -82,7 +82,7 @@
         this.$http.get(`${row.tablename}/detail/${row.goodid}`).then(res => {
           if (res.data.code == 0 && value > res.data.data.onelimittimes) {
             this.tableData[index].buynumber = --value;
-            this.$message.error(`每人单次只能购买${res.data.data.onelimittimes}件`);
+            this.$message.error(`每人单次只能Buy${res.data.data.onelimittimes}件`);
           }
           if (res.data.code == 0 && value <= res.data.data.onelimittimes) {
             row.buynumber = value;
@@ -91,9 +91,9 @@
         });
       },
       handleDelete(index, row) {
-        this.$confirm('是否确认删除?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('yesno确认delete?', '提示', {
+          confirmButtonText: 'Sure',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let delIds = new Array();
@@ -102,7 +102,7 @@
             if (res.data.code == 0) {
               this.$message({
                 type: 'success',
-                message: '删除成功!',
+                message: 'delete Success!',
                 duration: 1500,
                 onClose: () => {
                   this.getCartList();
@@ -116,7 +116,7 @@
         if(this.selRows.length==0) {
             this.$message({
                 type: 'warning',
-                message: '请选择商品',
+                message: 'PleaseChooseCommodity',
                 duration: 1500,
             });
             return

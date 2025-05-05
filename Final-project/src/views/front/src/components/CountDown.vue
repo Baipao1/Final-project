@@ -17,8 +17,8 @@
     data () {
       return {
         tipShow: true,
-        msTime: {			//倒计时数值
-          show: false,		//倒计时状态
+        msTime: {			//倒计时数Picture
+          show: false,		//倒计时Status
           day: '',			//天
           hour: '',		//小时
           minutes: '',		//分钟
@@ -86,7 +86,7 @@
         type: String,
         default: ':'
       },
-      //是否开启秒表倒计，未完成
+      //yesno开启秒表倒计，未完成
       secondsFixed: {
         type: Boolean,
         default: false
@@ -98,7 +98,7 @@
     },
     methods: {
       gogogo: function () {
-        //判断是秒还是毫秒
+        //判断yes秒还yes毫秒
         this.startTime.toString().length == 10 ? this.star = this.startTime * 1000 : this.star = this.startTime;
         this.endTime.toString().length == 10 ? this.end = this.endTime * 1000 : this.end = this.endTime;
         if (this.currentTime) {
@@ -147,7 +147,7 @@
           timeDistance -= msTime.hour * 3600000;
           msTime.minutes = Math.floor(timeDistance / 60000);
           timeDistance -= msTime.minutes * 60000;
-          //是否开启秒表倒计,未完成
+          //yesno开启秒表倒计,未完成
 //                    this.secondsFixed ? msTime.seconds = new Number(timeDistance / 1000).toFixed(2) : msTime.seconds = Math.floor( timeDistance / 1000 ).toFixed(0);
           msTime.seconds = Math.floor(timeDistance / 1000).toFixed(0);
           timeDistance -= msTime.seconds * 1000;

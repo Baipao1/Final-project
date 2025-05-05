@@ -2,15 +2,15 @@ export default {
     baseUrl: 'http://localhost:8080/Final-project/',
     indexNav: [
         {
-            name: '首页',
+            name: 'Home',
             url: '/index/home'
         },
         {
-            name: '商品信息',
+            name: 'Commodity information',
             url: '/index/shangpinxinxi'
         },
         {
-            name: '新闻资讯',
+            name: 'News',
             url: '/index/news'
         },
     ]

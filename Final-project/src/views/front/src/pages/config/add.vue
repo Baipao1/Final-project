@@ -7,13 +7,13 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="名称" prop="name">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Name" prop="name">
             <el-input v-model="ruleForm.name" 
-                placeholder="名称" clearable ></el-input>
+                placeholder="Name" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="值" v-if="type!='cross' || (type=='cross' && !ro.value)" prop="value">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Picture" v-if="type!='cross' || (type=='cross' && !ro.value)" prop="value">
             <file-upload
-            tip="点击上传值"
+            tip="Click to upload Picture"
             action="file/upload"
             :limit="3"
             :multiple="true"
@@ -21,14 +21,14 @@
             @change="valueUploadChange"
             ></file-upload>
           </el-form-item>
-            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="值" prop="value">
+            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="Picture" prop="value">
                 <img v-if="ruleForm.value.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.value.split(',')[0]" width="100" height="100">
                 <img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.value.split(',')" :src="baseUrl+item" width="100" height="100">
             </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -52,7 +52,7 @@
         },
         rules: {
           name: [
-            { required: true, message: '名称不能为空', trigger: 'blur' },
+            { required: true, message: 'Name cannot be empty.', trigger: 'blur' },
           ],
           value: [
           ],
@@ -107,7 +107,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -163,7 +163,7 @@
                           this.$http.post('config/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -186,7 +186,7 @@
                   this.$http.post('config/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -209,7 +209,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },

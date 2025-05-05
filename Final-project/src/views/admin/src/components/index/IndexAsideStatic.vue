@@ -6,23 +6,23 @@
 				<el-image v-if="false" :style='{"width":"44px","margin":"10px auto","objectFit":"cover","borderRadius":"100%","display":"block","height":"44px"}' src="http://codegen.caihongy.cn/20201114/7856ba26477849ea828f481fa2773a95.jpg" fit="cover"></el-image>
 				<!-- <el-menu-item index="0" @click="menuHandler('')">
 					<i v-if='true' :style='{"width":"34px","verticalAlign":"middle","margin":"0 3px","fontSize":"18px","color":"inherit","textAlign":"center"}' class="el-icon-menu el-icon-s-home" />
-					<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>系统首页</span>
+					<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>System Home</span>
 				</el-menu-item> -->
 				
 				<el-submenu index="0" @click.native="menuHandler('')">
 					<template slot="title">
 						<i v-if='true' :style='{"width":"34px","verticalAlign":"middle","margin":"0 3px","fontSize":"18px","color":"inherit","textAlign":"center"}' class="el-icon-menu el-icon-s-home" />
-						<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>系统首页</span>
+						<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>System Home</span>
 					</template>
 				</el-submenu>
 				
 				<el-submenu index="1">
 					<template slot="title">
 						<i v-if='true' :style='{"width":"34px","verticalAlign":"middle","margin":"0 3px","fontSize":"18px","color":"inherit","textAlign":"center"}' class="el-icon-menu el-icon-user-solid" />
-						<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>个人中心</span>
+						<span :style='{"color":"inherit","verticalAlign":"middle","fontSize":"14px"}'>Personal Center</span>
 					</template>
-					<el-menu-item index="1-1" @click="menuHandler('updatePassword')">修改密码</el-menu-item>
-					<el-menu-item index="1-2" @click="menuHandler('center')">个人信息</el-menu-item>
+					<el-menu-item index="1-1" @click="menuHandler('updatePassword')">modification Password</el-menu-item>
+					<el-menu-item index="1-2" @click="menuHandler('center')">personal information</el-menu-item>
 				</el-submenu>
 				<el-submenu v-for=" (menu,index) in menuList.backMenu" :key="menu.menu" :index="index+2+''">
 					<template slot="title">

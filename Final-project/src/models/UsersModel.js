@@ -13,17 +13,17 @@ const UsersModel = sequelize.define('UsersModel', {
 	username: {
 		type: DataTypes.STRING,
 		allowNull: false,
-		comment: '用户名'
+		comment: 'User'
 	},
 	password: {
 		type: DataTypes.STRING,
 		allowNull: false,
-		comment: '用户密码'
+		comment: 'userPassword'
 	},
 	role: {
 		type: DataTypes.STRING,
 		allowNull: true,
-		comment: '用户角色'
+		comment: 'user角色'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -32,7 +32,7 @@ const UsersModel = sequelize.define('UsersModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

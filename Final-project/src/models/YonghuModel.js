@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 用户
+// user
 const YonghuModel = sequelize.define('YonghuModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,43 +15,43 @@ const YonghuModel = sequelize.define('YonghuModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '用户账号'
+		comment: 'userAccount'
 	},
 	mima: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '密码'
+		comment: 'Password'
 	},
 	yonghuxingming: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '用户姓名'
+		comment: 'userName'
 	},
 	touxiang: {
 		type: DataTypes.TEXT,
 		defaultValue: '',
 		allowNull: true,
-		comment: '头像'
+		comment: 'Profile picture'
 	},
 	xingbie: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '性别'
+		comment: 'Gender'
 	},
 	shoujihaoma: {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '手机号码'
+		comment: 'Mobile phone number'
 	},
 	money: {
 		type: DataTypes.FLOAT,
 		defaultValue: 0,
 		allowNull: true,
-		comment: '余额'
+		comment: 'Balance'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -60,7 +60,7 @@ const YonghuModel = sequelize.define('YonghuModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

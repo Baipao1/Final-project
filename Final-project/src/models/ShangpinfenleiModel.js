@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize'
 import moment from 'moment'
 import sequelize from './sequelize'
 
-// 商品分类
+// Commodity classification
 const ShangpinfenleiModel = sequelize.define('ShangpinfenleiModel', {
 	id: {
 		type: DataTypes.BIGINT,
@@ -15,7 +15,7 @@ const ShangpinfenleiModel = sequelize.define('ShangpinfenleiModel', {
 		type: DataTypes.STRING,
 		defaultValue: '',
 		allowNull: true,
-		comment: '商品分类'
+		comment: 'Commodity classification'
 	},
 	addtime: {
   		type: DataTypes.DATE,
@@ -24,7 +24,7 @@ const ShangpinfenleiModel = sequelize.define('ShangpinfenleiModel', {
     	get() {
             return moment(this.getDataValue('addtime')).format('YYYY-MM-DD HH:mm:ss')
         },
-		comment: '添加时间'
+		comment: 'Add时间'
 	}
 }, {
 	timestamps: false,

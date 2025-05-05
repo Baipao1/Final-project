@@ -2,7 +2,7 @@
 <div>
 	<div :style='{"width":"1200px","padding":"10px 20px","margin":"10px auto","borderRadius":"12px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'Ξ'" :style='{"fontSize":"14px","lineHeight":"1"}'>
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item>Home</el-breadcrumb-item>
 			<el-breadcrumb-item v-for="(item, index) in breadcrumbItem" :key="index">{{item.name}}</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -22,12 +22,12 @@
 					<div :style='{"padding":"0 10px","fontSize":"16px","color":"#333","fontWeight":"600"}'>
                     {{detail.shangpinmingcheng}}
                     </div>
-					<div @click="storeup(1)" v-show="!isStoreup" :style='{"cursor":"pointer","padding":"10px","boxShadow":"1px 2px 4px #26af9b","borderRadius":"30px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%),#4bdfc9"}'><i v-if="true" :style='{"color":"#fff","fontSize":"14px"}' class="el-icon-star-off"></i><span :style='{"color":"#fff","fontSize":"14px"}'>点我收藏</span></div>
-					<div @click="storeup(-1)" v-show="isStoreup" :style='{"cursor":"pointer","padding":"10px","boxShadow":"1px 2px 4px #26af9b","borderRadius":"30px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%),#4bdfc9"}'><i v-if="true" :style='{"color":"#fff","fontSize":"14px"}' class="el-icon-star-on"></i><span :style='{"color":"#fff","fontSize":"14px"}'>取消收藏</span></div>
+					<div @click="storeup(1)" v-show="!isStoreup" :style='{"cursor":"pointer","padding":"10px","boxShadow":"1px 2px 4px #26af9b","borderRadius":"30px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%),#4bdfc9"}'><i v-if="true" :style='{"color":"#fff","fontSize":"14px"}' class="el-icon-star-off"></i><span :style='{"color":"#fff","fontSize":"14px"}'>Collection</span></div>
+					<div @click="storeup(-1)" v-show="isStoreup" :style='{"cursor":"pointer","padding":"10px","boxShadow":"1px 2px 4px #26af9b","borderRadius":"30px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%),#4bdfc9"}'><i v-if="true" :style='{"color":"#fff","fontSize":"14px"}' class="el-icon-star-on"></i><span :style='{"color":"#fff","fontSize":"14px"}'>Cancel collect </span></div>
 				</div>
 
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}' v-if="detail.price">
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>价格</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>Price</div>
 					<div style="font-weight: bold;" :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'><span :style='{"fontSize":"12px"}'>￥</span>{{detail.price}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}' v-if="detail.jf">
@@ -35,33 +35,33 @@
 					<div style="color: red;font-weight: bold;" :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.jf}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>商品分类</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>Commodity classification</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.shangpinfenlei}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>规格</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>Specification</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.guige}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>品牌</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>Brand</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.pinpai}}</div>
 				</div>
 				<div class="item" :style='{"border":"1px solid #88d67e","padding":"6px 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","margin":"0 0 10px 0","borderRadius":"4px","background":"#fff","display":"flex","justifyContent":"spaceBetween"}'>
-					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>点击次数</div>
+					<div class="lable" :style='{"padding":"0 10px","color":"#333","textAlign":"right","background":"none","width":"120px","fontSize":"14px","lineHeight":"40px","minWidth":"120px"}'>Number of clicks</div>
 					<div  :style='{"width":"498px","padding":"8px 10px 0","fontSize":"14px","lineHeight":"24px","color":"#666","height":"auto"}'>{{detail.clicknum}}</div>
 				</div>
 				<div class="btn" :style='{"padding":"10px 0","flexWrap":"wrap","display":"flex"}'>
 					<el-input-number :style='{"width":"180px","margin":"0 5px 0 0","lineHeight":"38px","position":"relative","display":"inline-block"}'  :min=1 v-model="buynumber"></el-input-number>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="warning" size="small" @click="addCart">添加到购物车</el-button>
-					<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="warning" size="small" @click="buyNow">立即购买</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="warning" size="small" @click="addCart">Add to shopping cart</el-button>
+					<el-button :style='{"border":"0","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(166,236,225,1) 0%, rgba(75,223,201,1) 100%)","width":"auto","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="warning" size="small" @click="buyNow">Buy</el-button>
 				</div>
 				<div class="btn" :style='{"padding":"10px 0","flexWrap":"wrap","display":"flex"}'>
 				</div>
 			</div>
 			
-			<!-- 热门信息 -->
+			<!-- Hot Information -->
 			<div class="hot" :style='{"width":"48%","margin":"10px 0 0 0","background":"#fff","height":"auto","order":"3"}'>
-			  <div :style='{"borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#e6f5e5","borderWidth":"3px","width":"100%","lineHeight":"44px","fontSize":"14px","borderStyle":"solid double solid double"}'>热门信息</div>
+			  <div :style='{"borderColor":"#52b646","color":"#52b646","borderRadius":"8px","textAlign":"center","background":"#e6f5e5","borderWidth":"3px","width":"100%","lineHeight":"44px","fontSize":"14px","borderStyle":"solid double solid double"}'>Hot Information</div>
 			  <div :style='{"padding":"0 0 5px 0","flexWrap":"wrap","background":"#fff","display":"flex","width":"100%","justifyContent":"space-between","height":"auto"}'>
 			    <div v-for="item in hotList" :key="item" :style='{"cursor":"pointer","border":"2px solid #88d67e","padding":"8px","boxShadow":"-1px 2px 4px rgba(0,0,0,.1)","margin":"20px 0 0","borderRadius":"8px","background":"#fff","width":"48%","borderStyle":"dotted dashed solid double","height":"auto"}' @click="toDetail(item)">
 			      <img :style='{"width":"100%","objectFit":"cover","borderRadius":"8px","display":"block","height":"180px"}' :src="baseUrl + (item.tupian?item.tupian.split(',')[0]:'')" alt="">
@@ -74,17 +74,17 @@
 		
 		
 		<el-tabs class="detail" :style='{"boxShadow":"0 1px 6px 0 rgba(0, 0, 0, .1)","borderColor":"#52b646","borderRadius":"12px","borderStyle":"solid double solid double","background":"#fff","borderWidth":"3px"}' v-model="activeName" type="border-card">
-			<el-tab-pane label="商品详情" name="first">
+			<el-tab-pane label="Commoditymore" name="first">
 				<div v-html="detail.shangpinxiangqing"></div>
 			</el-tab-pane>
-			<el-tab-pane label="评论" name="second">
+			<el-tab-pane label="Comment" name="second">
 				<el-form class="add comment" :style='{"boxShadow":"0 0px 0px 0 rgba(0, 0, 0, .1)","padding":"15px","margin":"0 0 20px"}' :model="form" :rules="rules" ref="form">
-					<el-form-item class="item" :style='{"width":"100%","display":"flex","height":"auto"}' label="评论" prop="content">
-						<el-input type="textarea" :rows="5" v-model="form.content" placeholder="请输入内容"></el-input>
+					<el-form-item class="item" :style='{"width":"100%","display":"flex","height":"auto"}' label="Comment" prop="content">
+						<el-input type="textarea" :rows="5" v-model="form.content" placeholder="Please enter Content"></el-input>
 					</el-form-item>
 					<el-form-item class="btn" :style='{"width":"100%","padding":"0 0 0 80px","margin":"10px 0 0","height":"auto"}'>
-						<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="submitForm('form')">立即提交</el-button>
-						<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="resetForm('form')">重置</el-button>
+						<el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' type="primary" @click="submitForm('form')">Submit</el-button>
+						<el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="resetForm('form')">reset</el-button>
 					</el-form-item>
 				</el-form>
 				
@@ -137,7 +137,7 @@
         baseUrl: '',
         breadcrumbItem: [
           {
-            name: '详情信息'
+            name: 'more information'
           }
         ],
         title: '',
@@ -159,7 +159,7 @@
         totalPage: 1,
         rules: {
           content: [
-            { required: true, message: '请输入内容', trigger: 'blur' }
+            { required: true, message: 'Please enter Content', trigger: 'blur' }
           ]
         },
         storeupParams: {
@@ -248,7 +248,7 @@
               this.isStoreup = true;
               this.$message({
                 type: 'success',
-                message: '收藏成功!',
+                message: ' collect  Success!',
                 duration: 1500,
               });
             }
@@ -266,7 +266,7 @@
                   this.isStoreup = false;
                   this.$message({
                     type: 'success',
-                    message: '取消成功!',
+                    message: 'Cancel Success!',
                     duration: 1500,
                   });
                 }
@@ -325,7 +325,7 @@
         for(var i=0; i<sensitiveWordsArr.length; i++){
             //全局替换
             var reg = new RegExp(sensitiveWordsArr[i],"g");
-            //判断内容中是否包括敏感词
+            //判断Content中yesno包括敏感词
             if (this.form.content.indexOf(sensitiveWordsArr[i]) > -1) {
                 // 将敏感词替换为 **
                 this.form.content = this.form.content.replace(reg,"**");
@@ -333,11 +333,11 @@
         }
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$http.get('orders/list', {params: {page: 1, limit: 1, status: '已完成', goodid: this.detail.id, userid: localStorage.getItem('userid')}}).then(res => {
+            this.$http.get('orders/list', {params: {page: 1, limit: 1, status: 'Completed', goodid: this.detail.id, userid: localStorage.getItem('userid')}}).then(res => {
                 if (res.data.code == 0 && res.data.data.list.length == 0) {
                   this.$message({
                     type: 'success',
-                    message: '请完成订单后再评论!',
+                    message: 'Please完成Order后再Comment!',
                     duration: 1500
                   });
                   return false
@@ -350,7 +350,7 @@
                         this.getDiscussList(1);
                         this.$message({
                           type: 'success',
-                          message: '评论成功!',
+                          message: 'Comment Success!',
                           duration: 1500,
                         });
                       }
@@ -378,7 +378,7 @@
       },
       addCart() {
         if (this.isInCart) {
-          this.$message.error('该商品已经添加到购物车');
+          this.$message.error('该Commodity已经Add to shopping cart');
           return;
         }
 
@@ -393,7 +393,7 @@
           if (res.data.code === 0) {
             this.getCartList();
             this.$message({
-              message: '添加成功',
+              message: 'Add Success',
               type: 'success',
               duration: 1500,
             });
@@ -402,9 +402,9 @@
           }
         });
       },
-        //立即购买
+        //Buy
         buyNow() {
-            // 保存到storage中，在确认下单页面中获取要购买的商品
+            // 保存到storage中，在Confirm the order页面中获取要Buy的Commodity
             localStorage.setItem('orderGoods', JSON.stringify([{
                 tablename: this.tablename,
                 goodid: this.detail.id,
@@ -417,7 +417,7 @@
                 price: this.detail.price,
                 discountprice: this.detail.vipprice ? this.detail.vipprice : 0
             }]));
-            // 跳转到确认下单页面
+            // 跳转到Confirm the order页面
             let query = {
                 type: 1,
             }

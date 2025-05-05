@@ -3,24 +3,24 @@
 	<div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://codegen.caihongy.cn/20221115/d968ab69ddc8495282963cb2dab971cb.jpg) no-repeat center top","display":"flex","width":"100%","backgroundSize":"cover","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'>
 		<el-form ref="loginForm" :model="loginForm" :style='{"padding":"40px 20px 20px","boxShadow":"0 1px 6px rgba(0, 0, 0, .1)","margin":"0","borderRadius":"16px","background":"url(http://codegen.caihongy.cn/20221115/2f997573ef7545c39f9e0eff917cbd30.png) no-repeat left top,url(http://codegen.caihongy.cn/20221115/30139400df864d7eaddf9c3da399146c.png) no-repeat right bottom,#fff","width":"800px","height":"auto"}' :rules="rules">
 			<div v-if="true" :style='{"margin":"0 0 10px 0","color":"#52b646","textAlign":"center","width":"100%","lineHeight":"44px","fontSize":"20px","textShadow":"4px 4px 2px rgba(82, 182, 70, .3)"}'>USER / LOGIN</div>
-			<div v-if="true" :style='{"margin":"0 auto 20px auto","borderColor":"#52b646","color":"#52b646","textAlign":"center","borderWidth":"3px","width":"50%","letterSpacing":"2px","lineHeight":"44px","fontSize":"24px","borderStyle":"dotted dashed solid double","fontWeight":"600"}'>网上商城登录</div>
+			<div v-if="true" :style='{"margin":"0 auto 20px auto","borderColor":"#52b646","color":"#52b646","textAlign":"center","borderWidth":"3px","width":"50%","letterSpacing":"2px","lineHeight":"44px","fontSize":"24px","borderStyle":"dotted dashed solid double","fontWeight":"600"}'>Taomao Online Mall login</div>
 			<el-form-item v-if="loginType==1" class="list-item" :style='{"width":"80%","margin":"0 auto 10px"}' prop="username">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"#333"}'>账号：</div>
-				<input :style='{"border":"1px solid #88d67e","padding":"0 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","color":"#666","borderRadius":"4px","width":"100%","fontSize":"14px","height":"44px"}' v-model="loginForm.username" placeholder="请输入账户">
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"#333"}'>Account：</div>
+				<input :style='{"border":"1px solid #88d67e","padding":"0 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","color":"#666","borderRadius":"4px","width":"100%","fontSize":"14px","height":"44px"}' v-model="loginForm.username" placeholder="Please enter the account.">
 			</el-form-item>
 			<el-form-item v-if="loginType==1" class="list-item" :style='{"width":"80%","margin":"0 auto 10px"}' prop="password">
-				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"#333"}'>密码：</div>
-				<input :style='{"border":"1px solid #88d67e","padding":"0 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","color":"#666","borderRadius":"4px","width":"100%","fontSize":"14px","height":"44px"}' v-model="loginForm.password" placeholder="请输入密码" type="password">
+				<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"#333"}'>Password：</div>
+				<input :style='{"border":"1px solid #88d67e","padding":"0 10px","boxShadow":"inset 0px 0px 48px 0px #def5db","color":"#666","borderRadius":"4px","width":"100%","fontSize":"14px","height":"44px"}' v-model="loginForm.password" placeholder="Please enter the password." type="password">
 			</el-form-item>
 			<el-form-item v-if="roles.length>1" class="list-type" :style='{"width":"80%","margin":"20px auto"}' prop="role">
 				<el-radio v-model="loginForm.tableName" :label="item.tableName" v-for="(item, index) in roles" :key="index" @change.native="getCurrentRow(item)">{{item.roleName}}</el-radio>
 			</el-form-item>
 			<el-form-item :style='{"width":"80%","margin":"20px auto"}'>
-				<el-button v-if="loginType==1" :style='{"border":"0","cursor":"pointer","padding":"0 34px","margin":"0 5px","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","height":"44px"}' @click="submitForm('loginForm')">登录</el-button>
-				<el-button v-if="loginType==1" :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0 34px","margin":"0 5px","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"auto","fontSize":"14px","height":"44px"}' @click="resetForm('loginForm')">重置</el-button>
+				<el-button v-if="loginType==1" :style='{"border":"0","cursor":"pointer","padding":"0 34px","margin":"0 5px","outline":"none","color":"#fff","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"auto","fontSize":"14px","height":"44px"}' @click="submitForm('loginForm')"> login</el-button>
+				<el-button v-if="loginType==1" :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0 34px","margin":"0 5px","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"auto","fontSize":"14px","height":"44px"}' @click="resetForm('loginForm')">Reset</el-button>
 			</el-form-item>
 			<div :style='{"width":"80%","margin":"20px auto"}'>
-			<router-link :style='{"cursor":"pointer","margin":"0 5px","fontSize":"14px","textDecoration":"none","color":"#52b646","background":"#fff"}' :to="{path: '/register', query: {role: item.tableName,pageFlag:'register'}}" v-if="item.hasFrontRegister=='是'" v-for="(item, index) in roles" :key="index">注册{{item.roleName.replace('注册','')}}</router-link>
+			<router-link :style='{"cursor":"pointer","margin":"0 5px","fontSize":"14px","textDecoration":"none","color":"#52b646","background":"#fff"}' :to="{path: '/register', query: {role: item.tableName,pageFlag:'register'}}" v-if="item.hasFrontRegister=='yes'" v-for="(item, index) in roles" :key="index">Register{{item.roleName.replace('Register','')}}</router-link>
 			</div>
 		</el-form>
     </div>
@@ -35,7 +35,7 @@ export default {
 		return {
             baseUrl: this.$config.baseUrl,
             loginType: 1,
-			roleMenus: [{"backMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["新增","查看","修改","删除"],"menu":"用户","menuJump":"列表","tableName":"yonghu"}],"menu":"用户管理"},{"child":[{"appFrontIcon":"cuIcon-send","buttons":["新增","查看","修改","删除"],"menu":"商品分类","menuJump":"列表","tableName":"shangpinfenlei"}],"menu":"商品分类管理"},{"child":[{"appFrontIcon":"cuIcon-present","buttons":["新增","查看","修改","删除","查看评论"],"menu":"商品信息","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息管理"},{"child":[{"appFrontIcon":"cuIcon-pay","buttons":["新增","查看","修改","删除"],"menu":"轮播图管理","tableName":"config"},{"appFrontIcon":"cuIcon-vipcard","buttons":["新增","查看","修改","删除"],"menu":"新闻资讯","tableName":"news"}],"menu":"系统管理"},{"child":[{"appFrontIcon":"cuIcon-time","buttons":["查看","删除","物流"],"menu":"已发货订单","tableName":"orders/已发货"},{"appFrontIcon":"cuIcon-camera","buttons":["查看","删除","发货"],"menu":"已支付订单","tableName":"orders/已支付"},{"appFrontIcon":"cuIcon-rank","buttons":["查看","删除","品销量","日销额","月销额","年销额"],"menu":"已完成订单","tableName":"orders/已完成"},{"appFrontIcon":"cuIcon-copy","buttons":["查看","删除"],"menu":"已退款订单","tableName":"orders/已退款"}],"menu":"订单管理"}],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"商品信息列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息模块"}],"hasBackLogin":"是","hasBackRegister":"否","hasFrontLogin":"否","hasFrontRegister":"否","roleName":"管理员","tableName":"users"},{"backMenu":[],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"商品信息列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"商品信息模块"}],"hasBackLogin":"否","hasBackRegister":"否","hasFrontLogin":"是","hasFrontRegister":"是","roleName":"用户","tableName":"yonghu"}],
+			roleMenus: [{"backMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["add","查看","modification ","delete"],"menu":"user","menuJump":"列表","tableName":"yonghu"}],"menu":"User Management"},{"child":[{"appFrontIcon":"cuIcon-send","buttons":["add","查看","modification ","delete"],"menu":"Commodity classification","menuJump":"列表","tableName":"shangpinfenlei"}],"menu":"Commodity classification management"},{"child":[{"appFrontIcon":"cuIcon-present","buttons":["add","查看","modification ","delete","View comments"],"menu":"Commodity information","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity Information Management"},{"child":[{"appFrontIcon":"cuIcon-pay","buttons":["add","查看","modification ","delete"],"menu":"Carousel image Management","tableName":"config"},{"appFrontIcon":"cuIcon-vipcard","buttons":["add","查看","modification ","delete"],"menu":"News","tableName":"news"}],"menu":"System Management"},{"child":[{"appFrontIcon":"cuIcon-time","buttons":["查看","delete","物流"],"menu":"DispatchedOrder","tableName":"orders/Dispatched"},{"appFrontIcon":"cuIcon-camera","buttons":["查看","delete","发货"],"menu":"PaidOrder","tableName":"orders/Paid"},{"appFrontIcon":"cuIcon-rank","buttons":["查看","delete","品销量","日销额","月销额","年销额"],"menu":"CompletedOrder","tableName":"orders/Completed"},{"appFrontIcon":"cuIcon-copy","buttons":["查看","delete"],"menu":"RefundedOrder","tableName":"orders/Refunded"}],"menu":"OrderManagement"}],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"Commodity information列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity information模块"}],"hasBackLogin":"yes","hasBackRegister":"no","hasFrontLogin":"no","hasFrontRegister":"no","roleName":"管理员","tableName":"users"},{"backMenu":[],"frontMenu":[{"child":[{"appFrontIcon":"cuIcon-link","buttons":["查看"],"menu":"Commodity information列表","menuJump":"列表","tableName":"shangpinxinxi"}],"menu":"Commodity information模块"}],"hasBackLogin":"no","hasBackRegister":"no","hasFrontLogin":"yes","hasFrontRegister":"yes","roleName":"user","tableName":"yonghu"}],
 			loginForm: {
 				username: '',
 				password: '',
@@ -46,10 +46,10 @@ export default {
             roles: [],
 			rules: {
 				username: [
-					{ required: true, message: '请输入账户', trigger: 'blur' }
+					{ required: true, message: 'Please enter 账户', trigger: 'blur' }
 				],
 				password: [
-					{ required: true, message: '请输入密码', trigger: 'blur' }
+					{ required: true, message: 'Please enter Password', trigger: 'blur' }
 				]
 			},
 			codes: [{
@@ -79,7 +79,7 @@ export default {
   },
 	created() {
         for(let item in this.roleMenus) {
-            if(this.roleMenus[item].hasFrontLogin=='是') {
+            if(this.roleMenus[item].hasFrontLogin=='yes') {
                 this.roles.push(this.roleMenus[item]);
             }
         }
@@ -129,7 +129,7 @@ export default {
       submitForm(formName) {
         if (this.roles.length!=1) {
             if (!this.role) {
-                this.$message.error("请选择登录用户类型");
+                this.$message.error("PleaseChoose loginuser类型");
                 return false;
             }
         } else {
@@ -149,7 +149,7 @@ export default {
                 localStorage.setItem('keyPath', this.$config.indexNav.length+2);
                 this.$router.push('/index/center');
                 this.$message({
-                  message: '登录成功',
+                  message: ' login Success',
                   type: 'success',
                   duration: 1500,
                 });

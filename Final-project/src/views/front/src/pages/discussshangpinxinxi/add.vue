@@ -7,9 +7,9 @@
       :rules="rules"
       label-width="80px"
     >
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="头像" v-if="type!='cross' || (type=='cross' && !ro.avatarurl)" prop="avatarurl">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="Profile picture" v-if="type!='cross' || (type=='cross' && !ro.avatarurl)" prop="avatarurl">
             <file-upload
-            tip="点击上传头像"
+            tip="Click to upload Profile picture"
             action="file/upload"
             :limit="3"
             :multiple="true"
@@ -17,34 +17,34 @@
             @change="avatarurlUploadChange"
             ></file-upload>
           </el-form-item>
-            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="头像" prop="avatarurl">
+            <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' class="upload" v-else label="Profile picture" prop="avatarurl">
                 <img v-if="ruleForm.avatarurl.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.avatarurl.split(',')[0]" width="100" height="100">
                 <img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.avatarurl.split(',')" :src="baseUrl+item" width="100" height="100">
             </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="用户名" prop="nickname">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="User" prop="nickname">
             <el-input v-model="ruleForm.nickname" 
-                placeholder="用户名" clearable ></el-input>
+                placeholder="User" clearable ></el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="评论内容" prop="content">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="CommentContent" prop="content">
             <el-input
               type="textarea"
               :rows="8"
-              placeholder="评论内容"
+              placeholder="CommentContent"
               v-model="ruleForm.content">
             </el-input>
           </el-form-item>
-          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="回复内容" prop="reply">
+          <el-form-item :style='{"padding":"10px","margin":"0 0 10px","background":"none"}' label="回复Content" prop="reply">
             <el-input
               type="textarea"
               :rows="8"
-              placeholder="回复内容"
+              placeholder="回复Content"
               v-model="ruleForm.reply">
             </el-input>
           </el-form-item>
 
       <el-form-item :style='{"padding":"0","margin":"0"}'>
-        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">提交</el-button>
-        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">返回</el-button>
+        <el-button :style='{"border":"0","cursor":"pointer","padding":"0","margin":"0 20px 0 0","outline":"none","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","background":"radial-gradient(circle, rgba(132,218,110,1) 0%, rgba(63,187,33,1) 81%, rgba(82,182,70,1) 100%)","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}'  type="primary" @click="onSubmit">Submit</el-button>
+        <el-button :style='{"border":"1px solid #52b646","cursor":"pointer","padding":"0","margin":"0","outline":"none","color":"#52b646","borderRadius":"4px","background":"#ecfaea","width":"128px","lineHeight":"40px","fontSize":"14px","height":"40px"}' @click="back()">Back</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -76,17 +76,17 @@
         },
         rules: {
           refid: [
-            { required: true, message: '关联表id不能为空', trigger: 'blur' },
+            { required: true, message: '关联表id cannot be empty.', trigger: 'blur' },
           ],
           userid: [
-            { required: true, message: '用户id不能为空', trigger: 'blur' },
+            { required: true, message: 'userid cannot be empty.', trigger: 'blur' },
           ],
           avatarurl: [
           ],
           nickname: [
           ],
           content: [
-            { required: true, message: '评论内容不能为空', trigger: 'blur' },
+            { required: true, message: 'CommentContent cannot be empty.', trigger: 'blur' },
           ],
           reply: [
           ],
@@ -161,7 +161,7 @@
           }
         });
       },
-      // 提交
+      // Submit
       onSubmit() {
 
         //更新跨表属性
@@ -217,7 +217,7 @@
                           this.$http.post('discussshangpinxinxi/add', this.ruleForm).then(res => {
                               if (res.data.code == 0) {
                                   this.$message({
-                                      message: '操作成功',
+                                      message: 'Operation Success',
                                       type: 'success',
                                       duration: 1500,
                                       onClose: () => {
@@ -240,7 +240,7 @@
                   this.$http.post('discussshangpinxinxi/add', this.ruleForm).then(res => {
                      if (res.data.code == 0) {
                           this.$message({
-                              message: '操作成功',
+                              message: 'Operation Success',
                               type: 'success',
                               duration: 1500,
                               onClose: () => {
@@ -263,7 +263,7 @@
       getUUID () {
         return new Date().getTime();
       },
-      // 返回
+      // Back
       back() {
         this.$router.go(-1);
       },
